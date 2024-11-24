@@ -1,0 +1,19 @@
+[project]
+name = "issue-search"
+version = "0.1.0"
+description = "Add a short description here"
+authors = ["Cornelius Roemer <cornelius.roemer@gmail.com>"]
+channels = ["conda-forge"]
+platforms = ["osx-arm64"]
+
+[tasks]
+
+[dependencies]
+python = ">=3.13.0,<3.14"
+ipykernel = ">=6.29.5,<6.30"
+tqdm = ">=4.67.0,<4.68"
+pandas = ">=2.2.3,<2.3"
+python-dotenv = ">=1.0.1,<1.1"
+
+[pypi-dependencies]
+algoliasearch = "*"
