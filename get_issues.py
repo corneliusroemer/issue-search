@@ -18,8 +18,9 @@ ALGOLIA_APP_ID = os.getenv("ALGOLIA_APP_ID")
 ALGOLIA_API_KEY = os.getenv("ALGOLIA_API_KEY")
 INDEX_NAME = os.getenv("ALGOLIA_INDEX_NAME")
 
-#%%
-def fetch_issues(owner=owner,repo=repo,max_pages=None) -> list[dict]:
+
+# %%
+def fetch_issues(owner=owner, repo=repo, max_pages=None) -> list[dict]:
     accept = "application/vnd.github.text+json"
     auth_header = {"Authorization": f"token {GITHUB_TOKEN}"} if GITHUB_TOKEN else {}
     headers = {"Accept": accept, **auth_header}
@@ -45,15 +46,18 @@ def fetch_issues(owner=owner,repo=repo,max_pages=None) -> list[dict]:
     print(f"Total issues fetched: {len(issues)}")
     return issues
 
-#%%
+
+# %%
 def write_issues_to_file(issues, filename="issues.json"):
     with open(filename, "w") as file:
-        json.dump(issues, file, indent=2)
+        json.dump(issues, file, indent=2, sort_keys=True)
 
-#%%
-def read_issues_from_file(filename="issues.json") -> list[dict]:
+
+# %%
+def load_issues_from_file(filename="issues.json") -> list[dict]:
     with open(filename, "r") as file:
         return json.load(file)
+
 
 # %%
 def get_truncated_body(issue) -> str:
@@ -64,6 +68,7 @@ def get_truncated_body(issue) -> str:
     if body:
         return body[:2000]
     return ""
+
 
 def labels(i) -> list[str]:
     labels = set()
@@ -102,6 +107,7 @@ def type_of_issue(i) -> str:
 
 # %%
 
+
 def format_issues(issues: list[dict], extra_keyvals: dict = {}) -> list[dict]:
     formatted_issues = []
 
@@ -128,10 +134,53 @@ def format_issues(issues: list[dict], extra_keyvals: dict = {}) -> list[dict]:
     print(f"Total formatted issues: {len(formatted_issues)}")
     return formatted_issues
 
+
+# %%
+def get_issues_to_upload(
+    existing_issues: list[dict], new_issues: list[dict]
+) -> list[dict]:
+    # Create a mapping of objectID to serialized existing issues for quick lookup
+    existing_issues_map = {
+        issue["objectID"]: json.dumps(issue, sort_keys=True)
+        for issue in existing_issues
+    }
+
+    current_issues_map = {
+        issue["objectID"]: json.dumps(issue, sort_keys=True) for issue in new_issues
+    }
+
+    new_issues = []
+    changed_issues = []
+    deleted_issues = []
+    unchanged_issues = []
+
+    # Identify new and changed issues
+    for issue in new_issues:
+        object_id = issue["objectID"]
+        serialized_issue = current_issues_map[object_id]
+        if object_id not in existing_issues_map:
+            new_issues.append(issue)
+        elif existing_issues_map[object_id] != serialized_issue:
+            changed_issues.append(issue)
+        else:
+            unchanged_issues.append(issue)
+
+    # Identify deleted issues
+    for object_id in existing_issues_map.keys():
+        if object_id not in current_issues_map:
+            deleted_issues.append(issue)
+
+    print(f"New issues: {len(new_issues)}")
+    print(f"Changed issues: {len(changed_issues)}")
+    print(f"Deleted issues: {len(deleted_issues)}")
+    print(f"Unchanged issues: {len(unchanged_issues)}")
+
+    return [*new_issues, *changed_issues]
+
+
 # Upload the formatted issues to Algolia
-#%%
+# %%
 def upload_issues_to_algolia(formatted_issues: list[dict]):
-    # Initialize the client
     client = SearchClientSync(ALGOLIA_APP_ID, ALGOLIA_API_KEY)
     index_name = INDEX_NAME
 
@@ -147,19 +196,25 @@ def upload_issues_to_algolia(formatted_issues: list[dict]):
 
     print("Data successfully imported into Algolia.")
 
+
 # %%
 
 repos: list[dict] = [
     {"owner": "loculus-project", "repo": "loculus", "keyvals": {"repo": "loculus"}},
     {"owner": "pathoplexus", "repo": "pathoplexus", "keyvals": {"repo": "pathoplexus"}},
 ]
-
 if __name__ == "__main__":
-    to_upload = []
-    for repo in repos:
-        issues = fetch_issues(owner=repo["owner"],repo=repo["repo"], max_pages=50)
-        to_upload.extend(format_issues(issues, repo["keyvals"]))
-    write_issues_to_file(to_upload, "to_upload.json")
-    upload_issues_to_algolia(to_upload)
+    new_formatted_issues = []
+    for repo in repos[0:]:
+        # issues = load_issues_from_file("issues.json")
+        issues = fetch_issues(owner=repo["owner"], repo=repo["repo"], max_pages=50)
+        write_issues_to_file(issues, f"data/issues_{repo['repo']}.json")
+        new_formatted_issues.extend(format_issues(issues, repo["keyvals"]))
 
-# %%
+    old_formatted_issues = load_issues_from_file("data/formatted_issues.json")
+    to_upload = get_issues_to_upload(old_formatted_issues, new_formatted_issues)
+    write_issues_to_file(new_formatted_issues, "data/formatted_issues.json")
+    if len(to_upload) > 0:
+        print(f"Uploading {len(to_upload)} issues")
+        upload_issues_to_algolia(to_upload)
+    print("Done")
