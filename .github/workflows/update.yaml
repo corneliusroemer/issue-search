@@ -1,5 +1,8 @@
 name: Run GitHub Issue Scraper
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
   schedule:
     # Run every 3 hours
@@ -12,13 +15,13 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
           pixi-version: v0.36.0
           cache: true
-      - name: Install Dependencies
-        run: pixi install
       # Step 4: Run the GitHub issue scraper script
       - name: Run GitHub Issue Scraper
         run: pixi run python get_issues.py
@@ -26,10 +29,11 @@ jobs:
           ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
           ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
           INDEX_NAME: github_issues
+          PYTHONUNBUFFERED: 1
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update formatted_issues.json"
-          file_pattern: formatted_issues.json
+          commit_message: "Update issue json cache"
+          file_pattern: *.json
           skip_dirty_check: false
         
