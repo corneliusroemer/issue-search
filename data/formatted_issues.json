@@ -15904,7 +15904,7 @@
   {
     "body": "Currently on Pathoplexus we default to showing an \"NCBI release date\" field. This is good because if we used the Pathoplexus release date field all sequences ingested from INSDC would have the same release date which wouldn't be useful. But it's bad because it is undefined for sequences submitted directly to pathoplexus. IMO we should create a consensus field which is the NCBI release date if set (which will generally also be the Pathoplexus release date for items submitted to INSDC after launch) and otherwise the Pathoplexus release date. I'm raising this in Loculus as the code implementation would be here.",
     "closed_at": null,
-    "comments": 5,
+    "comments": 7,
     "created_at": 1727452993,
     "labels": [
       "discussion",
@@ -15918,7 +15918,7 @@
     "state": "open",
     "title": "Add \"earliest release date\"",
     "type": "issue",
-    "updated_at": 1732532124,
+    "updated_at": 1732553450,
     "url": "https://github.com/loculus-project/loculus/issues/2894",
     "user": "theosanderson"
   },
@@ -19369,6 +19369,49 @@
     "updated_at": 1732527807,
     "url": "https://github.com/loculus-project/loculus/issues/3282",
     "user": "chaoran-chen"
+  },
+  {
+    "body": "The Keycloakify theme can read the termsAcceptanceRequired setting from Keycloak. The docs describe how this setting can be enabled. In the realm.json this would probably be enabled in the authenticationFlows section, a bit like this:\n{\n  \"authenticationFlows\": [\n    {\n      \"alias\": \"registration\",\n      \"providerId\": \"registration\",\n      \"description\": \"Registration flow\",\n      \"topLevel\": true,\n      \"builtIn\": true,\n      \"enabled\": true,\n      \"flowId\": \"registration\",\n      \"execution\": [\n        {\n          \"provider\": \"terms_of_service\",\n          \"requirement\": \"REQUIRED\",\n          \"authenticatorConfig\": []\n        },\n        {\n          \"provider\": \"password\",\n          \"requirement\": \"REQUIRED\",\n          \"authenticatorConfig\": []\n        },\n        {\n          \"provider\": \"registration_user_profile\",\n          \"requirement\": \"REQUIRED\",\n          \"authenticatorConfig\": []\n        }\n      ]\n    }\n  ]\n}\nThe realm.json schema isn't documented, so I can't say for sure. To find out, one would probably have to update the Keycloak config manually in staging or similar, and then export it, and copy the relevant bits over into keycloak-config-map.yaml in the Helm Chart.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732548824,
+    "labels": [
+      "issue",
+      "keycloak",
+      "open"
+    ],
+    "number": 3284,
+    "objectID": 2691161597,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "keycloakify: Don't hardcode `termsAcceptanceRequired=true`; use realm config instead",
+    "type": "issue",
+    "updated_at": 1732548891,
+    "url": "https://github.com/loculus-project/loculus/issues/3284",
+    "user": "fhennig"
+  },
+  {
+    "body": "We will soon no longer have a single date field: there will be two dates for each sample instead: lower range and upper range of what the date string we got means. For complete dates, the 2 are the same. But for incomplete they aren't.\nThis makes search non-intuitive to users. Most users will initially not care about the concept of date ranges, they just want something that works for filtering dates somehow.\nWhat we get instead after #3263 is two dates to filter by, and this causes cognitive strain (even to me having thought about this feature for weeks).\n\nThere's a simple way of having intuitive search: show just one date search bar with two modes (selectable through radio button):\n\nstrict (sample date range must be entirely contained inside the query range)\nlax (sample date range must at least overlap the query range)\n\nPeople probably want strict to be the default, but we can change this once we know what's more intuitive. The idea to have strict and lax search is something that I haven't seen much on other websites so even this way will take some getting used to (the good thing is that people won't need to know about strict vs lax, it'll just intuitively work ok).\nImplementation:\n\nCreate a new custom search field type date_range (exact names tbd, just for scoping I choose some)\nIt takes as config two config values: date_lower and upper, to refer to the metadata fields that should be used\nIt displays a normal date search but with added radio buttons for \"strict\" and \"lax\" modes, defaults to strict. For what follows I call the fields range_min and range_max\nThe LAPIS query is constructed based on mode as follows in pseudocde\n\nif strict:\n    filter((date_lower >= range_min) and (date_upper <= range_max))\nif lax:\n    filter((date_lower <= range_min) and (date_upper >= range_max))\n\nThat's it, I hope that's clear and should be doable. Let me know if you have questions.",
+    "closed_at": null,
+    "comments": 5,
+    "created_at": 1732549602,
+    "labels": [
+      "feature",
+      "issue",
+      "open",
+      "website"
+    ],
+    "number": 3285,
+    "objectID": 2691243526,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Implement date search that works intuitively with new date range fields",
+    "type": "issue",
+    "updated_at": 1732555146,
+    "url": "https://github.com/loculus-project/loculus/issues/3285",
+    "user": "corneliusroemer"
   },
   {
     "body": "Currently, the backend contains the config.json: https://github.com/pathoplexus/pathoplexus/blob/4e961317d684f0046e236728da6e59fb275e8cd5/backend/src/main/resources/config.json\nThe compiled code (especially the Docker image) should not contain the config, it should rather be passed by the maintainer.",
@@ -60608,7 +60651,7 @@
     "state": "open",
     "title": "Parse dates into ranges",
     "type": "pull_request",
-    "updated_at": 1732537324,
+    "updated_at": 1732558404,
     "url": "https://github.com/loculus-project/loculus/pull/3263",
     "user": "corneliusroemer"
   },
@@ -60698,7 +60741,7 @@
   {
     "body": "resolves #3264\n\npreview URL: http://keycloakify-upgrade-try-a.loculus.org\nSummary\n\nScreenshot\n\nTODO:\n\nRegister.tsx: Add the little checkbox at the bottom: \"do you agree to the ToS and privacy policy?\" There seems to be already support for a checkbox like that ...\nThere are new texts that refer to an organization. In the past we have already avoided mentioning the organization in the text, now I'm not sure how to proceed: https://github.com/loculus-project/loculus/pull/3272/files#diff-b522f6dc4b5863525cd76e6868cd28c352520e9e57b90a622ca3f0ff5cfe3410 -- Or maybe find out if this email is even sent?\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
-    "comments": 8,
+    "comments": 9,
     "created_at": 1732207784,
     "labels": [
       "draft",
@@ -60713,7 +60756,7 @@
     "state": "open",
     "title": "upgrade to Keycloakify 11",
     "type": "pull_request",
-    "updated_at": 1732543180,
+    "updated_at": 1732550875,
     "url": "https://github.com/loculus-project/loculus/pull/3272",
     "user": "fhennig"
   },
@@ -60842,11 +60885,11 @@
   },
   {
     "body": "resolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
-    "closed_at": null,
+    "closed_at": 1732552723,
     "comments": 0,
     "created_at": 1732547723,
     "labels": [
-      "open",
+      "closed",
       "preview",
       "pull_request"
     ],
@@ -60854,10 +60897,10 @@
     "objectID": 2691111298,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "test hiding internal field (do not merge)",
     "type": "pull_request",
-    "updated_at": 1732547778,
+    "updated_at": 1732552723,
     "url": "https://github.com/loculus-project/loculus/pull/3283",
     "user": "theosanderson"
   },
