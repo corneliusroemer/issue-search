@@ -18771,7 +18771,7 @@
   {
     "body": "For metadata items with a limited range of input options (e.g. country atm), we should display a dropdown instead of a text input on the edit page.",
     "closed_at": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": 1731943231,
     "labels": [
       "issue",
@@ -18785,7 +18785,7 @@
     "state": "open",
     "title": "Dropdown menus on edit page",
     "type": "issue",
-    "updated_at": 1731943422,
+    "updated_at": 1732524937,
     "url": "https://github.com/loculus-project/loculus/issues/3225",
     "user": "theosanderson"
   },
@@ -60815,7 +60815,7 @@
     "state": "open",
     "title": "fix(backend,website): calculate status counts efficiently & request only aggregates for submission portal",
     "type": "pull_request",
-    "updated_at": 1732458842,
+    "updated_at": 1732524855,
     "url": "https://github.com/loculus-project/loculus/pull/3279",
     "user": "corneliusroemer"
   },
