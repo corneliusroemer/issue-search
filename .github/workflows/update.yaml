@@ -28,7 +28,7 @@ jobs:
         env:
           ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
           ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
-          INDEX_NAME: github_issues
+          ALGOLIA_INDEX_NAME: github_issues
           PYTHONUNBUFFERED: 1
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5
