@@ -10781,7 +10781,7 @@
     "user": "fengelniederhammer"
   },
   {
-    "body": "Blocked on LAPIS: GenSpectrum/LAPIS#857\nI downloaded the most recent mpox sequences from loculus full-mpox to put them into Nextclade.\nWithin Nextclade, I noticed that all I got is the loculus accession, and I'm sorely missing metadata - i.e. what's currently in our display name.\nWould be great if we could either always add the display name after a separator, e.g. LOCACCESSION|DISPLAYNAME\nOr allow the user to configure the fasta id - I guess that's hard if we use LAPIS as LAPIS probably doesn't have a concept of multiple or configurable sequence ids - unless I'm missing something.",
+    "body": "Blocked on LAPIS: GenSpectrum/LAPIS#857\nI downloaded the most recent mpox sequences from loculus full-mpox to put them into Nextclade.\nWithin Nextclade, I noticed that all I got is the loculus accession, and I'm sorely missing metadata - i.e. what's currently in our display name.\nWould be great if we could either always add the display name after a separator, e.g. LOCACCESSION|DISPLAYNAME\nOr allow the user to configure the fasta id - I guess that's hard if we use LAPIS as LAPIS probably doesn't have a concept of multiple or configurable sequence ids - unless I'm missing something.\n\nAlternatives for searchability: customize adding metadata to fasta sequence headers",
     "closed_at": null,
     "comments": 9,
     "created_at": 1720623085,
@@ -10798,7 +10798,7 @@
     "state": "open",
     "title": "ENH: Add display name after sequence id in downloads, or allow customization of fasta id, so it can contain metadata or display name",
     "type": "issue",
-    "updated_at": 1725907146,
+    "updated_at": 1732541045,
     "url": "https://github.com/loculus-project/loculus/issues/2284",
     "user": "corneliusroemer"
   },
@@ -60713,7 +60713,7 @@
     "state": "open",
     "title": "upgrade to Keycloakify 11",
     "type": "pull_request",
-    "updated_at": 1732243582,
+    "updated_at": 1732543180,
     "url": "https://github.com/loculus-project/loculus/pull/3272",
     "user": "fhennig"
   },
@@ -60754,7 +60754,7 @@
     "state": "open",
     "title": "Switch keycloakify PR to use Keycloak 26",
     "type": "pull_request",
-    "updated_at": 1732331990,
+    "updated_at": 1732538993,
     "url": "https://github.com/loculus-project/loculus/pull/3275",
     "user": "corneliusroemer"
   },
@@ -60839,6 +60839,27 @@
     "updated_at": 1732524855,
     "url": "https://github.com/loculus-project/loculus/pull/3279",
     "user": "corneliusroemer"
+  },
+  {
+    "body": "resolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732547723,
+    "labels": [
+      "open",
+      "preview",
+      "pull_request"
+    ],
+    "number": 3283,
+    "objectID": 2691111298,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "test hiding internal field (do not merge)",
+    "type": "pull_request",
+    "updated_at": 1732547778,
+    "url": "https://github.com/loculus-project/loculus/pull/3283",
+    "user": "theosanderson"
   },
   {
     "body": "resolves #305\nI checked manually that the roleback works, if something goes wrong during writing to the stream.",
