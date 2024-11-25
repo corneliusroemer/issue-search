@@ -15904,7 +15904,7 @@
   {
     "body": "Currently on Pathoplexus we default to showing an \"NCBI release date\" field. This is good because if we used the Pathoplexus release date field all sequences ingested from INSDC would have the same release date which wouldn't be useful. But it's bad because it is undefined for sequences submitted directly to pathoplexus. IMO we should create a consensus field which is the NCBI release date if set (which will generally also be the Pathoplexus release date for items submitted to INSDC after launch) and otherwise the Pathoplexus release date. I'm raising this in Loculus as the code implementation would be here.",
     "closed_at": null,
-    "comments": 7,
+    "comments": 8,
     "created_at": 1727452993,
     "labels": [
       "discussion",
@@ -15918,7 +15918,7 @@
     "state": "open",
     "title": "Add \"earliest release date\"",
     "type": "issue",
-    "updated_at": 1732553450,
+    "updated_at": 1732560073,
     "url": "https://github.com/loculus-project/loculus/issues/2894",
     "user": "theosanderson"
   },
@@ -19373,7 +19373,7 @@
   {
     "body": "The Keycloakify theme can read the termsAcceptanceRequired setting from Keycloak. The docs describe how this setting can be enabled. In the realm.json this would probably be enabled in the authenticationFlows section, a bit like this:\n{\n  \"authenticationFlows\": [\n    {\n      \"alias\": \"registration\",\n      \"providerId\": \"registration\",\n      \"description\": \"Registration flow\",\n      \"topLevel\": true,\n      \"builtIn\": true,\n      \"enabled\": true,\n      \"flowId\": \"registration\",\n      \"execution\": [\n        {\n          \"provider\": \"terms_of_service\",\n          \"requirement\": \"REQUIRED\",\n          \"authenticatorConfig\": []\n        },\n        {\n          \"provider\": \"password\",\n          \"requirement\": \"REQUIRED\",\n          \"authenticatorConfig\": []\n        },\n        {\n          \"provider\": \"registration_user_profile\",\n          \"requirement\": \"REQUIRED\",\n          \"authenticatorConfig\": []\n        }\n      ]\n    }\n  ]\n}\nThe realm.json schema isn't documented, so I can't say for sure. To find out, one would probably have to update the Keycloak config manually in staging or similar, and then export it, and copy the relevant bits over into keycloak-config-map.yaml in the Helm Chart.",
     "closed_at": null,
-    "comments": 0,
+    "comments": 8,
     "created_at": 1732548824,
     "labels": [
       "issue",
@@ -19387,14 +19387,14 @@
     "state": "open",
     "title": "keycloakify: Don't hardcode `termsAcceptanceRequired=true`; use realm config instead",
     "type": "issue",
-    "updated_at": 1732548891,
+    "updated_at": 1732563896,
     "url": "https://github.com/loculus-project/loculus/issues/3284",
     "user": "fhennig"
   },
   {
     "body": "We will soon no longer have a single date field: there will be two dates for each sample instead: lower range and upper range of what the date string we got means. For complete dates, the 2 are the same. But for incomplete they aren't.\nThis makes search non-intuitive to users. Most users will initially not care about the concept of date ranges, they just want something that works for filtering dates somehow.\nWhat we get instead after #3263 is two dates to filter by, and this causes cognitive strain (even to me having thought about this feature for weeks).\n\nThere's a simple way of having intuitive search: show just one date search bar with two modes (selectable through radio button):\n\nstrict (sample date range must be entirely contained inside the query range)\nlax (sample date range must at least overlap the query range)\n\nPeople probably want strict to be the default, but we can change this once we know what's more intuitive. The idea to have strict and lax search is something that I haven't seen much on other websites so even this way will take some getting used to (the good thing is that people won't need to know about strict vs lax, it'll just intuitively work ok).\nImplementation:\n\nCreate a new custom search field type date_range (exact names tbd, just for scoping I choose some)\nIt takes as config two config values: date_lower and upper, to refer to the metadata fields that should be used\nIt displays a normal date search but with added radio buttons for \"strict\" and \"lax\" modes, defaults to strict. For what follows I call the fields range_min and range_max\nThe LAPIS query is constructed based on mode as follows in pseudocde\n\nif strict:\n    filter((date_lower >= range_min) and (date_upper <= range_max))\nif lax:\n    filter((date_lower <= range_min) and (date_upper >= range_max))\n\nThat's it, I hope that's clear and should be doable. Let me know if you have questions.",
     "closed_at": null,
-    "comments": 5,
+    "comments": 8,
     "created_at": 1732549602,
     "labels": [
       "feature",
@@ -19409,8 +19409,30 @@
     "state": "open",
     "title": "Implement date search that works intuitively with new date range fields",
     "type": "issue",
-    "updated_at": 1732555146,
+    "updated_at": 1732567776,
     "url": "https://github.com/loculus-project/loculus/issues/3285",
+    "user": "corneliusroemer"
+  },
+  {
+    "body": "No breakage so far, but we might get into some issues at some point\nhttps://loculus.slack.com/archives/C05G172HL6L/p1732565097248449",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732568324,
+    "labels": [
+      "dependencies",
+      "issue",
+      "open",
+      "website"
+    ],
+    "number": 3295,
+    "objectID": 2692223338,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Zodios maintenance status: last commit 14 months ago, pinning us to tanstack react query v4",
+    "type": "issue",
+    "updated_at": 1732568325,
+    "url": "https://github.com/loculus-project/loculus/issues/3295",
     "user": "corneliusroemer"
   },
   {
@@ -46646,6 +46668,7 @@
     "created_at": 1721997690,
     "labels": [
       "draft",
+      "keycloak",
       "open",
       "pull_request"
     ],
@@ -46656,7 +46679,7 @@
     "state": "open",
     "title": "wip: Try using a custom html email theme for keycloak",
     "type": "pull_request",
-    "updated_at": 1726493186,
+    "updated_at": 1732563166,
     "url": "https://github.com/loculus-project/loculus/pull/2343",
     "user": "corneliusroemer"
   },
@@ -59251,23 +59274,23 @@
   },
   {
     "body": "Bumps org.keycloak:keycloak-admin-client from 23.0.7 to 26.0.2.\n\nDependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting @dependabot rebase.\n\n\nDependabot commands and options\n\nYou can trigger Dependabot actions by commenting on this PR:\n\n@dependabot rebase will rebase this PR\n@dependabot recreate will recreate this PR, overwriting any edits that have been made to it\n@dependabot merge will merge this PR after your CI passes on it\n@dependabot squash and merge will squash and merge this PR after your CI passes on it\n@dependabot cancel merge will cancel a previously requested merge and block automerging\n@dependabot reopen will reopen this PR if it is closed\n@dependabot close will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually\n@dependabot show <dependency name> ignore conditions will show all of the ignore conditions of the specified dependency\n@dependabot ignore this major version will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)\n@dependabot ignore this minor version will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)\n@dependabot ignore this dependency will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)",
-    "closed_at": null,
-    "comments": 0,
+    "closed_at": 1732562241,
+    "comments": 1,
     "created_at": 1730744181,
     "labels": [
+      "closed",
       "dependencies",
       "java",
-      "open",
       "pull_request"
     ],
     "number": 3172,
     "objectID": 2633523220,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "chore(deps): bump org.keycloak:keycloak-admin-client from 23.0.7 to 26.0.2 in /backend",
     "type": "pull_request",
-    "updated_at": 1731981803,
+    "updated_at": 1732562243,
     "url": "https://github.com/loculus-project/loculus/pull/3172",
     "user": "dependabot[bot]"
   },
@@ -60635,7 +60658,7 @@
     "user": "fengelniederhammer"
   },
   {
-    "body": "resolves #\n\npreview URL: https://date-ranges.loculus.org\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "body": "Discussed on Slack: https://loculus.slack.com/archives/C05G172HL6L/p1732110859357449\npreview URL: https://date-ranges.loculus.org\nSummary\n\nReplace Ebola Zaire with Ebola Sudan to have a small, fast loading, real organism (Zaire is 3k sequences, Sudan 150, we already have large ones with WNV and CCHF). This speeds up time to useful preview.\nChange processing of dates to make sampleCollectionDate be of type string and of form YYYY or YYYY-MM or YYYY-MM-DD (instead of type date with YYYY-MM-DD and MM and DD forced to 01 if missing)\nIntroduce new processed data fields of type date sampleCollectionDateRangeLower and sampleCollectionDateRangeUpper\nUpper bound of date range is constrained by submission date (sequences cannot be from samples collected after they were submitted)\nCurrently no lower bound is chosen, though doing so might be useful for ranged searches - we might decide to introduce an artificial min date for search purposes only, otherwise this might require a LAPIS/SILO feature, see GenSpectrum/LAPIS#1012 for thoughts\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
     "comments": 0,
     "created_at": 1732122181,
@@ -60649,9 +60672,9 @@
     "reactions": 0,
     "repo": "loculus",
     "state": "open",
-    "title": "Parse dates into ranges",
+    "title": "feat(preprocessing): parse dates into date ranges to correctly represent incomplete dates",
     "type": "pull_request",
-    "updated_at": 1732558404,
+    "updated_at": 1732560642,
     "url": "https://github.com/loculus-project/loculus/pull/3263",
     "user": "corneliusroemer"
   },
@@ -60739,9 +60762,9 @@
     "user": "theosanderson"
   },
   {
-    "body": "resolves #3264\n\npreview URL: http://keycloakify-upgrade-try-a.loculus.org\nSummary\n\nScreenshot\n\nTODO:\n\nRegister.tsx: Add the little checkbox at the bottom: \"do you agree to the ToS and privacy policy?\" There seems to be already support for a checkbox like that ...\nThere are new texts that refer to an organization. In the past we have already avoided mentioning the organization in the text, now I'm not sure how to proceed: https://github.com/loculus-project/loculus/pull/3272/files#diff-b522f6dc4b5863525cd76e6868cd28c352520e9e57b90a622ca3f0ff5cfe3410 -- Or maybe find out if this email is even sent?\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "body": "resolves #3264\n\npreview URL: http://keycloakify-upgrade-try-a.loculus.org\nSummary\n\nThe old keycloakify 9 theme was replaced by a rewrite based on keycloakify 11 (this was the recommended upgrade path). All features of the old theme were copied over. Also, the new theme uses an env var to set the project name, replacing the old email texts that simply omitted the realm name.\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
-    "comments": 9,
+    "comments": 10,
     "created_at": 1732207784,
     "labels": [
       "draft",
@@ -60756,7 +60779,7 @@
     "state": "open",
     "title": "upgrade to Keycloakify 11",
     "type": "pull_request",
-    "updated_at": 1732550875,
+    "updated_at": 1732566335,
     "url": "https://github.com/loculus-project/loculus/pull/3272",
     "user": "fhennig"
   },
@@ -60905,6 +60928,94 @@
     "user": "theosanderson"
   },
   {
+    "body": "Bumps the minor group in /backend with 2 updates: org.springdoc:springdoc-openapi-starter-webmvc-ui and org.springframework.boot.\nUpdates org.springdoc:springdoc-openapi-starter-webmvc-ui from 2.6.0 to 2.7.0\n\nRelease notes\nSourced from org.springdoc:springdoc-openapi-starter-webmvc-ui's releases.\n\nspringdoc-openapi v2.7.0 released! Latest\nWhat's Changed\n\nAdd Encoding to multiple files and JSON payloads request test case. Fixes #2649 by @\u200bbuzzerrookie in springdoc/springdoc-openapi#2650\nTrim indent apply schema description by @\u200be-build in springdoc/springdoc-openapi#2653\nfix: typo in SpringSecurityLoginEndpointCustomizer method name by @\u200bYunByungil in springdoc/springdoc-openapi#2659\nfix: Update Response Code by @\u200bYunByungil in springdoc/springdoc-openapi#2660\nRefactor Replace hardcoded schema prefix length by @\u200bzinzoddari in springdoc/springdoc-openapi#2664\nReplace swagger urls in org.springdoc.core.properties.AbstractSwaggerUiConfigProperties#urls only if url is changed. Test to check if the issue is fixed. Fixes #2509. by @\u200bdgswan in springdoc/springdoc-openapi#2668\nFix SpringDocApp193Test for Java 21 and above. Fixes #2442. by @\u200bdgswan in springdoc/springdoc-openapi#2669\nEnsure default media type order is preserved using LinkedHashSet in mergeArrays. Fixes #2671 by @\u200blimehee in springdoc/springdoc-openapi#2672\nfix: Missing descriptions on Kotlin ByteArray fields by @\u200bGeorgEchterling in springdoc/springdoc-openapi#2711\nDisplay nullable request body with map type by @\u200bgranddaifuku in springdoc/springdoc-openapi#2727\nfix for issue #2733 by @\u200bkamilkrzywanski in springdoc/springdoc-openapi#2734\nissue #2733 second change for only check response entity type by @\u200bkamilkrzywanski in springdoc/springdoc-openapi#2736\nReadme.md add gradle import by @\u200bdivinenickname in springdoc/springdoc-openapi#2746\nAdded support for RequestBody as a meta-annotation by @\u200bedudar in springdoc/springdoc-openapi#2760\nAdd SortAsQueryParam annotation by @\u200bondrejkrpec in springdoc/springdoc-openap",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732562228,
+    "labels": [
+      "dependencies",
+      "java",
+      "open",
+      "pull_request"
+    ],
+    "number": 3286,
+    "objectID": 2691928221,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump the minor group in /backend with 2 updates",
+    "type": "pull_request",
+    "updated_at": 1732567462,
+    "url": "https://github.com/loculus-project/loculus/pull/3286",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps the patch group in /backend with 2 updates: org.testcontainers:postgresql and com.pinterest.ktlint:ktlint-cli.\nUpdates org.testcontainers:postgresql from 1.20.3 to 1.20.4\n\nRelease notes\nSourced from org.testcontainers:postgresql's releases.\n\n1.20.4\nWhat's Changed\n\nUpdate docs version to ${GITHUB_REF##*/} (#9450) @\u200bgithub-actions\nUpdate testcontainers version to ${GITHUB_REF##*/} (#9449) @\u200bgithub-actions\n\n\ud83d\ude80 Features & Enhancements\n\n[localstack] Add testcontainer marker labels to additional localstack flags (#9531) @\u200bdfangl\nRemove extra call to docker credentials (#9545) @\u200beddumelendez\nRemove privilegedMode in Db2Container (#9460) @\u200bhfhbd\n\n\ud83d\udc1b Bug Fixes\n\nFix docker credentials output (#9544) @\u200beddumelendez\nFix cockroachdb wait strategy with version >= 22.1.0 (#9505) @\u200beddumelendez\nCheck if container belongs to a network when using exposeHostPorts (#8298) @\u200bTomDeBacker\nRevert \"Add shutdownHook to send sigterm to ryuk (#7717)\" (#9504) @\u200beddumelendez\nStop container that doesn't match wait strategy (#9474) @\u200bssheikin\nFix ClickHouse wait strategy (#9466) @\u200blivk-cloud\n\n\ud83d\udcd6 Documentation\n\nFix default client.ping.timeout value in docs (#9464) @\u200bKyleAure\nAdd container implementation for Typesense (#9454) @\u200beddumelendez\n\n\ud83d\udce6 Dependency updates\n\nUpdate ryuk version to 0.11.0 (#9453) @\u200beddumelendez\n\n\n\n\nCommits\n\n39ff5f8 [localstack] Add testcontainer marker labels to additional localstack flags (...\n1facaf0 Remove extra call to docker credentials (#9545)\nc68f791 Update com.gradle.enterprise.gradle.plugin version to 3.18.2\ne3e7fdc Update gradle/setup-gradle version to v4\n964c6e6 Fix docker credentials output (#9544)\nc01fc1b Use cockroachdb version in testcontainers jdbc url test\n0200a5d Fix cockroachdb wait strategy with version >= 22.1.0 (#9505)\nbe7251b Check if container belongs to a network when using exposeHostPorts (#8298)\n78ba315 Revert \"Add shutdownHook to send sigterm to ryuk (#7717)\" (#9504)\n10f32af Stop container that doesn't match wait strategy (#9474)\nAdditional commits",
+    "closed_at": 1732567304,
+    "comments": 0,
+    "created_at": 1732562237,
+    "labels": [
+      "closed",
+      "dependencies",
+      "java",
+      "pull_request"
+    ],
+    "number": 3287,
+    "objectID": 2691928592,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "closed",
+    "title": "chore(deps): bump the patch group in /backend with 2 updates",
+    "type": "pull_request",
+    "updated_at": 1732567306,
+    "url": "https://github.com/loculus-project/loculus/pull/3287",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps org.keycloak:keycloak-admin-client from 23.0.7 to 26.0.3.\n\nDependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting @dependabot rebase.\n\n\nDependabot commands and options\n\nYou can trigger Dependabot actions by commenting on this PR:\n\n@dependabot rebase will rebase this PR\n@dependabot recreate will recreate this PR, overwriting any edits that have been made to it\n@dependabot merge will merge this PR after your CI passes on it\n@dependabot squash and merge will squash and merge this PR after your CI passes on it\n@dependabot cancel merge will cancel a previously requested merge and block automerging\n@dependabot reopen will reopen this PR if it is closed\n@dependabot close will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually\n@dependabot show <dependency name> ignore conditions will show all of the ignore conditions of the specified dependency\n@dependabot ignore this major version will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)\n@dependabot ignore this minor version will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)\n@dependabot ignore this dependency will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732562238,
+    "labels": [
+      "dependencies",
+      "java",
+      "open",
+      "pull_request"
+    ],
+    "number": 3288,
+    "objectID": 2691928621,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump org.keycloak:keycloak-admin-client from 23.0.7 to 26.0.3 in /backend",
+    "type": "pull_request",
+    "updated_at": 1732562239,
+    "url": "https://github.com/loculus-project/loculus/pull/3288",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps org.flywaydb:flyway-database-postgresql from 10.21.0 to 11.0.0.\n\nDependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting @dependabot rebase.\n\n\nDependabot commands and options\n\nYou can trigger Dependabot actions by commenting on this PR:\n\n@dependabot rebase will rebase this PR\n@dependabot recreate will recreate this PR, overwriting any edits that have been made to it\n@dependabot merge will merge this PR after your CI passes on it\n@dependabot squash and merge will squash and merge this PR after your CI passes on it\n@dependabot cancel merge will cancel a previously requested merge and block automerging\n@dependabot reopen will reopen this PR if it is closed\n@dependabot close will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually\n@dependabot show <dependency name> ignore conditions will show all of the ignore conditions of the specified dependency\n@dependabot ignore this major version will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)\n@dependabot ignore this minor version will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)\n@dependabot ignore this dependency will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732562242,
+    "labels": [
+      "dependencies",
+      "java",
+      "open",
+      "pull_request"
+    ],
+    "number": 3289,
+    "objectID": 2691928732,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump org.flywaydb:flyway-database-postgresql from 10.21.0 to 11.0.0 in /backend",
+    "type": "pull_request",
+    "updated_at": 1732562243,
+    "url": "https://github.com/loculus-project/loculus/pull/3289",
+    "user": "dependabot[bot]"
+  },
+  {
     "body": "resolves #305\nI checked manually that the roleback works, if something goes wrong during writing to the stream.",
     "closed_at": 1696429235,
     "comments": 1,
@@ -60923,6 +61034,116 @@
     "updated_at": 1696429236,
     "url": "https://github.com/loculus-project/loculus/pull/329",
     "user": "fengelniederhammer"
+  },
+  {
+    "body": "Bumps com.github.luben:zstd-jni from 1.5.6-7 to 1.5.6-8.\n\nCommits\n\n22d2063 v1.5.6-8\ncec9653 Guard all native code execution behind the shared lock ...\nSee full diff in compare view\n\n\n\n\nDependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting @dependabot rebase.\n\n\nDependabot commands and options\n\nYou can trigger Dependabot actions by commenting on this PR:\n\n@dependabot rebase will rebase this PR\n@dependabot recreate will recreate this PR, overwriting any edits that have been made to it\n@dependabot merge will merge this PR after your CI passes on it\n@dependabot squash and merge will squash and merge this PR after your CI passes on it\n@dependabot cancel merge will cancel a previously requested merge and block automerging\n@dependabot reopen will reopen this PR if it is closed\n@dependabot close will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually\n@dependabot show <dependency name> ignore conditions will show all of the ignore conditions of the specified dependency\n@dependabot ignore this major version will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)\n@dependabot ignore this minor version will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)\n@dependabot ignore this dependency will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)",
+    "closed_at": 1732567359,
+    "comments": 0,
+    "created_at": 1732562244,
+    "labels": [
+      "closed",
+      "dependencies",
+      "java",
+      "pull_request"
+    ],
+    "number": 3290,
+    "objectID": 2691928803,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "closed",
+    "title": "chore(deps): bump com.github.luben:zstd-jni from 1.5.6-7 to 1.5.6-8 in /backend",
+    "type": "pull_request",
+    "updated_at": 1732567361,
+    "url": "https://github.com/loculus-project/loculus/pull/3290",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps the minorandpatch group in /docs with 4 updates: @astrojs/starlight, astro, prettier-plugin-tailwindcss and typescript.\nUpdates @astrojs/starlight from 0.29.0 to 0.29.2\n\nRelease notes\nSourced from @\u200bastrojs/starlight's releases.\n\n@\u200bastrojs/starlight@\u200b0.29.2\nPatch Changes\n\n#2616 128cc51 Thanks @\u200bdelucis! - Fixes an edge case to correctly avoid a trailing slash when navigating from a root locale homepage to another language via Starlight\u2019s language switcher when trailingSlash: 'never' is set\n\n@\u200bastrojs/starlight@\u200b0.29.1\nPatch Changes\n\n\n#2611 6059d96 Thanks @\u200bHiDeoo! - Fixes a UI string type issue in projects with multiple data content collections.\n\n\n#2606 10b15a7 Thanks @\u200bdelucis! - Makes <CardGrid> more resilient to complex child content on smaller viewports\n\n\n#2605 ec7ab4f Thanks @\u200bbrianzelip! - Exposes SidebarPersister component in package exports for use in custom overrides\n\n\n#2614 9a31980 Thanks @\u200bHiDeoo! - Fixes an issue with custom pages using the <StarlightPage /> component and a custom sidebar missing highlighting for the active page and navigation links.\n\n\n#2600 49aef17 Thanks @\u200bjdevega! - Adds Backstage social icon\n\n\n#2613 a73780f Thanks @\u200bdelucis! - Fixes support for sidebar frontmatter options in sidebar entries using slug or the string shorthand for internal links\n\n\n\n\n\nChangelog\nSourced from @\u200bastrojs/starlight's changelog.\n\n0.29.2\nPatch Changes\n\n#2616 128cc51 Thanks @\u200bdelucis! - Fixes an edge case to correctly avoid a trailing slash when navigating from a root locale homepage to another language via Starlight\u2019s language switcher when trailingSlash: 'never' is set\n\n0.29.1\nPatch Changes\n\n\n#2611 6059d96 Thanks @\u200bHiDeoo! - Fixes a UI string type issue in projects with multiple data content collections.\n\n\n#2606 10b15a7 Thanks @\u200bdelucis! - Makes <CardGrid> more resilient to complex child content on smaller viewports\n\n\n#2605 ec7ab4f Thanks @\u200bbrianzelip! - Exposes SidebarPersister component in package exports for use in custom overrides\n\n\n#2614 9a31980 Th",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732562316,
+    "labels": [
+      "dependencies",
+      "javascript",
+      "open",
+      "pull_request"
+    ],
+    "number": 3291,
+    "objectID": 2691931615,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump the minorandpatch group in /docs with 4 updates",
+    "type": "pull_request",
+    "updated_at": 1732562317,
+    "url": "https://github.com/loculus-project/loculus/pull/3291",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps the minor group in /website with 4 updates: @tanstack/eslint-plugin-query, @typescript-eslint/eslint-plugin, @typescript-eslint/parser and typescript.\nUpdates @tanstack/eslint-plugin-query from 5.60.1 to 5.61.3\n\nRelease notes\nSourced from @\u200btanstack/eslint-plugin-query's releases.\n\nv5.61.3\nVersion 5.61.3 - 11/24/24, 3:24 AM\nChanges\nFix\n\neslint-plugin: fix no-unstable-deps with ts-eslint >=8.10.0 (#8340) (bdafc84) by Lachlan Collins\n\nChore\n\ndeps: more manual package updates (#8339) (9972595) by Lachlan Collins\ndeps: update expo, next, astro, nx (#8337) (99b5354) by Lachlan Collins\ndeps: update dependency astro to v4.16.1 [security] (#8181) (bbd3821) by renovate[bot]\ndeps: update dependency next to v14.2.10 [security] (#8128) (22b89c9) by renovate[bot]\n\nTest\n\nintegrations: switch react-scripts to webpack (#8329) (b846c53) by Lachlan Collins\n\nDocs\n\nangular-query: fix angular examples (#8335) (2588a08) by Arnoud\n\nPackages\n\n@\u200btanstack/eslint-plugin-query@\u200b5.61.3\n@\u200btanstack/query-devtools@\u200b5.61.3\n@\u200btanstack/react-query@\u200b5.61.3\n@\u200btanstack/react-query-devtools@\u200b5.61.3\n@\u200btanstack/react-query-persist-client@\u200b5.61.3\n@\u200btanstack/react-query-next-experimental@\u200b5.61.3\n@\u200btanstack/svelte-query@\u200b5.61.3\n@\u200btanstack/svelte-query-devtools@\u200b5.61.3\n@\u200btanstack/svelte-query-persist-client@\u200b5.61.3\n@\u200btanstack/vue-query@\u200b5.61.3\n@\u200btanstack/angular-query-devtools-experimental@\u200b5.61.3\n@\u200btanstack/angular-query-experimental@\u200b5.61.3\n@\u200btanstack/solid-query-devtools@\u200b5.61.3\n@\u200btanstack/vue-query-devtools@\u200b5.61.3\n\nv5.61.2\nVersion 5.61.2 - 11/23/24, 10:43 PM\nChanges\nFix\n\nangular-query: subscribe to observer outside the Angular zone (#8331) (228382f) by Arnoud\neslint-plugin-query: improve external reference relevance (#8334) (80a49ff) by Eliya Cohen\n\n\n\n... (truncated)\n\n\nCommits\n\n68dee7e release: v5.61.3\nbdafc84 fix(eslint-plugin): fix no-unstable-deps with ts-eslint >=8.10.0 (#8340)\n9972595 chore(deps): more manual package updates (#8339)\n3888f23 release: v5.61.2\n80a49ff fix(eslint-plugin-query): imp",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732563411,
+    "labels": [
+      "dependencies",
+      "javascript",
+      "open",
+      "pull_request"
+    ],
+    "number": 3292,
+    "objectID": 2692009734,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps-dev): bump the minor group in /website with 4 updates",
+    "type": "pull_request",
+    "updated_at": 1732563412,
+    "url": "https://github.com/loculus-project/loculus/pull/3292",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps the patch group in /website with 12 updates:\n\n\n\nPackage\nFrom\nTo\n\n\n\n\n@astrojs/mdx\n3.1.8\n3.1.9\n\n\n@emotion/react\n11.13.3\n11.13.5\n\n\nastro\n4.16.7\n4.16.14\n\n\nopenid-client\n5.7.0\n5.7.1\n\n\n@astrojs/react\n3.6.2\n3.6.3\n\n\n@emotion/styled\n11.13.0\n11.13.5\n\n\n@iconify/json\n2.2.265\n2.2.276\n\n\n@types/lodash\n4.17.12\n4.17.13\n\n\n@types/node\n22.9.0\n22.9.3\n\n\nmsw\n2.6.5\n2.6.6\n\n\ntailwindcss\n3.4.14\n3.4.15\n\n\nuuid\n11.0.2\n11.0.3\n\n\n\nUpdates @astrojs/mdx from 3.1.8 to 3.1.9\n\nRelease notes\nSourced from @\u200bastrojs/mdx's releases.\n\n@\u200bastrojs/mdx@\u200b3.1.9\nPatch Changes\n\n#12245 1d4f6a4 Thanks @\u200bbmenant! - Add components property to MDXInstance type definition (RenderResult and module import)\n\n\n\n\nChangelog\nSourced from @\u200bastrojs/mdx's changelog.\n\n3.1.9\nPatch Changes\n\n#12245 1d4f6a4 Thanks @\u200bbmenant! - Add components property to MDXInstance type definition (RenderResult and module import)\n\n\n\n\nCommits\n\n5f7bf49 [ci] release (#12290)\necc4402 fix(deps): update all non-major dependencies (#12316)\n1d4f6a4 fix(@\u200bastro/mdx): add components property to RenderResult type definition (#12...\n2edcad1 fix(deps): update all non-major dependencies (#12266)\n5ab2d98 fix(deps): update all non-major dependencies (#12218)\nSee full diff in compare view\n\n\n\nUpdates @emotion/react from 11.13.3 to 11.13.5\n\nRelease notes\nSourced from @\u200bemotion/react's releases.\n\n@\u200bemotion/react@\u200b11.13.5\nPatch Changes\n\n\n#3270 77d930d Thanks @\u200bemmatown! - Fix inconsistent hashes using development vs production bundles/exports conditions when using @emotion/babel-plugin with sourceMap: true (the default). This is particularly visible when using Emotion with the Next.js Pages router where the development condition is used when bundling code but not when importing external code with Node.js.\n\n\nUpdated dependencies [77d930d]:\n\n@\u200bemotion/serialize@\u200b1.3.3\n@\u200bemotion/cache@\u200b11.13.5\n@\u200bemotion/utils@\u200b1.4.2\n@\u200bemotion/babel-plugin@\u200b11.13.5\n\n\n\n\n\n\nCommits\n\nc161e6f Version Packages (#3272)\nf45eb19 Update changeset (#3273)\n77d930d Fix inconsistent hashes using devel",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732563580,
+    "labels": [
+      "dependencies",
+      "javascript",
+      "open",
+      "pull_request"
+    ],
+    "number": 3293,
+    "objectID": 2692015640,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump the patch group in /website with 12 updates",
+    "type": "pull_request",
+    "updated_at": 1732563581,
+    "url": "https://github.com/loculus-project/loculus/pull/3293",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps @tanstack/react-query from 4.36.1 to 5.61.3.\n\nRelease notes\nSourced from @\u200btanstack/react-query's releases.\n\nv5.61.3\nVersion 5.61.3 - 11/24/24, 3:24 AM\nChanges\nFix\n\neslint-plugin: fix no-unstable-deps with ts-eslint >=8.10.0 (#8340) (bdafc84) by Lachlan Collins\n\nChore\n\ndeps: more manual package updates (#8339) (9972595) by Lachlan Collins\ndeps: update expo, next, astro, nx (#8337) (99b5354) by Lachlan Collins\ndeps: update dependency astro to v4.16.1 [security] (#8181) (bbd3821) by renovate[bot]\ndeps: update dependency next to v14.2.10 [security] (#8128) (22b89c9) by renovate[bot]\n\nTest\n\nintegrations: switch react-scripts to webpack (#8329) (b846c53) by Lachlan Collins\n\nDocs\n\nangular-query: fix angular examples (#8335) (2588a08) by Arnoud\n\nPackages\n\n@\u200btanstack/eslint-plugin-query@\u200b5.61.3\n@\u200btanstack/query-devtools@\u200b5.61.3\n@\u200btanstack/react-query@\u200b5.61.3\n@\u200btanstack/react-query-devtools@\u200b5.61.3\n@\u200btanstack/react-query-persist-client@\u200b5.61.3\n@\u200btanstack/react-query-next-experimental@\u200b5.61.3\n@\u200btanstack/svelte-query@\u200b5.61.3\n@\u200btanstack/svelte-query-devtools@\u200b5.61.3\n@\u200btanstack/svelte-query-persist-client@\u200b5.61.3\n@\u200btanstack/vue-query@\u200b5.61.3\n@\u200btanstack/angular-query-devtools-experimental@\u200b5.61.3\n@\u200btanstack/angular-query-experimental@\u200b5.61.3\n@\u200btanstack/solid-query-devtools@\u200b5.61.3\n@\u200btanstack/vue-query-devtools@\u200b5.61.3\n\nv5.61.2\nVersion 5.61.2 - 11/23/24, 10:43 PM\nChanges\nFix\n\nangular-query: subscribe to observer outside the Angular zone (#8331) (228382f) by Arnoud\neslint-plugin-query: improve external reference relevance (#8334) (80a49ff) by Eliya Cohen\n\n\n\n... (truncated)\n\n\nCommits\n\n68dee7e release: v5.61.3\n9972595 chore(deps): more manual package updates (#8339)\n8a25b4e release: v5.61.0\n3fa4b7c fix(types): make sure queryOptions are passable to UseQueryOptions (#8317)\nfa77f32 release: v5.60.6\n3fc2fce release: v5.60.5\n4a2e838 fix(useQueries): make sure we don't lose property tracking (#8295)\n8786495 release: v5.60.4\n6c2a055 refactor(*): unify & use noop (#8294)\n7615661 relea",
+    "closed_at": null,
+    "comments": 1,
+    "created_at": 1732563594,
+    "labels": [
+      "dependencies",
+      "javascript",
+      "open",
+      "pull_request"
+    ],
+    "number": 3294,
+    "objectID": 2692016106,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump @tanstack/react-query from 4.36.1 to 5.61.3 in /website",
+    "type": "pull_request",
+    "updated_at": 1732568407,
+    "url": "https://github.com/loculus-project/loculus/pull/3294",
+    "user": "dependabot[bot]"
   },
   {
     "body": "This PR adds configs for the deployment to netlify.\nWith netlify, we can automatically deploy the default branch and all PRs against the default branch. The default branch will be deployed to https://pathoplexus.netlify.app/. An example of the preview deployment can be seen in #32.\nThe deployments are password-protected. I'll share the password on Slack.\nTo make it work, I changed the config from YAML to JSON. Reason is that I needed to compile the test config into the bundle as we cannot provide a config file to netlify that it can access during runtime.",
