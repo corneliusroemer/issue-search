@@ -93,7 +93,7 @@ def labels(i) -> list[str]:
         labels.add(i["state_reason"])
     if i.get("draft", False):
         labels.add("draft")
-    return list(labels)
+    return sorted(list(labels))
 
 
 def date_to_unix(date) -> int:
