@@ -19395,7 +19395,7 @@
   {
     "body": "We will soon no longer have a single date field: there will be two dates for each sample instead: lower range and upper range of what the date string we got means. For complete dates, the 2 are the same. But for incomplete they aren't.\nThis makes search non-intuitive to users. Most users will initially not care about the concept of date ranges, they just want something that works for filtering dates somehow.\nWhat we get instead after #3263 is two dates to filter by, and this causes cognitive strain (even to me having thought about this feature for weeks).\n\nThere's a simple way of having intuitive search: show just one date search bar with two modes (selectable through radio button):\n\nstrict (sample date range must be entirely contained inside the query range)\nlax (sample date range must at least overlap the query range)\n\nPeople probably want strict to be the default, but we can change this once we know what's more intuitive. The idea to have strict and lax search is something that I haven't seen much on other websites so even this way will take some getting used to (the good thing is that people won't need to know about strict vs lax, it'll just intuitively work ok).\nImplementation:\n\nCreate a new custom search field type date_range (exact names tbd, just for scoping I choose some)\nIt takes as config two config values: date_lower and upper, to refer to the metadata fields that should be used\nIt displays a normal date search but with added radio buttons for \"strict\" and \"lax\" modes, defaults to strict. For what follows I call the fields range_min and range_max\nThe LAPIS query is constructed based on mode as follows in pseudocde\n\nif strict:\n    filter((date_lower >= range_min) and (date_upper <= range_max))\nif lax:\n    filter((date_lower <= range_min) and (date_upper >= range_max))\n\nThat's it, I hope that's clear and should be doable. Let me know if you have questions.",
     "closed_at": null,
-    "comments": 9,
+    "comments": 12,
     "created_at": 1732549602,
     "labels": [
       "feature",
@@ -19410,7 +19410,7 @@
     "state": "open",
     "title": "Implement date search that works intuitively with new date range fields",
     "type": "issue",
-    "updated_at": 1732618044,
+    "updated_at": 1732643887,
     "url": "https://github.com/loculus-project/loculus/issues/3285",
     "user": "corneliusroemer"
   },
@@ -60846,7 +60846,7 @@
     "state": "closed",
     "title": "upgrade to Keycloakify 11",
     "type": "pull_request",
-    "updated_at": 1732633845,
+    "updated_at": 1732639727,
     "url": "https://github.com/loculus-project/loculus/pull/3272",
     "user": "fhennig"
   },
@@ -61362,9 +61362,9 @@
     "user": "dependabot[bot]"
   },
   {
-    "body": "resolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "body": "resolves #1221\npreview URL: https://keycloak26.loculus.org\nSummary\n\nCreated copying @corneliusroemer's KC26 PR #3275\nSwitching out CLI args for ENV vars\n\nExplanation of breaking changes\nIt's marked breaking to draw attention to the fact that this is hard to roll back:\n\nBack up the database using instructions in the documentation for your relational database. The database will no longer be compatible with the old server after you upgrade the server. If you need to revert the upgrade, first restore the old installation, and then restore the database from the backup copy.\n\nhttps://www.keycloak.org/docs/latest/upgrading/",
     "closed_at": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": 1732629771,
     "labels": [
       "open",
@@ -61376,9 +61376,9 @@
     "reactions": 0,
     "repo": "loculus",
     "state": "open",
-    "title": "chore(deps): Upgrade to Keycloak 26",
+    "title": "chore(deps)!: Upgrade to Keycloak 26",
     "type": "pull_request",
-    "updated_at": 1732630536,
+    "updated_at": 1732636367,
     "url": "https://github.com/loculus-project/loculus/pull/3304",
     "user": "fhennig"
   },
