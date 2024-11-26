@@ -15904,7 +15904,7 @@
   {
     "body": "Currently on Pathoplexus we default to showing an \"NCBI release date\" field. This is good because if we used the Pathoplexus release date field all sequences ingested from INSDC would have the same release date which wouldn't be useful. But it's bad because it is undefined for sequences submitted directly to pathoplexus. IMO we should create a consensus field which is the NCBI release date if set (which will generally also be the Pathoplexus release date for items submitted to INSDC after launch) and otherwise the Pathoplexus release date. I'm raising this in Loculus as the code implementation would be here.",
     "closed_at": null,
-    "comments": 12,
+    "comments": 13,
     "created_at": 1727452993,
     "labels": [
       "discussion",
@@ -15918,7 +15918,7 @@
     "state": "open",
     "title": "Add \"earliest release date\"",
     "type": "issue",
-    "updated_at": 1732624061,
+    "updated_at": 1732625829,
     "url": "https://github.com/loculus-project/loculus/issues/2894",
     "user": "theosanderson"
   },
@@ -19148,21 +19148,22 @@
   },
   {
     "body": "As part of #1221 we want to upgrade to keycloakify 11, I want to track this in a separate ticket.",
-    "closed_at": null,
+    "closed_at": 1732629111,
     "comments": 0,
     "created_at": 1732122408,
     "labels": [
-      "issue",
-      "open"
+      "closed",
+      "completed",
+      "issue"
     ],
     "number": 3264,
     "objectID": 2676583284,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "Upgrade to Keycloakify 11",
     "type": "issue",
-    "updated_at": 1732122408,
+    "updated_at": 1732629111,
     "url": "https://github.com/loculus-project/loculus/issues/3264",
     "user": "fhennig"
   },
@@ -19434,6 +19435,73 @@
     "updated_at": 1732568325,
     "url": "https://github.com/loculus-project/loculus/issues/3295",
     "user": "corneliusroemer"
+  },
+  {
+    "body": "Currently between when data is uploaded and when it is released, there is an opportunity for it to be edited (particularly to remove warnings/errors). This is most likely done by the submitter, but could be done by someone else, in at least two use cases:\n\n(most common) INSDC pipeline is the 'submitter' but the data has some kind of fixable error (bad date format, mistyped country), thus it gets stuck in 'The Pile' (in review but cannot be released). A curator comes along and fixes the bug allowing it to be released.\nA submitting user has issues with submission and a curator or another member of their Group helps them to fix errors before releasing the sequences.\n\nCurrently the original uploader (who is the 'submitter') would remain the submitter and there would be no record of who made the change. This is particularly of interest in the INSDC case as there would be no indication that the Pathoplexus data does not match the INSDC data anymore, but it probably won't.\nThis is unlikely if a curation happens after release, when the submitter changes to whoever did the curation and thus gives a 'record of touching'.\nWe should consider how we'd like to handle this, if we'd like to record these 'midsubmission edits', and if so, how we might like to do this.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732627844,
+    "labels": [
+      "discussion",
+      "issue",
+      "open"
+    ],
+    "number": 3298,
+    "objectID": 2694687061,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Consider recording 'mid-submission' edits that are not done by the submitter",
+    "type": "issue",
+    "updated_at": 1732628515,
+    "url": "https://github.com/loculus-project/loculus/issues/3298",
+    "user": "emmahodcroft"
+  },
+  {
+    "body": "Now that we're well on the way to supporting date ranges within Loculus, we should enable users to explicitly upload date ranges.\nFor example at the moment a date of 1980 will be converted to 1980-01-01 to 1980-12-31 and the date 2014-07 will be converted to 2014-07-01 to 2014-07-31.\nHowever, in some cases people may know more specific date ranges, for example 1982-04 to 1982-07 or 2022-11-10 to 2022-11-15 and we should enable this too!\nThere are a couple of ways we could support this, but there's an existing ISO standard to use / for dates to indicate ranges, which is also supported by Genbank - so supporting this would kill two birds with one stone.\nWe could also consider supporting users in uploading two columsn (minDate maxDate) but this would mean more changes to our suggested files & probably more edits on the backend to convert them into our own date format.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732628487,
+    "labels": [
+      "discussion",
+      "feature",
+      "ingest",
+      "issue",
+      "open",
+      "preprocessing"
+    ],
+    "number": 3300,
+    "objectID": 2694732023,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Support submissions with date ranges",
+    "type": "issue",
+    "updated_at": 1732628488,
+    "url": "https://github.com/loculus-project/loculus/issues/3300",
+    "user": "emmahodcroft"
+  },
+  {
+    "body": "From feedback from Aine, she would like more info on the preprocessing of sequences.\nFor example, how the alignment constructed, what's reference used, whether masked, etc.\nIf we are tracking the version of Nextclade and the version of Nextclade dataset that's being used in the metadata (or the equivalent generic terms for any other tool in the preprocessing pipeline), this would be an easy thing to surface on the sequence detail page and in the metadata download file.\nWe may need to discuss exactly what we'd like to store and surface. If these could be (optionally) links, it could save effort in trying to explain by linking directly to the tool where users can figure this out for themselves/use that tool's docs (in our case that would be Nextclade for Pathoplexus but could of course be any tool that someone may want to link to).",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732628830,
+    "labels": [
+      "discussion",
+      "issue",
+      "open",
+      "preprocessing"
+    ],
+    "number": 3301,
+    "objectID": 2694746754,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Surface more info on preprocessing tools",
+    "type": "issue",
+    "updated_at": 1732628830,
+    "url": "https://github.com/loculus-project/loculus/issues/3301",
+    "user": "emmahodcroft"
   },
   {
     "body": "Currently, the backend contains the config.json: https://github.com/pathoplexus/pathoplexus/blob/4e961317d684f0046e236728da6e59fb275e8cd5/backend/src/main/resources/config.json\nThe compiled code (especially the Docker image) should not contain the config, it should rather be passed by the maintainer.",
@@ -59001,23 +59069,23 @@
   },
   {
     "body": "Bumps keycloakify from 9.7.2 to 11.3.15.\n\nRelease notes\nSourced from keycloakify's releases.\n\nRelease v11.3.15\nFull Changelog: keycloakify/keycloakify@v11.3.14...v11.3.15\nRelease v11.3.14\nFull Changelog: keycloakify/keycloakify@v11.3.13...v11.3.14\nRelease v11.3.13\nFull Changelog: keycloakify/keycloakify@v11.3.12...v11.3.13\nRelease v11.3.12\nFull Changelog: keycloakify/keycloakify@v11.3.11...v11.3.12\nRelease v11.3.11\nFull Changelog: keycloakify/keycloakify@v11.3.10...v11.3.11\nRelease v11.3.10\nWhat's Changed\n\nRemoved Error Message from Terms and Conditions Page by @\u200bnima70 in keycloakify/keycloakify#701\n\nFull Changelog: keycloakify/keycloakify@v11.3.9...v11.3.10\nRelease v11.3.9\nWhat's Changed\n\nAvoid modifying BASE_URL for App context by @\u200bgarronej in keycloakify/keycloakify#674\ndocs: add kathari00 as a contributor for code, test, and doc by @\u200ballcontributors in keycloakify/keycloakify#675\ndocs: add luca-peruzzo as a contributor for code, and test by @\u200ballcontributors in keycloakify/keycloakify#676\nrespect inputOptionLabels by @\u200bjohanjk in keycloakify/keycloakify#678\nFix link in CONTRIBUTING.md by @\u200bpnzrr in keycloakify/keycloakify#680\nUpdate version target range by @\u200bgarronej in keycloakify/keycloakify#681\nFeat custom handler by @\u200bgarronej in keycloakify/keycloakify#683\nChanges: by @\u200bnima70 in keycloakify/keycloakify#672\ndocs: add nima70 as a contributor for code, and test by @\u200ballcontributors in keycloakify/keycloakify#685\nfix: added parameter type for story context on register page by @\u200bliamlows in keycloakify/keycloakify#688\ndocs: add marvinruder as a contributor for bug by @\u200ballcontributors in keycloakify/keycloakify#697\nDecouple userprofile logic by @\u200bgarronej in keycloakify/keycloakify#698\nStorybooks Second Release: Login Page Stories with Improved Coverage by @\u200bnima70 in keycloakify/keycloakify#700\n\nNew Contributors\n\n@\u200bjohanjk made their first contribution in keycloakify/keycloakify#678\n@\u200bpnzrr made their first contribution in keycloakify/keycloakify#680\n@\u200bnima7",
-    "closed_at": null,
-    "comments": 0,
+    "closed_at": 1732629198,
+    "comments": 1,
     "created_at": 1730485052,
     "labels": [
+      "closed",
       "dependencies",
       "javascript",
-      "open",
       "pull_request"
     ],
     "number": 3155,
     "objectID": 2629613864,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "chore(deps): bump keycloakify from 9.7.2 to 11.3.15 in /keycloak/keycloakify",
     "type": "pull_request",
-    "updated_at": 1730746872,
+    "updated_at": 1732629200,
     "url": "https://github.com/loculus-project/loculus/pull/3155",
     "user": "dependabot[bot]"
   },
@@ -60680,22 +60748,22 @@
   },
   {
     "body": "relates to #1221\npreview URL: https://test-kc25.loculus.org\nSummary\nKeycloak 25 works, expect for our custom terms checkbox which doesn't show with our keycloakify theme anymore so we do need to do the keycloakify work. But this is the keycloak part of the task.\nThis can be bumped to 26, see #3266 without requiring any changes on the keycloak side\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
-    "closed_at": null,
-    "comments": 1,
+    "closed_at": 1732630546,
+    "comments": 2,
     "created_at": 1732131805,
     "labels": [
+      "closed",
       "draft",
-      "open",
       "pull_request"
     ],
     "number": 3265,
     "objectID": 2676995946,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "chore(deps): upgrade keycloak to v25",
     "type": "pull_request",
-    "updated_at": 1732311389,
+    "updated_at": 1732630547,
     "url": "https://github.com/loculus-project/loculus/pull/3265",
     "user": "corneliusroemer"
   },
@@ -60763,11 +60831,11 @@
   },
   {
     "body": "resolves #3264\n\npreview URL: http://keycloakify-upgrade-try-a.loculus.org\nSummary\n\nThe old keycloakify 9 theme was replaced by a rewrite based on keycloakify 11 (this was the recommended upgrade path). All features of the old theme were copied over. Also, the new theme uses an env var to set the project name, replacing the old email texts that simply omitted the realm name.\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
-    "closed_at": null,
-    "comments": 12,
+    "closed_at": 1732629110,
+    "comments": 19,
     "created_at": 1732207784,
     "labels": [
-      "open",
+      "closed",
       "preview",
       "pull_request"
     ],
@@ -60775,10 +60843,10 @@
     "objectID": 2680189281,
     "reactions": 1,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "upgrade to Keycloakify 11",
     "type": "pull_request",
-    "updated_at": 1732624633,
+    "updated_at": 1732633845,
     "url": "https://github.com/loculus-project/loculus/pull/3272",
     "user": "fhennig"
   },
@@ -60805,21 +60873,21 @@
   },
   {
     "body": "@fhennig this uses your keycloakify v11 theme with keycloak v26. The few lines of code do very much underestimate the amount of blood and sweat that have gone into getting this to work \ud83d\ude06\nSo now you can test the theme with the Keycloak we want to get to asap!\nhttps://kc26-on-kcify.loculus.org",
-    "closed_at": null,
-    "comments": 0,
+    "closed_at": 1732628293,
+    "comments": 1,
     "created_at": 1732247853,
     "labels": [
-      "open",
+      "closed",
       "pull_request"
     ],
     "number": 3275,
     "objectID": 2681685775,
     "reactions": 1,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "Switch keycloakify PR to use Keycloak 26",
     "type": "pull_request",
-    "updated_at": 1732615163,
+    "updated_at": 1732628293,
     "url": "https://github.com/loculus-project/loculus/pull/3275",
     "user": "corneliusroemer"
   },
@@ -61189,6 +61257,26 @@
     "user": "dependabot[bot]"
   },
   {
+    "body": "resolves #\n\npreview URL: http://keycloakify-with-kc26.loculus.org\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "closed_at": 1732629786,
+    "comments": 5,
+    "created_at": 1732628100,
+    "labels": [
+      "closed",
+      "pull_request"
+    ],
+    "number": 3299,
+    "objectID": 2694703389,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "closed",
+    "title": "Keycloak 26",
+    "type": "pull_request",
+    "updated_at": 1732630661,
+    "url": "https://github.com/loculus-project/loculus/pull/3299",
+    "user": "fhennig"
+  },
+  {
     "body": "This PR adds configs for the deployment to netlify.\nWith netlify, we can automatically deploy the default branch and all PRs against the default branch. The default branch will be deployed to https://pathoplexus.netlify.app/. An example of the preview deployment can be seen in #32.\nThe deployments are password-protected. I'll share the password on Slack.\nTo make it work, I changed the config from YAML to JSON. Reason is that I needed to compile the test config into the bundle as we cannot provide a config file to netlify that it can access during runtime.",
     "closed_at": 1688654796,
     "comments": 1,
@@ -61228,6 +61316,71 @@
     "updated_at": 1697793892,
     "url": "https://github.com/loculus-project/loculus/pull/330",
     "user": "TobiasKampmann"
+  },
+  {
+    "body": "Bumps keycloakify from 11.3.24 to 11.3.32.\n\nRelease notes\nSourced from keycloakify's releases.\n\nRelease v11.3.32\nFull Changelog: keycloakify/keycloakify@v11.3.31...v11.3.32\nRelease v11.3.31\nFull Changelog: keycloakify/keycloakify@v11.3.30...v11.3.31\nRelease v11.3.30\nFull Changelog: keycloakify/keycloakify@v11.3.29...v11.3.30\nRelease v11.3.29\nFull Changelog: keycloakify/keycloakify@v11.3.28...v11.3.29\nRelease v11.3.28\nFull Changelog: keycloakify/keycloakify@v11.3.27...v11.3.28\nRelease v11.3.27\nFull Changelog: keycloakify/keycloakify@v11.3.26...v11.3.27\nRelease v11.3.26\nFull Changelog: keycloakify/keycloakify@v11.3.25...v11.3.26\nRelease v11.3.25\nWhat's Changed\n\nFix #721: mismatched LoginPasskeysConditionalAuthenticate by @\u200bzvn2060 in keycloakify/keycloakify#722\ndocs: add zvn2060 as a contributor for code by @\u200ballcontributors in keycloakify/keycloakify#723\ndocs: add tripheo0412 as a contributor for doc by @\u200ballcontributors in keycloakify/keycloakify#725\n\nNew Contributors\n\n@\u200bzvn2060 made their first contribution in keycloakify/keycloakify#722\n\nFull Changelog: keycloakify/keycloakify@v11.3.24...v11.3.25\n\n\n\nCommits\n\nfd3261c Bump version\nb4b53d2 Re export wide type def of the kcContext\n0371d9e Bump version\n73031e7 Make it so it's not required to manually call the copy-keycloak-resources-to-...\nf71ab46 Bump version\n983db67 #730\nea22107 Bump version\n8e4a7fe Fix invalid dom nesting errors\n30efd8f Bump version\nf4c4e92 #726\nAdditional commits viewable in compare view\n\n\n\n\nDependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting @dependabot rebase.\n\n\nDependabot commands and options\n\nYou can trigger Dependabot actions by commenting on this PR:\n\n@dependabot rebase will rebase this PR\n@dependabot recreate will recreate this PR, overwriting any edits that have been made to it\n@dependabot merge will merge this PR after your CI passes on it\n@dependabot squash and merge will squash and merge this PR a",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732629195,
+    "labels": [
+      "dependencies",
+      "javascript",
+      "open",
+      "pull_request"
+    ],
+    "number": 3302,
+    "objectID": 2694764259,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump keycloakify from 11.3.24 to 11.3.32 in /keycloak/keycloakify",
+    "type": "pull_request",
+    "updated_at": 1732629196,
+    "url": "https://github.com/loculus-project/loculus/pull/3302",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps the npm_and_yarn group in /keycloak/keycloakify with 9 updates:\n\n\n\nPackage\nFrom\nTo\n\n\n\n\nvite\n5.2.13\n5.2.14\n\n\ncross-spawn\n7.0.3\n7.0.6\n\n\nexpress\n4.19.2\n4.21.1\n\n\nmicromatch\n4.0.7\n4.0.8\n\n\npath-to-regexp\n0.1.7\n0.1.10\n\n\nrollup\n4.18.0\n4.27.4\n\n\nsend\n0.18.0\n0.19.0\n\n\nserve-static\n1.15.0\n1.16.2\n\n\nws\n8.17.0\n8.18.0\n\n\n\nUpdates vite from 5.2.13 to 5.2.14\n\nRelease notes\nSourced from vite's releases.\n\nv5.2.14\nPlease refer to CHANGELOG.md for details.\n\n\n\nChangelog\nSourced from vite's changelog.\n\n5.2.14 (2024-09-16)\n\nfix: avoid DOM Clobbering gadget in getRelativeUrlFromDocument (#18115) (ebb94c5), closes #18115\nfix: fs raw query (#18112) (8339d74), closes #18112\n\n\n\n\nCommits\n\n673ae16 release: v5.2.14\nebb94c5 fix: avoid DOM Clobbering gadget in getRelativeUrlFromDocument (#18115)\n8339d74 fix: fs raw query (#18112)\nSee full diff in compare view\n\n\n\nUpdates cross-spawn from 7.0.3 to 7.0.6\n\nChangelog\nSourced from cross-spawn's changelog.\n\n7.0.6 (2024-11-18)\nBug Fixes\n\nupdate cross-spawn version to 7.0.5 in package-lock.json (f700743)\n\n7.0.5 (2024-11-07)\nBug Fixes\n\nfix escaping bug introduced by backtracking (640d391)\n\n7.0.4 (2024-11-07)\nBug Fixes\n\ndisable regexp backtracking (#160) (5ff3a07)\n\n\n\n\nCommits\n\n77cd97f chore(release): 7.0.6\n6717de4 chore: upgrade standard-version\nf700743 fix: update cross-spawn version to 7.0.5 in package-lock.json\n9a7e3b2 chore: fix build status badge\n0852683 chore(release): 7.0.5\n640d391 fix: fix escaping bug introduced by backtracking\nbff0c87 chore: remove codecov\na7c6abc chore: replace travis with github workflows\n9b9246e chore(release): 7.0.4\n5ff3a07 fix: disable regexp backtracking (#160)\nAdditional commits viewable in compare view\n\n\n\nUpdates express from 4.19.2 to 4.21.1\n\nRelease notes\nSourced from express's releases.\n\n4.21.1\nWhat's Changed\n\nBackport a fix for CVE-2024-47764 to the 4.x branch by @\u200bjoshbuker in expressjs/express#6029\nRelease: 4.21.1 by @\u200bUlisesGascon in expressjs/express#6031\n\nFull Changelog: expressjs/express@4.21.0...4.21.1\n4.21.0\nWh",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732629264,
+    "labels": [
+      "dependencies",
+      "javascript",
+      "open",
+      "pull_request"
+    ],
+    "number": 3303,
+    "objectID": 2694767344,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump the npm_and_yarn group in /keycloak/keycloakify with 9 updates",
+    "type": "pull_request",
+    "updated_at": 1732629266,
+    "url": "https://github.com/loculus-project/loculus/pull/3303",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "resolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732629771,
+    "labels": [
+      "open",
+      "preview",
+      "pull_request"
+    ],
+    "number": 3304,
+    "objectID": 2694790548,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): Upgrade to Keycloak 26",
+    "type": "pull_request",
+    "updated_at": 1732630536,
+    "url": "https://github.com/loculus-project/loculus/pull/3304",
+    "user": "fhennig"
   },
   {
     "body": "",
