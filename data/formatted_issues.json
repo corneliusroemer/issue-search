@@ -60902,7 +60902,7 @@
     "state": "open",
     "title": "fix(backend,website): calculate status counts efficiently & request only aggregates for submission portal",
     "type": "pull_request",
-    "updated_at": 1732580903,
+    "updated_at": 1732612328,
     "url": "https://github.com/loculus-project/loculus/pull/3279",
     "user": "corneliusroemer"
   },
