@@ -15904,7 +15904,7 @@
   {
     "body": "Currently on Pathoplexus we default to showing an \"NCBI release date\" field. This is good because if we used the Pathoplexus release date field all sequences ingested from INSDC would have the same release date which wouldn't be useful. But it's bad because it is undefined for sequences submitted directly to pathoplexus. IMO we should create a consensus field which is the NCBI release date if set (which will generally also be the Pathoplexus release date for items submitted to INSDC after launch) and otherwise the Pathoplexus release date. I'm raising this in Loculus as the code implementation would be here.",
     "closed_at": null,
-    "comments": 14,
+    "comments": 16,
     "created_at": 1727452993,
     "labels": [
       "discussion",
@@ -15918,7 +15918,7 @@
     "state": "open",
     "title": "Add \"earliest release date\"",
     "type": "issue",
-    "updated_at": 1732696972,
+    "updated_at": 1732716532,
     "url": "https://github.com/loculus-project/loculus/issues/2894",
     "user": "theosanderson"
   },
@@ -19506,7 +19506,7 @@
   {
     "body": "As Cornelius reported here: #3295, Zodios seems to be unmaintained, and we're now behind a major version on react-query: #3294.",
     "closed_at": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": 1732711005,
     "labels": [
       "issue",
@@ -19519,7 +19519,7 @@
     "state": "open",
     "title": "Replace zodios",
     "type": "issue",
-    "updated_at": 1732711006,
+    "updated_at": 1732711508,
     "url": "https://github.com/loculus-project/loculus/issues/3305",
     "user": "fhennig"
   },
@@ -26105,7 +26105,7 @@
     "state": "open",
     "title": "Change data use term in bulk",
     "type": "issue",
-    "updated_at": 1730361768,
+    "updated_at": 1732716401,
     "url": "https://github.com/loculus-project/loculus/issues/992",
     "user": "fengelniederhammer"
   },
