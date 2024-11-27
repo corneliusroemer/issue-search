@@ -19504,6 +19504,26 @@
     "user": "emmahodcroft"
   },
   {
+    "body": "As Cornelius reported here: #3295, Zodios seems to be unmaintained, and we're now behind a major version on react-query: #3294.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732711005,
+    "labels": [
+      "issue",
+      "open"
+    ],
+    "number": 3305,
+    "objectID": 2698402022,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Replace zodios",
+    "type": "issue",
+    "updated_at": 1732711006,
+    "url": "https://github.com/loculus-project/loculus/issues/3305",
+    "user": "fhennig"
+  },
+  {
     "body": "Currently, the backend contains the config.json: https://github.com/pathoplexus/pathoplexus/blob/4e961317d684f0046e236728da6e59fb275e8cd5/backend/src/main/resources/config.json\nThe compiled code (especially the Docker image) should not contain the config, it should rather be passed by the maintainer.",
     "closed_at": 1696921631,
     "comments": 0,
@@ -27261,7 +27281,7 @@
   {
     "body": "Summary\nRecommend extensions that are useful for this monorepo, saving time for new devs who use vscode.",
     "closed_at": null,
-    "comments": 1,
+    "comments": 2,
     "created_at": 1708614511,
     "labels": [
       "draft",
@@ -27276,7 +27296,7 @@
     "state": "open",
     "title": "dev: recommend extensions that are essentially required for this monorepo",
     "type": "pull_request",
-    "updated_at": 1730383112,
+    "updated_at": 1732701604,
     "url": "https://github.com/loculus-project/loculus/pull/1080",
     "user": "corneliusroemer"
   },
@@ -58365,23 +58385,23 @@
   },
   {
     "body": "Bumps eslint-plugin-react-hooks from 4.6.2 to 5.0.0.\n\nRelease notes\nSourced from eslint-plugin-react-hooks's releases.\n\neslint-plugin-react-hooks@5.0.0 (Oct 11, 2024)\nThis release only contains eslint-plugin-react-hooks. Notably, new violations and support for ESLint v9 were added.\neslint-plugin-react-hooks\n\nNew Violations: Component names now need to start with an uppercase letter instead of a non-lowercase letter. This means _Button or _component are no longer valid. (@\u200bkassens) in #25162\nFor example, in\nfunction _Component() {\n  useState()\n  ^^^^^^^^ A React Hook \"useState\" is called in function \"_Component\" which is neither a Component nor a custom React Hook function.\n}\n_Component should be renamed to Component.\n\n\nAdd support for ESLint v9. (@\u200beps1lon in #28773)\nConsider dispatch from useActionState stable. (@\u200beps1lon in #29665)\nAccept as expression in callback. (@\u200bStyleShit in #28202)\nAccept as expressions in deps array. (@\u200bStyleShit in #28189)\nTreat React.use() the same as use(). (@\u200bkassens in #27769)\nMove use() lint to non-experimental. (@\u200bkassens in #27768)\nSupport Flow as expressions. (@\u200bcpojer in #27590)\nAllow useEffect(fn, undefined). (@\u200bkassens in #27525)\nDisallow hooks in async functions. (@\u200bacdlite in #27045)\nRename experimental useEvent to useEffectEvent. (@\u200bsebmarkbage in #25881)\nLint for presence of useEvent functions in dependency lists. (@\u200bpoteto in #25512)\nCheck useEvent references instead. (@\u200bpoteto in #25319)\nUpdate RulesOfHooks with useEvent rules. (@\u200bpoteto in #25285)\n\n\n\n\nChangelog\nSourced from eslint-plugin-react-hooks's changelog.\n\n5.0.0\n\nNew Violations: Component names now need to start with an uppercase letter instead of a non-lowercase letter. This means _Button or _component are no longer valid. (@\u200bkassens) in #25162\n\n\nConsider dispatch from useActionState stable. (@\u200beps1lon in #29665)\nAdd support for ESLint v9. (@\u200beps1lon in #28773)\nAccept as expression in callback. (@\u200bStyleShit in #28202)\nAccept as expressions in deps array. (@\u200bStyle",
-    "closed_at": null,
-    "comments": 1,
+    "closed_at": 1732701825,
+    "comments": 3,
     "created_at": 1730141807,
     "labels": [
+      "closed",
       "dependencies",
       "javascript",
-      "open",
       "pull_request"
     ],
     "number": 3104,
     "objectID": 2619275666,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "chore(deps-dev): bump eslint-plugin-react-hooks from 4.6.2 to 5.0.0 in /website",
     "type": "pull_request",
-    "updated_at": 1732580784,
+    "updated_at": 1732701827,
     "url": "https://github.com/loculus-project/loculus/pull/3104",
     "user": "dependabot[bot]"
   },
@@ -61193,7 +61213,7 @@
   {
     "body": "\u26a0\ufe0f  Dependabot is rebasing this PR \u26a0\ufe0f\nRebasing might not happen immediately, so don't worry if this takes some time.\nNote: if you make any changes to this PR yourself, they will take precedence over the rebase.\n\nBumps @tanstack/react-query from 4.36.1 to 5.61.3.\n\nRelease notes\nSourced from @\u200btanstack/react-query's releases.\n\nv5.61.3\nVersion 5.61.3 - 11/24/24, 3:24 AM\nChanges\nFix\n\neslint-plugin: fix no-unstable-deps with ts-eslint >=8.10.0 (#8340) (bdafc84) by Lachlan Collins\n\nChore\n\ndeps: more manual package updates (#8339) (9972595) by Lachlan Collins\ndeps: update expo, next, astro, nx (#8337) (99b5354) by Lachlan Collins\ndeps: update dependency astro to v4.16.1 [security] (#8181) (bbd3821) by renovate[bot]\ndeps: update dependency next to v14.2.10 [security] (#8128) (22b89c9) by renovate[bot]\n\nTest\n\nintegrations: switch react-scripts to webpack (#8329) (b846c53) by Lachlan Collins\n\nDocs\n\nangular-query: fix angular examples (#8335) (2588a08) by Arnoud\n\nPackages\n\n@\u200btanstack/eslint-plugin-query@\u200b5.61.3\n@\u200btanstack/query-devtools@\u200b5.61.3\n@\u200btanstack/react-query@\u200b5.61.3\n@\u200btanstack/react-query-devtools@\u200b5.61.3\n@\u200btanstack/react-query-persist-client@\u200b5.61.3\n@\u200btanstack/react-query-next-experimental@\u200b5.61.3\n@\u200btanstack/svelte-query@\u200b5.61.3\n@\u200btanstack/svelte-query-devtools@\u200b5.61.3\n@\u200btanstack/svelte-query-persist-client@\u200b5.61.3\n@\u200btanstack/vue-query@\u200b5.61.3\n@\u200btanstack/angular-query-devtools-experimental@\u200b5.61.3\n@\u200btanstack/angular-query-experimental@\u200b5.61.3\n@\u200btanstack/solid-query-devtools@\u200b5.61.3\n@\u200btanstack/vue-query-devtools@\u200b5.61.3\n\nv5.61.2\nVersion 5.61.2 - 11/23/24, 10:43 PM\nChanges\nFix\n\nangular-query: subscribe to observer outside the Angular zone (#8331) (228382f) by Arnoud\neslint-plugin-query: improve external reference relevance (#8334) (80a49ff) by Eliya Cohen\n\n\n\n... (truncated)\n\n\nCommits\n\n68dee7e release: v5.61.3\n9972595 chore(deps): more manual package updates (#8339)\n8a25b4e release: v5.61.0\n3fa4b7c fix(types): make sure queryOptions are passable to UseQueryOptions (#831",
     "closed_at": null,
-    "comments": 1,
+    "comments": 4,
     "created_at": 1732563594,
     "labels": [
       "dependencies",
@@ -61208,7 +61228,7 @@
     "state": "open",
     "title": "chore(deps): bump @tanstack/react-query from 4.36.1 to 5.61.3 in /website",
     "type": "pull_request",
-    "updated_at": 1732580675,
+    "updated_at": 1732711045,
     "url": "https://github.com/loculus-project/loculus/pull/3294",
     "user": "dependabot[bot]"
   },
@@ -61319,13 +61339,13 @@
   },
   {
     "body": "Bumps keycloakify from 11.3.24 to 11.3.32.\n\nRelease notes\nSourced from keycloakify's releases.\n\nRelease v11.3.32\nFull Changelog: keycloakify/keycloakify@v11.3.31...v11.3.32\nRelease v11.3.31\nFull Changelog: keycloakify/keycloakify@v11.3.30...v11.3.31\nRelease v11.3.30\nFull Changelog: keycloakify/keycloakify@v11.3.29...v11.3.30\nRelease v11.3.29\nFull Changelog: keycloakify/keycloakify@v11.3.28...v11.3.29\nRelease v11.3.28\nFull Changelog: keycloakify/keycloakify@v11.3.27...v11.3.28\nRelease v11.3.27\nFull Changelog: keycloakify/keycloakify@v11.3.26...v11.3.27\nRelease v11.3.26\nFull Changelog: keycloakify/keycloakify@v11.3.25...v11.3.26\nRelease v11.3.25\nWhat's Changed\n\nFix #721: mismatched LoginPasskeysConditionalAuthenticate by @\u200bzvn2060 in keycloakify/keycloakify#722\ndocs: add zvn2060 as a contributor for code by @\u200ballcontributors in keycloakify/keycloakify#723\ndocs: add tripheo0412 as a contributor for doc by @\u200ballcontributors in keycloakify/keycloakify#725\n\nNew Contributors\n\n@\u200bzvn2060 made their first contribution in keycloakify/keycloakify#722\n\nFull Changelog: keycloakify/keycloakify@v11.3.24...v11.3.25\n\n\n\nCommits\n\nfd3261c Bump version\nb4b53d2 Re export wide type def of the kcContext\n0371d9e Bump version\n73031e7 Make it so it's not required to manually call the copy-keycloak-resources-to-...\nf71ab46 Bump version\n983db67 #730\nea22107 Bump version\n8e4a7fe Fix invalid dom nesting errors\n30efd8f Bump version\nf4c4e92 #726\nAdditional commits viewable in compare view\n\n\n\n\nDependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting @dependabot rebase.\n\n\nDependabot commands and options\n\nYou can trigger Dependabot actions by commenting on this PR:\n\n@dependabot rebase will rebase this PR\n@dependabot recreate will recreate this PR, overwriting any edits that have been made to it\n@dependabot merge will merge this PR after your CI passes on it\n@dependabot squash and merge will squash and merge this PR a",
-    "closed_at": null,
+    "closed_at": 1732700682,
     "comments": 0,
     "created_at": 1732629195,
     "labels": [
+      "closed",
       "dependencies",
       "javascript",
-      "open",
       "preview",
       "pull_request"
     ],
@@ -61333,17 +61353,17 @@
     "objectID": 2694764259,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "chore(deps): bump keycloakify from 11.3.24 to 11.3.32 in /keycloak/keycloakify",
     "type": "pull_request",
-    "updated_at": 1732698010,
+    "updated_at": 1732700684,
     "url": "https://github.com/loculus-project/loculus/pull/3302",
     "user": "dependabot[bot]"
   },
   {
     "body": "Bumps the npm_and_yarn group in /keycloak/keycloakify with 9 updates:\n\n\n\nPackage\nFrom\nTo\n\n\n\n\nvite\n5.2.13\n5.2.14\n\n\ncross-spawn\n7.0.3\n7.0.6\n\n\nexpress\n4.19.2\n4.21.1\n\n\nmicromatch\n4.0.7\n4.0.8\n\n\npath-to-regexp\n0.1.7\n0.1.10\n\n\nrollup\n4.18.0\n4.27.4\n\n\nsend\n0.18.0\n0.19.0\n\n\nserve-static\n1.15.0\n1.16.2\n\n\nws\n8.17.0\n8.18.0\n\n\n\nUpdates vite from 5.2.13 to 5.2.14\n\nRelease notes\nSourced from vite's releases.\n\nv5.2.14\nPlease refer to CHANGELOG.md for details.\n\n\n\nChangelog\nSourced from vite's changelog.\n\n5.2.14 (2024-09-16)\n\nfix: avoid DOM Clobbering gadget in getRelativeUrlFromDocument (#18115) (ebb94c5), closes #18115\nfix: fs raw query (#18112) (8339d74), closes #18112\n\n\n\n\nCommits\n\n673ae16 release: v5.2.14\nebb94c5 fix: avoid DOM Clobbering gadget in getRelativeUrlFromDocument (#18115)\n8339d74 fix: fs raw query (#18112)\nSee full diff in compare view\n\n\n\nUpdates cross-spawn from 7.0.3 to 7.0.6\n\nChangelog\nSourced from cross-spawn's changelog.\n\n7.0.6 (2024-11-18)\nBug Fixes\n\nupdate cross-spawn version to 7.0.5 in package-lock.json (f700743)\n\n7.0.5 (2024-11-07)\nBug Fixes\n\nfix escaping bug introduced by backtracking (640d391)\n\n7.0.4 (2024-11-07)\nBug Fixes\n\ndisable regexp backtracking (#160) (5ff3a07)\n\n\n\n\nCommits\n\n77cd97f chore(release): 7.0.6\n6717de4 chore: upgrade standard-version\nf700743 fix: update cross-spawn version to 7.0.5 in package-lock.json\n9a7e3b2 chore: fix build status badge\n0852683 chore(release): 7.0.5\n640d391 fix: fix escaping bug introduced by backtracking\nbff0c87 chore: remove codecov\na7c6abc chore: replace travis with github workflows\n9b9246e chore(release): 7.0.4\n5ff3a07 fix: disable regexp backtracking (#160)\nAdditional commits viewable in compare view\n\n\n\nUpdates express from 4.19.2 to 4.21.1\n\nRelease notes\nSourced from express's releases.\n\n4.21.1\nWhat's Changed\n\nBackport a fix for CVE-2024-47764 to the 4.x branch by @\u200bjoshbuker in expressjs/express#6029\nRelease: 4.21.1 by @\u200bUlisesGascon in expressjs/express#6031\n\nFull Changelog: expressjs/express@4.21.0...4.21.1\n4.21.0\nWh",
     "closed_at": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": 1732629264,
     "labels": [
       "dependencies",
@@ -61358,7 +61378,7 @@
     "state": "open",
     "title": "chore(deps): bump the npm_and_yarn group in /keycloak/keycloakify with 9 updates",
     "type": "pull_request",
-    "updated_at": 1732629266,
+    "updated_at": 1732701010,
     "url": "https://github.com/loculus-project/loculus/pull/3303",
     "user": "dependabot[bot]"
   },
