@@ -17342,7 +17342,7 @@
   {
     "body": "In LAPIS v0.3.7, the sub-lineage filter was generalized, making it possible to include sub-lineages of a lineage by appending the query with a *. In Loculus, we should incorporate this feature.\nSub-tasks include (probably not complete):\n\nWebsite: add UI to send corresponding queries and allow users to decide whether to include sublineages\nDeployment and config: pass the lineage tree definition file to SILO (and LAPIS?) and the backend\nBackend: If a field has the new lineage type, SILO expects that only values appear that are also present in the lineage tree definition file. The backend, therefore, should validate the lineages that the preprocessing pipeline generate.",
     "closed_at": null,
-    "comments": 10,
+    "comments": 11,
     "created_at": 1729836321,
     "labels": [
       "discussion",
@@ -17357,7 +17357,7 @@
     "state": "open",
     "title": "Lineage search field with sub-lineage queries",
     "type": "issue",
-    "updated_at": 1732617244,
+    "updated_at": 1732658362,
     "url": "https://github.com/loculus-project/loculus/issues/3074",
     "user": "chaoran-chen"
   },
