@@ -26068,7 +26068,7 @@
     "body_text": "@emmahodcroft wrote in loculus-project/loculus#2576 (comment):\nCurrently (I understand) only authors has partial-match string search. It would be great to expand this to other fields.\nOff the top of my head (but please others comment to recommend more):\n\nsubmissionID\nauthorAffiliations\nspecimenCollectorSampleId\n\n@corneliusroemer wrote in loculus-project/loculus#1742 (comment):\nSubstring search will be useful for at least the following metadata types:\n\nAuthors\nSequence/Isolate names\nGroup name\nAuthor affiliation",
     "closed_at": null,
     "closed_by": null,
-    "comments": 3,
+    "comments": 4,
     "comments_url": "https://api.github.com/repos/pathoplexus/pathoplexus/issues/79/comments",
     "created_at": "2024-09-01T15:51:32Z",
     "events_url": "https://api.github.com/repos/pathoplexus/pathoplexus/issues/79/events",
@@ -26108,7 +26108,7 @@
     "state_reason": null,
     "timeline_url": "https://api.github.com/repos/pathoplexus/pathoplexus/issues/79/timeline",
     "title": "[FEAT] Add Regex/partial-string search to more fields",
-    "updated_at": "2024-11-18T09:47:20Z",
+    "updated_at": "2024-11-28T13:52:11Z",
     "url": "https://api.github.com/repos/pathoplexus/pathoplexus/issues/79",
     "user": {
       "avatar_url": "https://avatars.githubusercontent.com/u/18666552?v=4",

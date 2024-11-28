@@ -15904,7 +15904,7 @@
   {
     "body": "Currently on Pathoplexus we default to showing an \"NCBI release date\" field. This is good because if we used the Pathoplexus release date field all sequences ingested from INSDC would have the same release date which wouldn't be useful. But it's bad because it is undefined for sequences submitted directly to pathoplexus. IMO we should create a consensus field which is the NCBI release date if set (which will generally also be the Pathoplexus release date for items submitted to INSDC after launch) and otherwise the Pathoplexus release date. I'm raising this in Loculus as the code implementation would be here.",
     "closed_at": null,
-    "comments": 22,
+    "comments": 34,
     "created_at": 1727452993,
     "labels": [
       "discussion",
@@ -15918,7 +15918,7 @@
     "state": "open",
     "title": "Add \"earliest release date\"",
     "type": "issue",
-    "updated_at": 1732795806,
+    "updated_at": 1732803016,
     "url": "https://github.com/loculus-project/loculus/issues/2894",
     "user": "theosanderson"
   },
@@ -19506,7 +19506,7 @@
   {
     "body": "As Cornelius reported here: #3295, Zodios seems to be unmaintained, and we're now behind a major version on react-query: #3294.",
     "closed_at": null,
-    "comments": 2,
+    "comments": 4,
     "created_at": 1732711005,
     "labels": [
       "issue",
@@ -19519,7 +19519,7 @@
     "state": "open",
     "title": "Replace zodios",
     "type": "issue",
-    "updated_at": 1732784320,
+    "updated_at": 1732804379,
     "url": "https://github.com/loculus-project/loculus/issues/3305",
     "user": "fhennig"
   },
@@ -27303,7 +27303,7 @@
   {
     "body": "Summary\nRecommend extensions that are useful for this monorepo, saving time for new devs who use vscode.",
     "closed_at": null,
-    "comments": 2,
+    "comments": 4,
     "created_at": 1708614511,
     "labels": [
       "draft",
@@ -27318,7 +27318,7 @@
     "state": "open",
     "title": "dev: recommend extensions that are essentially required for this monorepo",
     "type": "pull_request",
-    "updated_at": 1732701604,
+    "updated_at": 1732804396,
     "url": "https://github.com/loculus-project/loculus/pull/1080",
     "user": "corneliusroemer"
   },
@@ -60784,7 +60784,7 @@
     "state": "open",
     "title": "feat(preprocessing): parse dates into date ranges to correctly represent incomplete dates",
     "type": "pull_request",
-    "updated_at": 1732796768,
+    "updated_at": 1732806147,
     "url": "https://github.com/loculus-project/loculus/pull/3263",
     "user": "corneliusroemer"
   },
@@ -61424,6 +61424,26 @@
     "updated_at": 1732636367,
     "url": "https://github.com/loculus-project/loculus/pull/3304",
     "user": "fhennig"
+  },
+  {
+    "body": "resolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732805891,
+    "labels": [
+      "open",
+      "pull_request"
+    ],
+    "number": 3307,
+    "objectID": 2702451195,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Date-ranges-test-fixes",
+    "type": "pull_request",
+    "updated_at": 1732806702,
+    "url": "https://github.com/loculus-project/loculus/pull/3307",
+    "user": "anna-parker"
   },
   {
     "body": "",
@@ -71583,7 +71603,7 @@
   {
     "body": "@emmahodcroft wrote in loculus-project/loculus#2576 (comment):\nCurrently (I understand) only authors has partial-match string search. It would be great to expand this to other fields.\nOff the top of my head (but please others comment to recommend more):\n\nsubmissionID\nauthorAffiliations\nspecimenCollectorSampleId\n\n@corneliusroemer wrote in loculus-project/loculus#1742 (comment):\nSubstring search will be useful for at least the following metadata types:\n\nAuthors\nSequence/Isolate names\nGroup name\nAuthor affiliation",
     "closed_at": null,
-    "comments": 3,
+    "comments": 4,
     "created_at": 1725205892,
     "labels": [
       "enhancement",
@@ -71597,7 +71617,7 @@
     "state": "open",
     "title": "[FEAT] Add Regex/partial-string search to more fields",
     "type": "issue",
-    "updated_at": 1731923240,
+    "updated_at": 1732801931,
     "url": "https://github.com/pathoplexus/pathoplexus/issues/79",
     "user": "chaoran-chen"
   },
