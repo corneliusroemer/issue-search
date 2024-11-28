@@ -15904,7 +15904,7 @@
   {
     "body": "Currently on Pathoplexus we default to showing an \"NCBI release date\" field. This is good because if we used the Pathoplexus release date field all sequences ingested from INSDC would have the same release date which wouldn't be useful. But it's bad because it is undefined for sequences submitted directly to pathoplexus. IMO we should create a consensus field which is the NCBI release date if set (which will generally also be the Pathoplexus release date for items submitted to INSDC after launch) and otherwise the Pathoplexus release date. I'm raising this in Loculus as the code implementation would be here.",
     "closed_at": null,
-    "comments": 34,
+    "comments": 37,
     "created_at": 1727452993,
     "labels": [
       "discussion",
@@ -15918,7 +15918,7 @@
     "state": "open",
     "title": "Add \"earliest release date\"",
     "type": "issue",
-    "updated_at": 1732803016,
+    "updated_at": 1732810914,
     "url": "https://github.com/loculus-project/loculus/issues/2894",
     "user": "theosanderson"
   },
@@ -19410,7 +19410,7 @@
     "state": "open",
     "title": "Implement date search that works intuitively with new date range fields",
     "type": "issue",
-    "updated_at": 1732696388,
+    "updated_at": 1732816316,
     "url": "https://github.com/loculus-project/loculus/issues/3285",
     "user": "corneliusroemer"
   },
@@ -71603,7 +71603,7 @@
   {
     "body": "@emmahodcroft wrote in loculus-project/loculus#2576 (comment):\nCurrently (I understand) only authors has partial-match string search. It would be great to expand this to other fields.\nOff the top of my head (but please others comment to recommend more):\n\nsubmissionID\nauthorAffiliations\nspecimenCollectorSampleId\n\n@corneliusroemer wrote in loculus-project/loculus#1742 (comment):\nSubstring search will be useful for at least the following metadata types:\n\nAuthors\nSequence/Isolate names\nGroup name\nAuthor affiliation",
     "closed_at": null,
-    "comments": 4,
+    "comments": 6,
     "created_at": 1725205892,
     "labels": [
       "enhancement",
@@ -71617,7 +71617,7 @@
     "state": "open",
     "title": "[FEAT] Add Regex/partial-string search to more fields",
     "type": "issue",
-    "updated_at": 1732801931,
+    "updated_at": 1732810869,
     "url": "https://github.com/pathoplexus/pathoplexus/issues/79",
     "user": "chaoran-chen"
   },
@@ -75592,6 +75592,27 @@
     "type": "pull_request",
     "updated_at": 1732114596,
     "url": "https://github.com/pathoplexus/pathoplexus/pull/304",
+    "user": "emmahodcroft"
+  },
+  {
+    "body": "This PR does two small things as result of the recent GA meeting on 25 November:\n\nAdds the minutes of that meeting\nUpdates the statutes on the website to reflect changes made in that meeting\n\nPlease check:\n\nThat the minutes show up in the menu & the link works\nThat the changes to Statute are correct (can compare against the archived tracked-changes Gdoc in the drive (only accessible to members))\n\nPreview: https://preview-new-stats-mins.pathoplexus.org/",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732811267,
+    "labels": [
+      "open",
+      "preview",
+      "pull_request"
+    ],
+    "number": 306,
+    "objectID": 2702672038,
+    "reactions": 0,
+    "repo": "pathoplexus",
+    "state": "open",
+    "title": "Update Statutes & Add new Minutes",
+    "type": "pull_request",
+    "updated_at": 1732813444,
+    "url": "https://github.com/pathoplexus/pathoplexus/pull/306",
     "user": "emmahodcroft"
   },
   {
