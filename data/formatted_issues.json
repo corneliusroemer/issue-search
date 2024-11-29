@@ -19546,6 +19546,26 @@
     "user": "chaoran-chen"
   },
   {
+    "body": "Maybe react-tooltip can be dropped?",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732902768,
+    "labels": [
+      "issue",
+      "open"
+    ],
+    "number": 3311,
+    "objectID": 2705809371,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "We use react-tooltip but DaisyUI already has a Tooltip as well",
+    "type": "issue",
+    "updated_at": 1732902768,
+    "url": "https://github.com/loculus-project/loculus/issues/3311",
+    "user": "fhennig"
+  },
+  {
     "body": "Currently, the backend contains the config.json: https://github.com/pathoplexus/pathoplexus/blob/4e961317d684f0046e236728da6e59fb275e8cd5/backend/src/main/resources/config.json\nThe compiled code (especially the Docker image) should not contain the config, it should rather be passed by the maintainer.",
     "closed_at": 1696921631,
     "comments": 0,
@@ -60785,7 +60805,7 @@
     "state": "open",
     "title": "feat(preprocessing): parse dates into date ranges to correctly represent incomplete dates",
     "type": "pull_request",
-    "updated_at": 1732883252,
+    "updated_at": 1732899282,
     "url": "https://github.com/loculus-project/loculus/pull/3263",
     "user": "corneliusroemer"
   },
@@ -61447,9 +61467,9 @@
     "user": "anna-parker"
   },
   {
-    "body": "https://date-ranges-ui.loculus.org\nNew UI for the date ranges -- WIP\nThis is the first time we don't have a 1:1 mapping of search fields and API parameters anymore, so some bits in the code are a bit ... complicated maybe? But so far this way of doing it still seems fine. A \"proper\" solution would (IMO) involve decoupling the metadata field definition and the search field definitions, but seems kind of heavy handed at the moment.\nCo-authored-by: Felix Hennig fhennig@users.noreply.github.com\nresolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nA WIP component is there now!\n\nI'm planning on making it look nicer with daisyUI components, not sure if checkbox or toggle.\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "body": "resolves #3285\n\npreview URL: https://date-ranges-ui.loculus.org\nSummary\n\nAdd config bit to allow configuring the rangeOverlapSearch on a property (or rather two properties belonging together). Add a new DateRangeField search field type for these kinds of date ranges.\nThis is the first time we don't have a 1:1 mapping of search fields and API parameters anymore, so some bits in the code are a bit ... complicated maybe? But so far this way of doing it still seems fine. A \"proper\" solution would (IMO) involve decoupling the metadata field definition and the search field definitions, but seems kind of heavy handed at the moment.\nScreenshot\nI wanted to maybe use a toggle, but ran into this UI bug (clash with tailwind forms).\n\nwith tooltip\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
-    "comments": 0,
+    "comments": 4,
     "created_at": 1732870759,
     "labels": [
       "draft",
@@ -61464,17 +61484,17 @@
     "state": "open",
     "title": "feat: New date range UI",
     "type": "pull_request",
-    "updated_at": 1732893274,
+    "updated_at": 1732904304,
     "url": "https://github.com/loculus-project/loculus/pull/3308",
     "user": "fhennig"
   },
   {
     "body": "preview URL: https://docs-tutorial-k3d-nginx.loculus.org/for-administrators/setup-with-k3d-and-nginx/\nSummary\nThis adds a tutorial about how to deploy Loculus to a server with a domain. It's based on the GenSpectrum deployment by @fengelniederhammer.",
-    "closed_at": null,
+    "closed_at": 1732895589,
     "comments": 0,
     "created_at": 1732886783,
     "labels": [
-      "open",
+      "closed",
       "preview",
       "pull_request"
     ],
@@ -61482,10 +61502,10 @@
     "objectID": 2705137695,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "docs: add tutorial for setup with k3d and nginx",
     "type": "pull_request",
-    "updated_at": 1732888641,
+    "updated_at": 1732895590,
     "url": "https://github.com/loculus-project/loculus/pull/3309",
     "user": "chaoran-chen"
   },
@@ -61512,21 +61532,21 @@
   },
   {
     "body": "",
-    "closed_at": null,
+    "closed_at": 1732894260,
     "comments": 0,
     "created_at": 1732892153,
     "labels": [
-      "open",
+      "closed",
       "pull_request"
     ],
     "number": 3310,
     "objectID": 2705369618,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "docs: add link to GenSpectrum's Loculus instance",
     "type": "pull_request",
-    "updated_at": 1732892868,
+    "updated_at": 1732894261,
     "url": "https://github.com/loculus-project/loculus/pull/3310",
     "user": "chaoran-chen"
   },
