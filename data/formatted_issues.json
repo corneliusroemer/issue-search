@@ -61446,6 +61446,27 @@
     "user": "anna-parker"
   },
   {
+    "body": "New UI for the date ranges -- WIP\nThis is the first time we don't have a 1:1 mapping of search fields and API parameters anymore, so some bits in the code are a bit ... complicated maybe? But so far this way of doing it still seems fine. A \"proper\" solution would (IMO) involve decoupling the metadata field definition and the search field definitions, but seems kind of heavy handed at the moment.\nCo-authored-by: Felix Hennig fhennig@users.noreply.github.com\nresolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732870759,
+    "labels": [
+      "draft",
+      "open",
+      "pull_request"
+    ],
+    "number": 3308,
+    "objectID": 2704430266,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "feat: New date range UI",
+    "type": "pull_request",
+    "updated_at": 1732870868,
+    "url": "https://github.com/loculus-project/loculus/pull/3308",
+    "user": "fhennig"
+  },
+  {
     "body": "",
     "closed_at": 1726677738,
     "comments": 2,
