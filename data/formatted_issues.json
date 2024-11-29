@@ -49467,12 +49467,13 @@
     "user": "theosanderson"
   },
   {
-    "body": "resolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "body": "resolves #\n\npreview URL: https://groupfieldsinselecto.loculus.org\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
     "comments": 3,
     "created_at": 1724366636,
     "labels": [
       "open",
+      "preview",
       "pull_request"
     ],
     "number": 2513,
@@ -49482,7 +49483,7 @@
     "state": "open",
     "title": "wip: group fields in selector",
     "type": "pull_request",
-    "updated_at": 1730210705,
+    "updated_at": 1732893236,
     "url": "https://github.com/loculus-project/loculus/pull/2513",
     "user": "theosanderson"
   },
@@ -61446,7 +61447,7 @@
     "user": "anna-parker"
   },
   {
-    "body": "New UI for the date ranges -- WIP\nThis is the first time we don't have a 1:1 mapping of search fields and API parameters anymore, so some bits in the code are a bit ... complicated maybe? But so far this way of doing it still seems fine. A \"proper\" solution would (IMO) involve decoupling the metadata field definition and the search field definitions, but seems kind of heavy handed at the moment.\nCo-authored-by: Felix Hennig fhennig@users.noreply.github.com\nresolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "body": "https://date-ranges-ui.loculus.org\nNew UI for the date ranges -- WIP\nThis is the first time we don't have a 1:1 mapping of search fields and API parameters anymore, so some bits in the code are a bit ... complicated maybe? But so far this way of doing it still seems fine. A \"proper\" solution would (IMO) involve decoupling the metadata field definition and the search field definitions, but seems kind of heavy handed at the moment.\nCo-authored-by: Felix Hennig fhennig@users.noreply.github.com\nresolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nA WIP component is there now!\n\nI'm planning on making it look nicer with daisyUI components, not sure if checkbox or toggle.\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
     "comments": 0,
     "created_at": 1732870759,
@@ -61463,9 +61464,30 @@
     "state": "open",
     "title": "feat: New date range UI",
     "type": "pull_request",
-    "updated_at": 1732881085,
+    "updated_at": 1732893274,
     "url": "https://github.com/loculus-project/loculus/pull/3308",
     "user": "fhennig"
+  },
+  {
+    "body": "preview URL: https://docs-tutorial-k3d-nginx.loculus.org/for-administrators/setup-with-k3d-and-nginx/\nSummary\nThis adds a tutorial about how to deploy Loculus to a server with a domain. It's based on the GenSpectrum deployment by @fengelniederhammer.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732886783,
+    "labels": [
+      "open",
+      "preview",
+      "pull_request"
+    ],
+    "number": 3309,
+    "objectID": 2705137695,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "docs: add tutorial for setup with k3d and nginx",
+    "type": "pull_request",
+    "updated_at": 1732888641,
+    "url": "https://github.com/loculus-project/loculus/pull/3309",
+    "user": "chaoran-chen"
   },
   {
     "body": "",
@@ -61487,6 +61509,26 @@
     "updated_at": 1726677738,
     "url": "https://github.com/loculus-project/loculus/pull/331",
     "user": "corneliusroemer"
+  },
+  {
+    "body": "",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732892153,
+    "labels": [
+      "open",
+      "pull_request"
+    ],
+    "number": 3310,
+    "objectID": 2705369618,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "docs: add link to GenSpectrum's Loculus instance",
+    "type": "pull_request",
+    "updated_at": 1732892868,
+    "url": "https://github.com/loculus-project/loculus/pull/3310",
+    "user": "chaoran-chen"
   },
   {
     "body": "use client:only, otherwise everything breaks. No idea why\n\nWhen using map in react each element should have a unique key. Otherwise react will render everything (in that map) new when a single entry changed. Not fine, but works.\nHypothesis:\nBut when astro needs to hydrate this components, it cannot associate the correct props and the whole thing goes down.",
@@ -69898,7 +69940,7 @@
   {
     "body": "See discussion here: https://loculus.slack.com/archives/C05G172HL6L/p1707326370868269?thread_ts=1707323971.457599&cid=C05G172HL6L",
     "closed_at": null,
-    "comments": 3,
+    "comments": 4,
     "created_at": 1707330741,
     "labels": [
       "discussion",
@@ -69912,7 +69954,7 @@
     "state": "open",
     "title": "preprocessing(specification): Update error schema",
     "type": "pull_request",
-    "updated_at": 1732883057,
+    "updated_at": 1732889936,
     "url": "https://github.com/loculus-project/loculus/pull/932",
     "user": "theosanderson"
   },
@@ -75636,6 +75678,26 @@
     "updated_at": 1732813444,
     "url": "https://github.com/pathoplexus/pathoplexus/pull/306",
     "user": "emmahodcroft"
+  },
+  {
+    "body": "",
+    "closed_at": 1732892422,
+    "comments": 0,
+    "created_at": 1732891060,
+    "labels": [
+      "closed",
+      "pull_request"
+    ],
+    "number": 307,
+    "objectID": 2705285985,
+    "reactions": 0,
+    "repo": "pathoplexus",
+    "state": "closed",
+    "title": "Update metadataformat.mdx",
+    "type": "pull_request",
+    "updated_at": 1732892424,
+    "url": "https://github.com/pathoplexus/pathoplexus/pull/307",
+    "user": "corneliusroemer"
   },
   {
     "body": "",
