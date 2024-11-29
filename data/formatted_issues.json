@@ -12798,7 +12798,7 @@
   {
     "body": "For the Current Ebola Zaire sample data, I get a double error: geoLocCountry and sampleCollectionDate are required.\n\nHowever, when I go to edit the record, none of the fields are called like this - they are all renamed for the GUI:\n\n\nIn this case it's not too hard to figure out the fields it means, but this is not great practice, and in some cases it could be much harder (esp if number of required fields is higher and involves multiple dates or locations).\nI'd suggest the original error use whatever the GUI will show later.\nAnother improvement would be to highlight in red or similar any/all fields that are required and currently empty.",
     "closed_at": null,
-    "comments": 2,
+    "comments": 4,
     "created_at": 1724616171,
     "labels": [
       "issue",
@@ -12811,7 +12811,7 @@
     "state": "open",
     "title": "Submission Errors Give fields not GUI Names",
     "type": "issue",
-    "updated_at": 1726490214,
+    "updated_at": 1732882878,
     "url": "https://github.com/loculus-project/loculus/issues/2558",
     "user": "emmahodcroft"
   },
@@ -18781,7 +18781,7 @@
     ],
     "number": 3225,
     "objectID": 2668910062,
-    "reactions": 0,
+    "reactions": 1,
     "repo": "loculus",
     "state": "open",
     "title": "Dropdown menus on edit page",
@@ -19439,7 +19439,7 @@
   {
     "body": "Currently between when data is uploaded and when it is released, there is an opportunity for it to be edited (particularly to remove warnings/errors). This is most likely done by the submitter, but could be done by someone else, in at least two use cases:\n\n(most common) INSDC pipeline is the 'submitter' but the data has some kind of fixable error (bad date format, mistyped country), thus it gets stuck in 'The Pile' (in review but cannot be released). A curator comes along and fixes the bug allowing it to be released.\nA submitting user has issues with submission and a curator or another member of their Group helps them to fix errors before releasing the sequences.\n\nCurrently the original uploader (who is the 'submitter') would remain the submitter and there would be no record of who made the change. This is particularly of interest in the INSDC case as there would be no indication that the Pathoplexus data does not match the INSDC data anymore, but it probably won't.\nThis is unlikely if a curation happens after release, when the submitter changes to whoever did the curation and thus gives a 'record of touching'.\nWe should consider how we'd like to handle this, if we'd like to record these 'midsubmission edits', and if so, how we might like to do this.",
     "closed_at": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": 1732627844,
     "labels": [
       "discussion",
@@ -19453,7 +19453,7 @@
     "state": "open",
     "title": "Consider recording 'mid-submission' edits that are not done by the submitter",
     "type": "issue",
-    "updated_at": 1732628515,
+    "updated_at": 1732880080,
     "url": "https://github.com/loculus-project/loculus/issues/3298",
     "user": "emmahodcroft"
   },
@@ -19484,7 +19484,7 @@
   {
     "body": "From feedback from Aine, she would like more info on the preprocessing of sequences.\nFor example, how the alignment constructed, what's reference used, whether masked, etc.\nIf we are tracking the version of Nextclade and the version of Nextclade dataset that's being used in the metadata (or the equivalent generic terms for any other tool in the preprocessing pipeline), this would be an easy thing to surface on the sequence detail page and in the metadata download file.\nWe may need to discuss exactly what we'd like to store and surface. If these could be (optionally) links, it could save effort in trying to explain by linking directly to the tool where users can figure this out for themselves/use that tool's docs (in our case that would be Nextclade for Pathoplexus but could of course be any tool that someone may want to link to).",
     "closed_at": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": 1732628830,
     "labels": [
       "discussion",
@@ -19499,7 +19499,7 @@
     "state": "open",
     "title": "Surface more info on preprocessing tools",
     "type": "issue",
-    "updated_at": 1732628830,
+    "updated_at": 1732879278,
     "url": "https://github.com/loculus-project/loculus/issues/3301",
     "user": "emmahodcroft"
   },
@@ -60784,7 +60784,7 @@
     "state": "open",
     "title": "feat(preprocessing): parse dates into date ranges to correctly represent incomplete dates",
     "type": "pull_request",
-    "updated_at": 1732806147,
+    "updated_at": 1732883252,
     "url": "https://github.com/loculus-project/loculus/pull/3263",
     "user": "corneliusroemer"
   },
@@ -61384,23 +61384,23 @@
   },
   {
     "body": "Bumps the npm_and_yarn group in /keycloak/keycloakify with 9 updates:\n\n\n\nPackage\nFrom\nTo\n\n\n\n\nvite\n5.2.13\n5.2.14\n\n\ncross-spawn\n7.0.3\n7.0.6\n\n\nexpress\n4.19.2\n4.21.1\n\n\nmicromatch\n4.0.7\n4.0.8\n\n\npath-to-regexp\n0.1.7\n0.1.10\n\n\nrollup\n4.18.0\n4.27.4\n\n\nsend\n0.18.0\n0.19.0\n\n\nserve-static\n1.15.0\n1.16.2\n\n\nws\n8.17.0\n8.18.0\n\n\n\nUpdates vite from 5.2.13 to 5.2.14\n\nRelease notes\nSourced from vite's releases.\n\nv5.2.14\nPlease refer to CHANGELOG.md for details.\n\n\n\nChangelog\nSourced from vite's changelog.\n\n5.2.14 (2024-09-16)\n\nfix: avoid DOM Clobbering gadget in getRelativeUrlFromDocument (#18115) (ebb94c5), closes #18115\nfix: fs raw query (#18112) (8339d74), closes #18112\n\n\n\n\nCommits\n\n673ae16 release: v5.2.14\nebb94c5 fix: avoid DOM Clobbering gadget in getRelativeUrlFromDocument (#18115)\n8339d74 fix: fs raw query (#18112)\nSee full diff in compare view\n\n\n\nUpdates cross-spawn from 7.0.3 to 7.0.6\n\nChangelog\nSourced from cross-spawn's changelog.\n\n7.0.6 (2024-11-18)\nBug Fixes\n\nupdate cross-spawn version to 7.0.5 in package-lock.json (f700743)\n\n7.0.5 (2024-11-07)\nBug Fixes\n\nfix escaping bug introduced by backtracking (640d391)\n\n7.0.4 (2024-11-07)\nBug Fixes\n\ndisable regexp backtracking (#160) (5ff3a07)\n\n\n\n\nCommits\n\n77cd97f chore(release): 7.0.6\n6717de4 chore: upgrade standard-version\nf700743 fix: update cross-spawn version to 7.0.5 in package-lock.json\n9a7e3b2 chore: fix build status badge\n0852683 chore(release): 7.0.5\n640d391 fix: fix escaping bug introduced by backtracking\nbff0c87 chore: remove codecov\na7c6abc chore: replace travis with github workflows\n9b9246e chore(release): 7.0.4\n5ff3a07 fix: disable regexp backtracking (#160)\nAdditional commits viewable in compare view\n\n\n\nUpdates express from 4.19.2 to 4.21.1\n\nRelease notes\nSourced from express's releases.\n\n4.21.1\nWhat's Changed\n\nBackport a fix for CVE-2024-47764 to the 4.x branch by @\u200bjoshbuker in expressjs/express#6029\nRelease: 4.21.1 by @\u200bUlisesGascon in expressjs/express#6031\n\nFull Changelog: expressjs/express@4.21.0...4.21.1\n4.21.0\nWh",
-    "closed_at": null,
-    "comments": 1,
+    "closed_at": 1732878950,
+    "comments": 4,
     "created_at": 1732629264,
     "labels": [
+      "closed",
       "dependencies",
       "javascript",
-      "open",
       "pull_request"
     ],
     "number": 3303,
     "objectID": 2694767344,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "chore(deps): bump the npm_and_yarn group in /keycloak/keycloakify with 9 updates",
     "type": "pull_request",
-    "updated_at": 1732701010,
+    "updated_at": 1732878952,
     "url": "https://github.com/loculus-project/loculus/pull/3303",
     "user": "dependabot[bot]"
   },
@@ -61427,21 +61427,21 @@
   },
   {
     "body": "resolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
-    "closed_at": null,
+    "closed_at": 1732883250,
     "comments": 0,
     "created_at": 1732805891,
     "labels": [
-      "open",
+      "closed",
       "pull_request"
     ],
     "number": 3307,
     "objectID": 2702451195,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "Date-ranges-test-fixes",
     "type": "pull_request",
-    "updated_at": 1732806702,
+    "updated_at": 1732883252,
     "url": "https://github.com/loculus-project/loculus/pull/3307",
     "user": "anna-parker"
   },
@@ -61453,6 +61453,7 @@
     "labels": [
       "draft",
       "open",
+      "preview",
       "pull_request"
     ],
     "number": 3308,
@@ -61462,7 +61463,7 @@
     "state": "open",
     "title": "feat: New date range UI",
     "type": "pull_request",
-    "updated_at": 1732870868,
+    "updated_at": 1732881085,
     "url": "https://github.com/loculus-project/loculus/pull/3308",
     "user": "fhennig"
   },
@@ -69911,7 +69912,7 @@
     "state": "open",
     "title": "preprocessing(specification): Update error schema",
     "type": "pull_request",
-    "updated_at": 1724942933,
+    "updated_at": 1732883057,
     "url": "https://github.com/loculus-project/loculus/pull/932",
     "user": "theosanderson"
   },
@@ -71624,7 +71625,7 @@
   {
     "body": "@emmahodcroft wrote in loculus-project/loculus#2576 (comment):\nCurrently (I understand) only authors has partial-match string search. It would be great to expand this to other fields.\nOff the top of my head (but please others comment to recommend more):\n\nsubmissionID\nauthorAffiliations\nspecimenCollectorSampleId\n\n@corneliusroemer wrote in loculus-project/loculus#1742 (comment):\nSubstring search will be useful for at least the following metadata types:\n\nAuthors\nSequence/Isolate names\nGroup name\nAuthor affiliation",
     "closed_at": null,
-    "comments": 6,
+    "comments": 8,
     "created_at": 1725205892,
     "labels": [
       "enhancement",
@@ -71638,7 +71639,7 @@
     "state": "open",
     "title": "[FEAT] Add Regex/partial-string search to more fields",
     "type": "issue",
-    "updated_at": 1732810869,
+    "updated_at": 1732880955,
     "url": "https://github.com/pathoplexus/pathoplexus/issues/79",
     "user": "chaoran-chen"
   },
