@@ -19439,7 +19439,7 @@
   {
     "body": "Currently between when data is uploaded and when it is released, there is an opportunity for it to be edited (particularly to remove warnings/errors). This is most likely done by the submitter, but could be done by someone else, in at least two use cases:\n\n(most common) INSDC pipeline is the 'submitter' but the data has some kind of fixable error (bad date format, mistyped country), thus it gets stuck in 'The Pile' (in review but cannot be released). A curator comes along and fixes the bug allowing it to be released.\nA submitting user has issues with submission and a curator or another member of their Group helps them to fix errors before releasing the sequences.\n\nCurrently the original uploader (who is the 'submitter') would remain the submitter and there would be no record of who made the change. This is particularly of interest in the INSDC case as there would be no indication that the Pathoplexus data does not match the INSDC data anymore, but it probably won't.\nThis is unlikely if a curation happens after release, when the submitter changes to whoever did the curation and thus gives a 'record of touching'.\nWe should consider how we'd like to handle this, if we'd like to record these 'midsubmission edits', and if so, how we might like to do this.",
     "closed_at": null,
-    "comments": 1,
+    "comments": 3,
     "created_at": 1732627844,
     "labels": [
       "discussion",
@@ -19453,7 +19453,7 @@
     "state": "open",
     "title": "Consider recording 'mid-submission' edits that are not done by the submitter",
     "type": "issue",
-    "updated_at": 1732880080,
+    "updated_at": 1732912005,
     "url": "https://github.com/loculus-project/loculus/issues/3298",
     "user": "emmahodcroft"
   },
@@ -61484,7 +61484,7 @@
     "state": "open",
     "title": "feat: New date range UI",
     "type": "pull_request",
-    "updated_at": 1732904304,
+    "updated_at": 1732913880,
     "url": "https://github.com/loculus-project/loculus/pull/3308",
     "user": "fhennig"
   },
