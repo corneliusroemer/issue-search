@@ -58557,12 +58557,12 @@
   },
   {
     "body": "This is to test sharing mutation proportion data derived from wastewater sequences from Switzerland.\nhttps://wise.loculus.org",
-    "closed_at": null,
+    "closed_at": 1732974808,
     "comments": 0,
     "created_at": 1730210470,
     "labels": [
+      "closed",
       "draft",
-      "open",
       "preview",
       "pull_request"
     ],
@@ -58570,10 +58570,10 @@
     "objectID": 2621362715,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "[DO NOT MERGE] Add WISE RSV test instance",
     "type": "pull_request",
-    "updated_at": 1731587844,
+    "updated_at": 1732974808,
     "url": "https://github.com/loculus-project/loculus/pull/3113",
     "user": "chaoran-chen"
   },
@@ -61548,6 +61548,26 @@
     "type": "pull_request",
     "updated_at": 1732894261,
     "url": "https://github.com/loculus-project/loculus/pull/3310",
+    "user": "chaoran-chen"
+  },
+  {
+    "body": "",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1732978298,
+    "labels": [
+      "open",
+      "pull_request"
+    ],
+    "number": 3312,
+    "objectID": 2707474436,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "docs: remove old, leftover code example snippet",
+    "type": "pull_request",
+    "updated_at": 1732978303,
+    "url": "https://github.com/loculus-project/loculus/pull/3312",
     "user": "chaoran-chen"
   },
   {
@@ -75680,11 +75700,11 @@
   },
   {
     "body": "This PR does two small things as result of the recent GA meeting on 25 November:\n\nAdds the minutes of that meeting\nUpdates the statutes on the website to reflect changes made in that meeting\n\nPlease check:\n\nThat the minutes show up in the menu & the link works\nThat the changes to Statute are correct (can compare against the archived tracked-changes Gdoc in the drive (only accessible to members))\n\nPreview: https://preview-new-stats-mins.pathoplexus.org/",
-    "closed_at": null,
-    "comments": 0,
+    "closed_at": 1732977948,
+    "comments": 1,
     "created_at": 1732811267,
     "labels": [
-      "open",
+      "closed",
       "preview",
       "pull_request"
     ],
@@ -75692,10 +75712,10 @@
     "objectID": 2702672038,
     "reactions": 0,
     "repo": "pathoplexus",
-    "state": "open",
+    "state": "closed",
     "title": "Update Statutes & Add new Minutes",
     "type": "pull_request",
-    "updated_at": 1732813444,
+    "updated_at": 1732977949,
     "url": "https://github.com/pathoplexus/pathoplexus/pull/306",
     "user": "emmahodcroft"
   },
