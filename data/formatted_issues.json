@@ -61469,7 +61469,7 @@
   {
     "body": "resolves #3285\n\npreview URL: https://date-ranges-ui.loculus.org\nSummary\n\nAdd config bit to allow configuring the rangeOverlapSearch on a property (or rather two properties belonging together). Add a new DateRangeField search field type for these kinds of date ranges.\nThis is the first time we don't have a 1:1 mapping of search fields and API parameters anymore, so some bits in the code are a bit ... complicated maybe? But so far this way of doing it still seems fine. A \"proper\" solution would (IMO) involve decoupling the metadata field definition and the search field definitions, but seems kind of heavy handed at the moment.\nScreenshot\nI wanted to maybe use a toggle, but ran into this UI bug (clash with tailwind forms).\n\nwith tooltip\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
-    "comments": 4,
+    "comments": 5,
     "created_at": 1732870759,
     "labels": [
       "draft",
@@ -61484,7 +61484,7 @@
     "state": "open",
     "title": "feat: New date range UI",
     "type": "pull_request",
-    "updated_at": 1732913880,
+    "updated_at": 1732922307,
     "url": "https://github.com/loculus-project/loculus/pull/3308",
     "user": "fhennig"
   },
