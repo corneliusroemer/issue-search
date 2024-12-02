@@ -17344,7 +17344,7 @@
   {
     "body": "In LAPIS v0.3.7, the sub-lineage filter was generalized, making it possible to include sub-lineages of a lineage by appending the query with a *. In Loculus, we should incorporate this feature.\nSub-tasks include (probably not complete):\n\nWebsite: add UI to send corresponding queries and allow users to decide whether to include sublineages\nDeployment and config: pass the lineage tree definition file to SILO (and LAPIS?) and the backend\nBackend: If a field has the new lineage type, SILO expects that only values appear that are also present in the lineage tree definition file. The backend, therefore, should validate the lineages that the preprocessing pipeline generate.",
     "closed_at": null,
-    "comments": 18,
+    "comments": 20,
     "created_at": 1729836321,
     "labels": [
       "discussion",
@@ -17359,7 +17359,7 @@
     "state": "open",
     "title": "Lineage search field with sub-lineage queries",
     "type": "issue",
-    "updated_at": 1733146469,
+    "updated_at": 1733157713,
     "url": "https://github.com/loculus-project/loculus/issues/3074",
     "user": "chaoran-chen"
   },
@@ -18664,7 +18664,7 @@
   {
     "body": "@fengelniederhammer raised a good point that we don't currently emit the pipeline version used to process sequences at all. This isn't great, the only way to work around this right now is to query the db.\nWe should somehow include the pipeline version in the response of get-released-sequences.\nAs it's NDJSON we can't put it in an info top-level-key unfortunately.\nSo we have options to:\n\ninclude in HTTP header\nemit as metadata field\n\nWe should probably just put it as a metadata field, that would also allow us in the future to use different pipeline versions for different organisms, something we've wanted to enable in the future to not have to reprocess everything if a single organism's Nextclade dataset is updated.\nSome background discussion: https://loculus.slack.com/archives/C05G172HL6L/p1731500439841509",
     "closed_at": null,
-    "comments": 0,
+    "comments": 3,
     "created_at": 1731502909,
     "labels": [
       "backend",
@@ -18679,7 +18679,7 @@
     "state": "open",
     "title": "Include pipeline version in 'get-released-sequences' response somehow (header or as metadata value)",
     "type": "issue",
-    "updated_at": 1731502921,
+    "updated_at": 1733161761,
     "url": "https://github.com/loculus-project/loculus/issues/3209",
     "user": "corneliusroemer"
   },
@@ -19652,7 +19652,7 @@
     "user": "fhennig"
   },
   {
-    "body": "We have a test for the notSearchable parameter: \n  \n    \n      loculus/website/src/components/SearchPage/SearchFullUI.spec.tsx\n    \n    \n         Line 170\n      in\n      0fdac51\n    \n  \n  \n    \n\n        \n          \n           it('should not render the form with fields with flag notSearchable', async () => { \n        \n    \n  \n\n\nbut @fhennig found in https://github.com/loculus-project/loculus/pull/3308/files that it doesn't work (and indeed it's not wired up to anything, though Felix has done work to do so now).\nWhen we have time we should remove or fix the broken test.",
+    "body": "We have a test for the notSearchable parameter: \n  \n    \n      loculus/website/src/components/SearchPage/SearchFullUI.spec.tsx\n    \n    \n         Line 170\n      in\n      0fdac51\n    \n  \n  \n    \n\n        \n          \n           it('should not render the form with fields with flag notSearchable', async () => { \n        \n    \n  \n\n\nbut @fhennig found in https://github.com/loculus-project/loculus/pull/3308/files that the notSearchable feature didn't work (and indeed it's not wired up to anything, though Felix has done work to do so now).\nWhen we have time we should remove or fix the broken test.",
     "closed_at": null,
     "comments": 0,
     "created_at": 1733149638,
@@ -19667,7 +19667,7 @@
     "state": "open",
     "title": "false positive test on `notSearchable`",
     "type": "issue",
-    "updated_at": 1733149638,
+    "updated_at": 1733153199,
     "url": "https://github.com/loculus-project/loculus/issues/3326",
     "user": "theosanderson"
   },
@@ -19690,6 +19690,91 @@
     "updated_at": 1733150242,
     "url": "https://github.com/loculus-project/loculus/issues/3328",
     "user": "anna-parker"
+  },
+  {
+    "body": "We have an overwhelming number of fields. We should make the default template only have a subset of fields, and in a specific order that is useful. People can always add more fields based on the docs.",
+    "closed_at": null,
+    "comments": 1,
+    "created_at": 1733156122,
+    "labels": [
+      "issue",
+      "open"
+    ],
+    "number": 3331,
+    "objectID": 2712490860,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Submission template: have a subset of fields in template",
+    "type": "issue",
+    "updated_at": 1733156320,
+    "url": "https://github.com/loculus-project/loculus/issues/3331",
+    "user": "theosanderson"
+  },
+  {
+    "body": "We should allow discarding sequence entries which haven't yet been processed. Both individually, and as part of the bulk discard action. Currently these are scoped out.\nSearch keywords: submission, processing, mid-submission cancelling, mid-processing cancelling. Eddy.",
+    "closed_at": null,
+    "comments": 4,
+    "created_at": 1733160573,
+    "labels": [
+      "issue",
+      "open"
+    ],
+    "number": 3332,
+    "objectID": 2712748170,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Yet-to-be-processed entries should still be discardable",
+    "type": "issue",
+    "updated_at": 1733160850,
+    "url": "https://github.com/loculus-project/loculus/issues/3332",
+    "user": "theosanderson"
+  },
+  {
+    "body": "We currently only accept TSV files. Expanding this to CSV would help people not have to change their files, and also should be fairly straightforward since the schema is well-defined and not so different from TSV.\nHow common is that CSV uses ; to separate? If that's a thing, we should support that.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733162014,
+    "labels": [
+      "issue",
+      "open",
+      "preprocessing",
+      "website"
+    ],
+    "number": 3333,
+    "objectID": 2712851548,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Accept CSV files for metadata",
+    "type": "issue",
+    "updated_at": 1733162047,
+    "url": "https://github.com/loculus-project/loculus/issues/3333",
+    "user": "emmahodcroft"
+  },
+  {
+    "body": "A lot of people use Excel to handle and store metadata. Whether rightly or wrongly, it is what it is. We will lower the bar for upload significantly if we can support Excel metadata uploads.\nWe would probably need to force people to set the dates into ISO still, unless Excel encodes whether dates are US format or not (which it well might) to avoid confusion of whether 04/07/2022 is 7 of April or 4 of July.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733162183,
+    "labels": [
+      "discussion",
+      "issue",
+      "open",
+      "preprocessing",
+      "website"
+    ],
+    "number": 3334,
+    "objectID": 2712858385,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Accept Excel files for metadata",
+    "type": "issue",
+    "updated_at": 1733162184,
+    "url": "https://github.com/loculus-project/loculus/issues/3334",
+    "user": "emmahodcroft"
   },
   {
     "body": "Currently, the backend contains the config.json: https://github.com/pathoplexus/pathoplexus/blob/4e961317d684f0046e236728da6e59fb275e8cd5/backend/src/main/resources/config.json\nThe compiled code (especially the Docker image) should not contain the config, it should rather be passed by the maintainer.",
@@ -61597,7 +61682,7 @@
   {
     "body": "resolves #3285\n\npreview URL: https://date-ranges-ui.loculus.org\nSummary\n\nAdd config bit to allow configuring the rangeOverlapSearch on a property (or rather two properties belonging together). Add a new DateRangeField search field type for these kinds of date ranges.\nThis is the first time we don't have a 1:1 mapping of search fields and API parameters anymore, so some bits in the code are a bit ... complicated maybe? But so far this way of doing it still seems fine. A \"proper\" solution would (IMO) involve decoupling the metadata field definition and the search field definitions, but seems kind of heavy handed at the moment.\nScreenshot\nI wanted to maybe use a toggle, but ran into this UI bug (clash with tailwind forms).\n\nwith tooltip\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
-    "comments": 10,
+    "comments": 14,
     "created_at": 1732870759,
     "labels": [
       "open",
@@ -61611,7 +61696,7 @@
     "state": "open",
     "title": "feat(website): Adapt collectionDate search to work with date ranges",
     "type": "pull_request",
-    "updated_at": 1733150845,
+    "updated_at": 1733160919,
     "url": "https://github.com/loculus-project/loculus/pull/3308",
     "user": "fhennig"
   },
@@ -61885,7 +61970,7 @@
     "state": "open",
     "title": "feat: Change data use terms in bulk",
     "type": "pull_request",
-    "updated_at": 1733144401,
+    "updated_at": 1733160559,
     "url": "https://github.com/loculus-project/loculus/pull/3322",
     "user": "fhennig"
   },
@@ -61931,12 +62016,12 @@
     "user": "anna-parker"
   },
   {
-    "body": "resolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
-    "closed_at": null,
+    "body": "Small tweak to line up organism cards with other text on the index page\n\nhttps://test-tweak-to-organism-ca.loculus.org/",
+    "closed_at": 1733154613,
     "comments": 0,
     "created_at": 1733151740,
     "labels": [
-      "open",
+      "closed",
       "preview",
       "pull_request"
     ],
@@ -61944,10 +62029,10 @@
     "objectID": 2712256880,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
-    "title": "Test tweak to organism card alignment",
+    "state": "closed",
+    "title": "fix(website): line up organism cards with other UI elements",
     "type": "pull_request",
-    "updated_at": 1733151747,
+    "updated_at": 1733154615,
     "url": "https://github.com/loculus-project/loculus/pull/3329",
     "user": "theosanderson"
   },
@@ -61970,6 +62055,28 @@
     "updated_at": 1696920761,
     "url": "https://github.com/loculus-project/loculus/pull/333",
     "user": "fengelniederhammer"
+  },
+  {
+    "body": "cc @gordonkoehn",
+    "closed_at": null,
+    "comments": 1,
+    "created_at": 1733153385,
+    "labels": [
+      "draft",
+      "open",
+      "preview",
+      "pull_request"
+    ],
+    "number": 3330,
+    "objectID": 2712328790,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "[DO NOT MERGE] WISE Sequences instance test",
+    "type": "pull_request",
+    "updated_at": 1733154941,
+    "url": "https://github.com/loculus-project/loculus/pull/3330",
+    "user": "chaoran-chen"
   },
   {
     "body": "resolves #334",
@@ -70355,7 +70462,7 @@
     "state": "open",
     "title": "preprocessing(specification): Update error schema",
     "type": "pull_request",
-    "updated_at": 1733139885,
+    "updated_at": 1733159232,
     "url": "https://github.com/loculus-project/loculus/pull/932",
     "user": "theosanderson"
   },
@@ -72068,7 +72175,7 @@
   {
     "body": "@emmahodcroft wrote in loculus-project/loculus#2576 (comment):\nCurrently (I understand) only authors has partial-match string search. It would be great to expand this to other fields.\nOff the top of my head (but please others comment to recommend more):\n\nsubmissionID\nauthorAffiliations\nspecimenCollectorSampleId\n\n@corneliusroemer wrote in loculus-project/loculus#1742 (comment):\nSubstring search will be useful for at least the following metadata types:\n\nAuthors\nSequence/Isolate names\nGroup name\nAuthor affiliation",
     "closed_at": null,
-    "comments": 8,
+    "comments": 9,
     "created_at": 1725205892,
     "labels": [
       "enhancement",
@@ -72082,7 +72189,7 @@
     "state": "open",
     "title": "[FEAT] Add Regex/partial-string search to more fields",
     "type": "issue",
-    "updated_at": 1732880955,
+    "updated_at": 1733161492,
     "url": "https://github.com/pathoplexus/pathoplexus/issues/79",
     "user": "chaoran-chen"
   },
