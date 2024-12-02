@@ -17342,7 +17342,7 @@
   {
     "body": "In LAPIS v0.3.7, the sub-lineage filter was generalized, making it possible to include sub-lineages of a lineage by appending the query with a *. In Loculus, we should incorporate this feature.\nSub-tasks include (probably not complete):\n\nWebsite: add UI to send corresponding queries and allow users to decide whether to include sublineages\nDeployment and config: pass the lineage tree definition file to SILO (and LAPIS?) and the backend\nBackend: If a field has the new lineage type, SILO expects that only values appear that are also present in the lineage tree definition file. The backend, therefore, should validate the lineages that the preprocessing pipeline generate.",
     "closed_at": null,
-    "comments": 11,
+    "comments": 12,
     "created_at": 1729836321,
     "labels": [
       "discussion",
@@ -17357,7 +17357,7 @@
     "state": "open",
     "title": "Lineage search field with sub-lineage queries",
     "type": "issue",
-    "updated_at": 1732658362,
+    "updated_at": 1733094508,
     "url": "https://github.com/loculus-project/loculus/issues/3074",
     "user": "chaoran-chen"
   },
@@ -61469,7 +61469,7 @@
   {
     "body": "resolves #3285\n\npreview URL: https://date-ranges-ui.loculus.org\nSummary\n\nAdd config bit to allow configuring the rangeOverlapSearch on a property (or rather two properties belonging together). Add a new DateRangeField search field type for these kinds of date ranges.\nThis is the first time we don't have a 1:1 mapping of search fields and API parameters anymore, so some bits in the code are a bit ... complicated maybe? But so far this way of doing it still seems fine. A \"proper\" solution would (IMO) involve decoupling the metadata field definition and the search field definitions, but seems kind of heavy handed at the moment.\nScreenshot\nI wanted to maybe use a toggle, but ran into this UI bug (clash with tailwind forms).\n\nwith tooltip\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
-    "comments": 5,
+    "comments": 6,
     "created_at": 1732870759,
     "labels": [
       "draft",
@@ -61479,12 +61479,12 @@
     ],
     "number": 3308,
     "objectID": 2704430266,
-    "reactions": 0,
+    "reactions": 1,
     "repo": "loculus",
     "state": "open",
     "title": "feat: New date range UI",
     "type": "pull_request",
-    "updated_at": 1732922307,
+    "updated_at": 1733089876,
     "url": "https://github.com/loculus-project/loculus/pull/3308",
     "user": "fhennig"
   },
