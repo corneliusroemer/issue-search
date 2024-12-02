@@ -17344,7 +17344,7 @@
   {
     "body": "In LAPIS v0.3.7, the sub-lineage filter was generalized, making it possible to include sub-lineages of a lineage by appending the query with a *. In Loculus, we should incorporate this feature.\nSub-tasks include (probably not complete):\n\nWebsite: add UI to send corresponding queries and allow users to decide whether to include sublineages\nDeployment and config: pass the lineage tree definition file to SILO (and LAPIS?) and the backend\nBackend: If a field has the new lineage type, SILO expects that only values appear that are also present in the lineage tree definition file. The backend, therefore, should validate the lineages that the preprocessing pipeline generate.",
     "closed_at": null,
-    "comments": 13,
+    "comments": 18,
     "created_at": 1729836321,
     "labels": [
       "discussion",
@@ -17359,7 +17359,7 @@
     "state": "open",
     "title": "Lineage search field with sub-lineage queries",
     "type": "issue",
-    "updated_at": 1733141379,
+    "updated_at": 1733146469,
     "url": "https://github.com/loculus-project/loculus/issues/3074",
     "user": "chaoran-chen"
   },
@@ -17949,7 +17949,7 @@
   {
     "body": "It should be possible to disable data use terms entirely.\nAcceptance criteria\n\nThere is a config setting to disable data use terms\nif data use terms are disabled:\n\nThe selection from the submit page is removed\nThe Pathoplexus-specific acknowledgment section on the submit page is removed\nThe search field and table column from the browse page is removed\nThe section from the sequence details page is removed\nThe fields from LAPIS / SILO is removed\n\"By using our API you agree to our Data Use Terms .\" from the API documentation page is removed",
     "closed_at": null,
-    "comments": 7,
+    "comments": 8,
     "created_at": 1730324261,
     "labels": [
       "backend",
@@ -17968,7 +17968,7 @@
     "state": "open",
     "title": "Disable data use terms",
     "type": "issue",
-    "updated_at": 1733142737,
+    "updated_at": 1733147947,
     "url": "https://github.com/loculus-project/loculus/issues/3127",
     "user": "chaoran-chen"
   },
@@ -19399,7 +19399,7 @@
   {
     "body": "We will soon no longer have a single date field: there will be two dates for each sample instead: lower range and upper range of what the date string we got means. For complete dates, the 2 are the same. But for incomplete they aren't.\nThis makes search non-intuitive to users. Most users will initially not care about the concept of date ranges, they just want something that works for filtering dates somehow.\nWhat we get instead after #3263 is two dates to filter by, and this causes cognitive strain (even to me having thought about this feature for weeks).\n\nThere's a simple way of having intuitive search: show just one date search bar with two modes (selectable through radio button):\n\nstrict (sample date range must be entirely contained inside the query range)\nlax (sample date range must at least overlap the query range)\n\nPeople probably want strict to be the default, but we can change this once we know what's more intuitive. The idea to have strict and lax search is something that I haven't seen much on other websites so even this way will take some getting used to (the good thing is that people won't need to know about strict vs lax, it'll just intuitively work ok).\nImplementation:\n\nCreate a new custom search field type date_range (exact names tbd, just for scoping I choose some)\nIt takes as config two config values: date_lower and upper, to refer to the metadata fields that should be used\nIt displays a normal date search but with added radio buttons for \"strict\" and \"lax\" modes, defaults to strict. For what follows I call the fields range_min and range_max\nThe LAPIS query is constructed based on mode as follows in pseudocde\n\nif strict:\n    filter((date_lower >= range_min) and (date_upper <= range_max))\nif lax:\n    filter((date_lower <= range_min) and (date_upper >= range_max))\n\nThat's it, I hope that's clear and should be doable. Let me know if you have questions.",
     "closed_at": null,
-    "comments": 14,
+    "comments": 15,
     "created_at": 1732549602,
     "labels": [
       "feature",
@@ -19414,7 +19414,7 @@
     "state": "open",
     "title": "Implement date search that works intuitively with new date range fields",
     "type": "issue",
-    "updated_at": 1733140253,
+    "updated_at": 1733145121,
     "url": "https://github.com/loculus-project/loculus/issues/3285",
     "user": "corneliusroemer"
   },
@@ -19610,6 +19610,86 @@
     "updated_at": 1733137766,
     "url": "https://github.com/loculus-project/loculus/issues/3321",
     "user": "corneliusroemer"
+  },
+  {
+    "body": "https://ena-docs.readthedocs.io/en/latest/submit/annotation/clearinghouse_for_ENA_users.html\nhttps://ena-docs.readthedocs.io/en/latest/submit/annotation/clearinghouse_submission_template.html\nExample on ENA: https://www.ebi.ac.uk/ena/browser/view/OV824563.1?show=curations",
+    "closed_at": null,
+    "comments": 1,
+    "created_at": 1733147806,
+    "labels": [
+      "issue",
+      "open"
+    ],
+    "number": 3324,
+    "objectID": 2712032646,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Consider ways of submitting curations to ENA Clearing House",
+    "type": "issue",
+    "updated_at": 1733148179,
+    "url": "https://github.com/loculus-project/loculus/issues/3324",
+    "user": "theosanderson"
+  },
+  {
+    "body": "#3308 (comment)",
+    "closed_at": null,
+    "comments": 1,
+    "created_at": 1733148768,
+    "labels": [
+      "issue",
+      "open"
+    ],
+    "number": 3325,
+    "objectID": 2712072661,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "feat: Support making a field hidden from the column selection",
+    "type": "issue",
+    "updated_at": 1733148938,
+    "url": "https://github.com/loculus-project/loculus/issues/3325",
+    "user": "fhennig"
+  },
+  {
+    "body": "We have a test for the notSearchable parameter: \n  \n    \n      loculus/website/src/components/SearchPage/SearchFullUI.spec.tsx\n    \n    \n         Line 170\n      in\n      0fdac51\n    \n  \n  \n    \n\n        \n          \n           it('should not render the form with fields with flag notSearchable', async () => { \n        \n    \n  \n\n\nbut @fhennig found in https://github.com/loculus-project/loculus/pull/3308/files that it doesn't work (and indeed it's not wired up to anything, though Felix has done work to do so now).\nWhen we have time we should remove or fix the broken test.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733149638,
+    "labels": [
+      "issue",
+      "open"
+    ],
+    "number": 3326,
+    "objectID": 2712110413,
+    "reactions": 1,
+    "repo": "loculus",
+    "state": "open",
+    "title": "false positive test on `notSearchable`",
+    "type": "issue",
+    "updated_at": 1733149638,
+    "url": "https://github.com/loculus-project/loculus/issues/3326",
+    "user": "theosanderson"
+  },
+  {
+    "body": "I added a check when searching for sequences to submit which warns us if a sequence has ena specific metadata fields and was not submitted to ENA by pathoplexus and was not uploaded by the insdc_ingset_user however there appears to have been an issue with sending my error message:\n00:00:24     INFO (get_ena_submission_list.py: 114) - Getting released sequences for organism: ebola-sudan\n--- Logging error ---\nTraceback (most recent call last):\n  File \"/opt/conda/lib/python3.12/logging/__init__.py\", line 1160, in emit\n    msg = self.format(record)\n          ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/conda/lib/python3.12/logging/__init__.py\", line 999, in format\n    return fmt.format(record)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/opt/conda/lib/python3.12/logging/__init__.py\", line 703, in format\n    record.message = record.getMessage()\n                     ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/conda/lib/python3.12/logging/__init__.py\", line 392, in getMessage\n    msg = msg % self.args\n          ~~~~^~~~~~~~~~~\nTypeError: not all arguments converted during string formatting\nCall stack:\n  File \"/package/scripts/get_ena_submission_list.py\", line 129, in <module>\n    get_ena_submission_list()\n  File \"/opt/conda/lib/python3.12/site-packages/click/core.py\", line 1157, in __call__\n    return self.main(*args, **kwargs)\n  File \"/opt/conda/lib/python3.12/site-packages/click/core.py\", line 1078, in main\n    rv = self.invoke(ctx)\n  File \"/opt/conda/lib/python3.12/site-packages/click/core.py\", line 1434, in invoke\n    return ctx.invoke(self.callback, **ctx.params)\n  File \"/opt/conda/lib/python3.12/site-packages/click/core.py\", line 783, in invoke\n    return __callback(*args, **kwargs)\n  File \"/package/scripts/get_ena_submission_list.py\", line 117, in get_ena_submission_list\n    submittable_entries = filter_for_submission(config, db_config, released_entries, organism)\n  File \"/package/scripts/get_ena_submission_list.py\", line 45, in filter_for_submission\n    logging.warning(\nMessage: 'Found sequenc",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733150211,
+    "labels": [
+      "issue",
+      "open"
+    ],
+    "number": 3328,
+    "objectID": 2712136403,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "get-ena-submission-list cronjob failing due to curated sequences",
+    "type": "issue",
+    "updated_at": 1733150242,
+    "url": "https://github.com/loculus-project/loculus/issues/3328",
+    "user": "anna-parker"
   },
   {
     "body": "Currently, the backend contains the config.json: https://github.com/pathoplexus/pathoplexus/blob/4e961317d684f0046e236728da6e59fb275e8cd5/backend/src/main/resources/config.json\nThe compiled code (especially the Docker image) should not contain the config, it should rather be passed by the maintainer.",
@@ -61517,7 +61597,7 @@
   {
     "body": "resolves #3285\n\npreview URL: https://date-ranges-ui.loculus.org\nSummary\n\nAdd config bit to allow configuring the rangeOverlapSearch on a property (or rather two properties belonging together). Add a new DateRangeField search field type for these kinds of date ranges.\nThis is the first time we don't have a 1:1 mapping of search fields and API parameters anymore, so some bits in the code are a bit ... complicated maybe? But so far this way of doing it still seems fine. A \"proper\" solution would (IMO) involve decoupling the metadata field definition and the search field definitions, but seems kind of heavy handed at the moment.\nScreenshot\nI wanted to maybe use a toggle, but ran into this UI bug (clash with tailwind forms).\n\nwith tooltip\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
-    "comments": 9,
+    "comments": 10,
     "created_at": 1732870759,
     "labels": [
       "open",
@@ -61531,7 +61611,7 @@
     "state": "open",
     "title": "feat(website): Adapt collectionDate search to work with date ranges",
     "type": "pull_request",
-    "updated_at": 1733141309,
+    "updated_at": 1733150845,
     "url": "https://github.com/loculus-project/loculus/pull/3308",
     "user": "fhennig"
   },
@@ -61805,9 +61885,71 @@
     "state": "open",
     "title": "feat: Change data use terms in bulk",
     "type": "pull_request",
-    "updated_at": 1733141328,
+    "updated_at": 1733144401,
     "url": "https://github.com/loculus-project/loculus/pull/3322",
     "user": "fhennig"
+  },
+  {
+    "body": "Using the vitest.config.ts route means we notice more quickly (through ts errors) if something in the interface changes.\n\nresolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733147458,
+    "labels": [
+      "open",
+      "pull_request"
+    ],
+    "number": 3323,
+    "objectID": 2712016633,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(keycloakify): slight refactor of version targeting",
+    "type": "pull_request",
+    "updated_at": 1733147458,
+    "url": "https://github.com/loculus-project/loculus/pull/3323",
+    "user": "corneliusroemer"
+  },
+  {
+    "body": "resolves #3268, #3328\n\npreview URL: http://ena-polling-fixes.loculus.org/\nSummary\n\n\nUse github pages to reduce polling of github (we were being rate limited)\nFix logger.warning syntax (error due to comma splitting strings) and use logging instance logger instead of logging base class (make ruff happy).\nCheck if sequences with ena specific metadata fields were submitted by us or the insdc_submission_group (previously used submitter name insdc_ingest_user but this then warns us if a sequence has been curated).\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "closed_at": null,
+    "comments": 1,
+    "created_at": 1733150031,
+    "labels": [
+      "open",
+      "preview",
+      "pull_request"
+    ],
+    "number": 3327,
+    "objectID": 2712128235,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "feat(deposition): Use github pages to not get rate limited, assert sequences with ena specific fields were submitted by us or the insdc_submission_group",
+    "type": "pull_request",
+    "updated_at": 1733152333,
+    "url": "https://github.com/loculus-project/loculus/pull/3327",
+    "user": "anna-parker"
+  },
+  {
+    "body": "resolves #\n\npreview URL:\nSummary\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733151740,
+    "labels": [
+      "open",
+      "preview",
+      "pull_request"
+    ],
+    "number": 3329,
+    "objectID": 2712256880,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Test tweak to organism card alignment",
+    "type": "pull_request",
+    "updated_at": 1733151747,
+    "url": "https://github.com/loculus-project/loculus/pull/3329",
+    "user": "theosanderson"
   },
   {
     "body": "resolves #306\n\nimplement proper error handling. Distinguish between technical errors that rollback the transaction and validation errors that should be shown to the submitter to review.\nImprove the descriptions and types in Swagger UI\nextract a separate test",
@@ -75960,11 +76102,11 @@
   },
   {
     "body": "@corneliusroemer wants to update the Loculus version from loculus-project/loculus@437d484 to loculus-project/loculus@0fdac51.\nNotable changes (selection)\n\nloculus-project/loculus#3263\nloculus-project/loculus#3279\nloculus-project/loculus#3272\nloculus-project/loculus#3259\nloculus-project/loculus#3232\nloculus-project/loculus#3246\nloculus-project/loculus#3223\n\nChangelog (full)\n\nloculus-project/loculus#3263\nloculus-project/loculus#3279\nloculus-project/loculus#3319\nloculus-project/loculus#3318\nloculus-project/loculus#3312\nloculus-project/loculus#3313\nloculus-project/loculus#3309\nloculus-project/loculus#3310\nloculus-project/loculus#3303\nloculus-project/loculus#3104\nloculus-project/loculus#3302\nloculus-project/loculus#3272\nloculus-project/loculus#3297\nloculus-project/loculus#3289\nloculus-project/loculus#3286\nloculus-project/loculus#3291\nloculus-project/loculus#3292\nloculus-project/loculus#3290\nloculus-project/loculus#3287\nloculus-project/loculus#3277\nloculus-project/loculus#3259\nloculus-project/loculus#3276\nloculus-project/loculus#3232\nloculus-project/loculus#3246\nloculus-project/loculus#3247\nloculus-project/loculus#3257\nloculus-project/loculus#3255\nloculus-project/loculus#3223\nloculus-project/loculus#3234\nloculus-project/loculus#3236\nloculus-project/loculus#3196\nloculus-project/loculus#3230\nloculus-project/loculus#3231\n\nComparison\nloculus-project/loculus@437d484...0fdac51\nPreview\nhttps://preview-update-loculus-0fdac5.pathoplexus.org",
-    "closed_at": null,
-    "comments": 5,
+    "closed_at": 1733147093,
+    "comments": 7,
     "created_at": 1733141198,
     "labels": [
-      "open",
+      "closed",
       "preview",
       "pull_request"
     ],
@@ -75972,10 +76114,10 @@
     "objectID": 2711712409,
     "reactions": 0,
     "repo": "pathoplexus",
-    "state": "open",
+    "state": "closed",
     "title": "Breaking: Update Loculus version to 0fdac5",
     "type": "pull_request",
-    "updated_at": 1733142043,
+    "updated_at": 1733147095,
     "url": "https://github.com/pathoplexus/pathoplexus/pull/308",
     "user": "corneliusroemer"
   },
