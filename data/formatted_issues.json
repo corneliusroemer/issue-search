@@ -18664,7 +18664,7 @@
   {
     "body": "@fengelniederhammer raised a good point that we don't currently emit the pipeline version used to process sequences at all. This isn't great, the only way to work around this right now is to query the db.\nWe should somehow include the pipeline version in the response of get-released-sequences.\nAs it's NDJSON we can't put it in an info top-level-key unfortunately.\nSo we have options to:\n\ninclude in HTTP header\nemit as metadata field\n\nWe should probably just put it as a metadata field, that would also allow us in the future to use different pipeline versions for different organisms, something we've wanted to enable in the future to not have to reprocess everything if a single organism's Nextclade dataset is updated.\nSome background discussion: https://loculus.slack.com/archives/C05G172HL6L/p1731500439841509",
     "closed_at": null,
-    "comments": 3,
+    "comments": 4,
     "created_at": 1731502909,
     "labels": [
       "backend",
@@ -18679,7 +18679,7 @@
     "state": "open",
     "title": "Include pipeline version in 'get-released-sequences' response somehow (header or as metadata value)",
     "type": "issue",
-    "updated_at": 1733161761,
+    "updated_at": 1733165130,
     "url": "https://github.com/loculus-project/loculus/issues/3209",
     "user": "corneliusroemer"
   },
@@ -61467,24 +61467,24 @@
     "user": "dependabot[bot]"
   },
   {
-    "body": "\u26a0\ufe0f  Dependabot is rebasing this PR \u26a0\ufe0f\nRebasing might not happen immediately, so don't worry if this takes some time.\nNote: if you make any changes to this PR yourself, they will take precedence over the rebase.\n\nBumps @tanstack/react-query from 4.36.1 to 5.61.3.\n\nRelease notes\nSourced from @\u200btanstack/react-query's releases.\n\nv5.61.3\nVersion 5.61.3 - 11/24/24, 3:24 AM\nChanges\nFix\n\neslint-plugin: fix no-unstable-deps with ts-eslint >=8.10.0 (#8340) (bdafc84) by Lachlan Collins\n\nChore\n\ndeps: more manual package updates (#8339) (9972595) by Lachlan Collins\ndeps: update expo, next, astro, nx (#8337) (99b5354) by Lachlan Collins\ndeps: update dependency astro to v4.16.1 [security] (#8181) (bbd3821) by renovate[bot]\ndeps: update dependency next to v14.2.10 [security] (#8128) (22b89c9) by renovate[bot]\n\nTest\n\nintegrations: switch react-scripts to webpack (#8329) (b846c53) by Lachlan Collins\n\nDocs\n\nangular-query: fix angular examples (#8335) (2588a08) by Arnoud\n\nPackages\n\n@\u200btanstack/eslint-plugin-query@\u200b5.61.3\n@\u200btanstack/query-devtools@\u200b5.61.3\n@\u200btanstack/react-query@\u200b5.61.3\n@\u200btanstack/react-query-devtools@\u200b5.61.3\n@\u200btanstack/react-query-persist-client@\u200b5.61.3\n@\u200btanstack/react-query-next-experimental@\u200b5.61.3\n@\u200btanstack/svelte-query@\u200b5.61.3\n@\u200btanstack/svelte-query-devtools@\u200b5.61.3\n@\u200btanstack/svelte-query-persist-client@\u200b5.61.3\n@\u200btanstack/vue-query@\u200b5.61.3\n@\u200btanstack/angular-query-devtools-experimental@\u200b5.61.3\n@\u200btanstack/angular-query-experimental@\u200b5.61.3\n@\u200btanstack/solid-query-devtools@\u200b5.61.3\n@\u200btanstack/vue-query-devtools@\u200b5.61.3\n\nv5.61.2\nVersion 5.61.2 - 11/23/24, 10:43 PM\nChanges\nFix\n\nangular-query: subscribe to observer outside the Angular zone (#8331) (228382f) by Arnoud\neslint-plugin-query: improve external reference relevance (#8334) (80a49ff) by Eliya Cohen\n\n\n\n... (truncated)\n\n\nCommits\n\n68dee7e release: v5.61.3\n9972595 chore(deps): more manual package updates (#8339)\n8a25b4e release: v5.61.0\n3fa4b7c fix(types): make sure queryOptions are passable to UseQueryOptions (#831",
-    "closed_at": null,
-    "comments": 4,
+    "body": "Bumps @tanstack/react-query from 4.36.1 to 5.61.3.\n\nRelease notes\nSourced from @\u200btanstack/react-query's releases.\n\nv5.61.3\nVersion 5.61.3 - 11/24/24, 3:24 AM\nChanges\nFix\n\neslint-plugin: fix no-unstable-deps with ts-eslint >=8.10.0 (#8340) (bdafc84) by Lachlan Collins\n\nChore\n\ndeps: more manual package updates (#8339) (9972595) by Lachlan Collins\ndeps: update expo, next, astro, nx (#8337) (99b5354) by Lachlan Collins\ndeps: update dependency astro to v4.16.1 [security] (#8181) (bbd3821) by renovate[bot]\ndeps: update dependency next to v14.2.10 [security] (#8128) (22b89c9) by renovate[bot]\n\nTest\n\nintegrations: switch react-scripts to webpack (#8329) (b846c53) by Lachlan Collins\n\nDocs\n\nangular-query: fix angular examples (#8335) (2588a08) by Arnoud\n\nPackages\n\n@\u200btanstack/eslint-plugin-query@\u200b5.61.3\n@\u200btanstack/query-devtools@\u200b5.61.3\n@\u200btanstack/react-query@\u200b5.61.3\n@\u200btanstack/react-query-devtools@\u200b5.61.3\n@\u200btanstack/react-query-persist-client@\u200b5.61.3\n@\u200btanstack/react-query-next-experimental@\u200b5.61.3\n@\u200btanstack/svelte-query@\u200b5.61.3\n@\u200btanstack/svelte-query-devtools@\u200b5.61.3\n@\u200btanstack/svelte-query-persist-client@\u200b5.61.3\n@\u200btanstack/vue-query@\u200b5.61.3\n@\u200btanstack/angular-query-devtools-experimental@\u200b5.61.3\n@\u200btanstack/angular-query-experimental@\u200b5.61.3\n@\u200btanstack/solid-query-devtools@\u200b5.61.3\n@\u200btanstack/vue-query-devtools@\u200b5.61.3\n\nv5.61.2\nVersion 5.61.2 - 11/23/24, 10:43 PM\nChanges\nFix\n\nangular-query: subscribe to observer outside the Angular zone (#8331) (228382f) by Arnoud\neslint-plugin-query: improve external reference relevance (#8334) (80a49ff) by Eliya Cohen\n\n\n\n... (truncated)\n\n\nCommits\n\n68dee7e release: v5.61.3\n9972595 chore(deps): more manual package updates (#8339)\n8a25b4e release: v5.61.0\n3fa4b7c fix(types): make sure queryOptions are passable to UseQueryOptions (#8317)\nfa77f32 release: v5.60.6\n3fc2fce release: v5.60.5\n4a2e838 fix(useQueries): make sure we don't lose property tracking (#8295)\n8786495 release: v5.60.4\n6c2a055 refactor(*): unify & use noop (#8294)\n7615661 relea",
+    "closed_at": 1733165455,
+    "comments": 5,
     "created_at": 1732563594,
     "labels": [
+      "closed",
       "dependencies",
       "javascript",
-      "open",
       "pull_request"
     ],
     "number": 3294,
     "objectID": 2692016106,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "chore(deps): bump @tanstack/react-query from 4.36.1 to 5.61.3 in /website",
     "type": "pull_request",
-    "updated_at": 1732711045,
+    "updated_at": 1733165456,
     "url": "https://github.com/loculus-project/loculus/pull/3294",
     "user": "dependabot[bot]"
   },
@@ -61696,7 +61696,7 @@
     "state": "open",
     "title": "feat(website): Adapt collectionDate search to work with date ranges",
     "type": "pull_request",
-    "updated_at": 1733160919,
+    "updated_at": 1733167335,
     "url": "https://github.com/loculus-project/loculus/pull/3308",
     "user": "fhennig"
   },
@@ -62077,6 +62077,138 @@
     "updated_at": 1733154941,
     "url": "https://github.com/loculus-project/loculus/pull/3330",
     "user": "chaoran-chen"
+  },
+  {
+    "body": "Bumps the minorandpatch group in /docs with 2 updates: astro and prettier.\nUpdates astro from 4.16.14 to 4.16.16\n\nRelease notes\nSourced from astro's releases.\n\nastro@4.16.16\nPatch Changes\n\n\n#12542 65e50eb Thanks @\u200bkadykov! - Fix JPEG image size determination\n\n\n#12525 cf0d8b0 Thanks @\u200bematipico! - Fixes an issue where with i18n enabled, Astro couldn't render the 404.astro component for non-existent routes.\n\n\nastro@4.16.15\nPatch Changes\n\n#12498 b140a3f Thanks @\u200bematipico! - Fixes a regression where Astro was trying to access Request.headers\n\n\n\n\nChangelog\nSourced from astro's changelog.\n\n4.16.16\nPatch Changes\n\n\n#12542 65e50eb Thanks @\u200bkadykov! - Fix JPEG image size determination\n\n\n#12525 cf0d8b0 Thanks @\u200bematipico! - Fixes an issue where with i18n enabled, Astro couldn't render the 404.astro component for non-existent routes.\n\n\n4.16.15\nPatch Changes\n\n#12498 b140a3f Thanks @\u200bematipico! - Fixes a regression where Astro was trying to access Request.headers\n\n\n\n\nCommits\n\n6eac6ba [ci] release (#12536)\n65e50eb Fix JPEG image size determination (#12542)\n6fc29e3 fix(deps): update all non-major dependencies (#12410)\ncf0d8b0 fix(i18n): render 404.astro when i18n is enabled (#12525)\n36d8d92 [ci] release (#12501)\nb140a3f fix(routing): don't access Request headers (#12498)\nSee full diff in compare view\n\n\n\nUpdates prettier from 3.3.3 to 3.4.1\n\nRelease notes\nSourced from prettier's releases.\n\n3.4.1\n\ud83d\udd17 Changelog\n3.4.0\ndiff\n\ud83d\udd17 Release note\n\n\n\nChangelog\nSourced from prettier's changelog.\n\n3.4.1\ndiff\nRemove unnecessary parentheses around assignment in v-on (#16887 by @\u200bfisker)\n\n<!-- Input -->\n\\<template>\n  <button @click=\"foo += 2\">Click</button>\n</template>\n<!-- Prettier 3.4.0 -->\n&lt;template>\n<button @\u200bclick=\"(foo += 2)\">Click</button>\n</template>\n<!-- Prettier 3.4.1 -->\n&lt;template>\n<button @\u200bclick=\"foo += 2\">Click</button>\n</template>\n3.4.0\ndiff\n\ud83d\udd17 Release Notes\n\n\n\nCommits\n\n37fd177 Release 3.4.1\n1fb6297 Update ts-api-utils to v1.4.2 (#16888)\nf6fccad Remove unnecessary parentheses aroun",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733165252,
+    "labels": [
+      "dependencies",
+      "javascript",
+      "open",
+      "pull_request"
+    ],
+    "number": 3335,
+    "objectID": 2712967397,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump the minorandpatch group in /docs with 2 updates",
+    "type": "pull_request",
+    "updated_at": 1733169519,
+    "url": "https://github.com/loculus-project/loculus/pull/3335",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps the minor group in /website with 5 updates:\n\n\n\nPackage\nFrom\nTo\n\n\n\n\n@tanstack/eslint-plugin-query\n5.61.3\n5.62.1\n\n\n@types/node\n22.9.4\n22.10.1\n\n\n@typescript-eslint/eslint-plugin\n8.16.0\n8.17.0\n\n\n@typescript-eslint/parser\n8.16.0\n8.17.0\n\n\nprettier\n3.3.3\n3.4.1\n\n\n\nUpdates @tanstack/eslint-plugin-query from 5.61.3 to 5.62.1\n\nRelease notes\nSourced from @\u200btanstack/eslint-plugin-query's releases.\n\nv5.62.1\nVersion 5.62.1 - 12/2/24, 6:40 PM\nChanges\nFix\n\neslint-plugin-query: handle non-null at then end of var  in exhaustive-deps (#8385) (d9d2728) by Parbez\n\nChore\n\nangular-query: update examples to typescript 5.7 (#8374) (b7bad3d) by Arnoud\n\nTest\n\nquery-core: add type check tests for queryObserver (#8304) (12b6782) by Sol Lee\n\nPackages\n\n@\u200btanstack/eslint-plugin-query@\u200b5.62.1\n@\u200btanstack/query-core@\u200b5.62.1\n@\u200btanstack/angular-query-devtools-experimental@\u200b5.62.1\n@\u200btanstack/angular-query-experimental@\u200b5.62.1\n@\u200btanstack/query-broadcast-client-experimental@\u200b5.62.1\n@\u200btanstack/query-persist-client-core@\u200b5.62.1\n@\u200btanstack/query-sync-storage-persister@\u200b5.62.1\n@\u200btanstack/react-query@\u200b5.62.1\n@\u200btanstack/react-query-devtools@\u200b5.62.1\n@\u200btanstack/react-query-persist-client@\u200b5.62.1\n@\u200btanstack/react-query-next-experimental@\u200b5.62.1\n@\u200btanstack/solid-query@\u200b5.62.1\n@\u200btanstack/solid-query-devtools@\u200b5.62.1\n@\u200btanstack/solid-query-persist-client@\u200b5.62.1\n@\u200btanstack/svelte-query@\u200b5.62.1\n@\u200btanstack/svelte-query-devtools@\u200b5.62.1\n@\u200btanstack/svelte-query-persist-client@\u200b5.62.1\n@\u200btanstack/vue-query@\u200b5.62.1\n@\u200btanstack/vue-query-devtools@\u200b5.62.1\n@\u200btanstack/query-async-storage-persister@\u200b5.62.1\n\nv5.62.0\nVersion 5.62.0 - 11/29/24, 1:03 PM\nChanges\nFeat\n\ntypes: Include optional TError on DataTag (#8361) (0fa1f01) by Nick Lucas\n\nChore\n\n\n... (truncated)\n\n\nCommits\n\nceb4094 release: v5.62.1\nd9d2728 fix(eslint-plugin-query): handle non-null at then end of var  in exhaustive-d...\nc361be4 release: v5.61.6\nc402a2b fix(eslint-plugin-query): handle optional and non-null chaining in exhaustive...\nefdd204 release: v5.61.4\nef0b7",
+    "closed_at": 1733169322,
+    "comments": 1,
+    "created_at": 1733165309,
+    "labels": [
+      "closed",
+      "dependencies",
+      "javascript",
+      "pull_request"
+    ],
+    "number": 3336,
+    "objectID": 2712978812,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "closed",
+    "title": "chore(deps-dev): bump the minor group in /website with 5 updates",
+    "type": "pull_request",
+    "updated_at": 1733169324,
+    "url": "https://github.com/loculus-project/loculus/pull/3336",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps the patch group in /website with 7 updates:\n\n\n\nPackage\nFrom\nTo\n\n\n\n\nastro\n4.16.13\n4.16.16\n\n\nchart.js\n4.4.6\n4.4.7\n\n\nunplugin-icons\n0.20.1\n0.20.2\n\n\n@iconify/json\n2.2.276\n2.2.278\n\n\n@vitejs/plugin-react\n4.3.3\n4.3.4\n\n\nhappy-dom\n15.11.6\n15.11.7\n\n\nvitest\n2.1.5\n2.1.8\n\n\n\nUpdates astro from 4.16.13 to 4.16.16\n\nRelease notes\nSourced from astro's releases.\n\nastro@4.16.16\nPatch Changes\n\n\n#12542 65e50eb Thanks @\u200bkadykov! - Fix JPEG image size determination\n\n\n#12525 cf0d8b0 Thanks @\u200bematipico! - Fixes an issue where with i18n enabled, Astro couldn't render the 404.astro component for non-existent routes.\n\n\nastro@4.16.15\nPatch Changes\n\n#12498 b140a3f Thanks @\u200bematipico! - Fixes a regression where Astro was trying to access Request.headers\n\nastro@4.16.14\nPatch Changes\n\n\n#12480 c3b7e7c Thanks @\u200bmatthewp! - Removes the default throw behavior in astro:env\n\n\n#12444 28dd3ce Thanks @\u200bematipico! - Fixes an issue where a server island hydration script might fail case the island ID misses from the DOM.\n\n\n#12476 80a9a52 Thanks @\u200bflorian-lefebvre! - Fixes a case where the Content Layer glob() loader would not update when renaming or deleting an entry\n\n\n#12418 25baa4e Thanks @\u200boliverlynch! - Fix cached image redownloading if it is the first asset\n\n\n#12477 46f6b38 Thanks @\u200bematipico! - Fixes an issue where the SSR build was emitting the dist/server/entry.mjs file with an incorrect import at the top of the file/\n\n\n#12365 a23985b Thanks @\u200bapatel369! - Fixes an issue where Astro.currentLocale was not correctly returning the locale for 404 and 500 pages.\n\n\n\n\n\nChangelog\nSourced from astro's changelog.\n\n4.16.16\nPatch Changes\n\n\n#12542 65e50eb Thanks @\u200bkadykov! - Fix JPEG image size determination\n\n\n#12525 cf0d8b0 Thanks @\u200bematipico! - Fixes an issue where with i18n enabled, Astro couldn't render the 404.astro component for non-existent routes.\n\n\n4.16.15\nPatch Changes\n\n#12498 b140a3f Thanks @\u200bematipico! - Fixes a regression where Astro was trying to access Request.headers\n\n4.16.14\nPatch Changes\n\n\n#1",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733165434,
+    "labels": [
+      "dependencies",
+      "javascript",
+      "open",
+      "pull_request"
+    ],
+    "number": 3337,
+    "objectID": 2713007186,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump the patch group in /website with 7 updates",
+    "type": "pull_request",
+    "updated_at": 1733165435,
+    "url": "https://github.com/loculus-project/loculus/pull/3337",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps @tanstack/react-query from 4.36.1 to 5.62.1.\n\nRelease notes\nSourced from @\u200btanstack/react-query's releases.\n\nv5.62.1\nVersion 5.62.1 - 12/2/24, 6:40 PM\nChanges\nFix\n\neslint-plugin-query: handle non-null at then end of var  in exhaustive-deps (#8385) (d9d2728) by Parbez\n\nChore\n\nangular-query: update examples to typescript 5.7 (#8374) (b7bad3d) by Arnoud\n\nTest\n\nquery-core: add type check tests for queryObserver (#8304) (12b6782) by Sol Lee\n\nPackages\n\n@\u200btanstack/eslint-plugin-query@\u200b5.62.1\n@\u200btanstack/query-core@\u200b5.62.1\n@\u200btanstack/angular-query-devtools-experimental@\u200b5.62.1\n@\u200btanstack/angular-query-experimental@\u200b5.62.1\n@\u200btanstack/query-broadcast-client-experimental@\u200b5.62.1\n@\u200btanstack/query-persist-client-core@\u200b5.62.1\n@\u200btanstack/query-sync-storage-persister@\u200b5.62.1\n@\u200btanstack/react-query@\u200b5.62.1\n@\u200btanstack/react-query-devtools@\u200b5.62.1\n@\u200btanstack/react-query-persist-client@\u200b5.62.1\n@\u200btanstack/react-query-next-experimental@\u200b5.62.1\n@\u200btanstack/solid-query@\u200b5.62.1\n@\u200btanstack/solid-query-devtools@\u200b5.62.1\n@\u200btanstack/solid-query-persist-client@\u200b5.62.1\n@\u200btanstack/svelte-query@\u200b5.62.1\n@\u200btanstack/svelte-query-devtools@\u200b5.62.1\n@\u200btanstack/svelte-query-persist-client@\u200b5.62.1\n@\u200btanstack/vue-query@\u200b5.62.1\n@\u200btanstack/vue-query-devtools@\u200b5.62.1\n@\u200btanstack/query-async-storage-persister@\u200b5.62.1\n\nv5.62.0\nVersion 5.62.0 - 11/29/24, 1:03 PM\nChanges\nFeat\n\ntypes: Include optional TError on DataTag (#8361) (0fa1f01) by Nick Lucas\n\nChore\n\n\n... (truncated)\n\n\nCommits\n\nceb4094 release: v5.62.1\nf816480 release: v5.62.0\ndc4ae50 release: v5.61.5\nefdd204 release: v5.61.4\nef0b7b2 chore: typescript 5.7 (#8327)\nc69f302 chore(deps): update react 19/next 15 (#8342)\n5cd9611 chore(deps): move some deps from root to sub-packages (#8341)\n68dee7e release: v5.61.3\n9972595 chore(deps): more manual package updates (#8339)\n8a25b4e release: v5.61.0\nAdditional commits viewable in compare view\n\n\n\n\nDependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase m",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733165451,
+    "labels": [
+      "dependencies",
+      "javascript",
+      "open",
+      "pull_request"
+    ],
+    "number": 3338,
+    "objectID": 2713009881,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump @tanstack/react-query from 4.36.1 to 5.62.1 in /website",
+    "type": "pull_request",
+    "updated_at": 1733165452,
+    "url": "https://github.com/loculus-project/loculus/pull/3338",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps the minor group in /backend with 2 updates: org.jetbrains.kotlin.jvm and org.jetbrains.kotlin.plugin.spring.\nUpdates org.jetbrains.kotlin.jvm from 2.0.21 to 2.1.0\n\nRelease notes\nSourced from org.jetbrains.kotlin.jvm's releases.\n\nKotlin 2.1.0\nChangelog\nAnalysis API\nNew Features\n\nKT-68603 KotlinDirectInheritorsProvider: add an option to ignore non-kotlin results\n\nPerformance Improvements\n\nKT-70757 Performance problem in KaFirVisibilityChecker for KaFirPsiJavaClassSymbol\n\nFixes\n\nKT-70437 Class reference is not resolvable\nKT-57733 Analysis API: Use optimized ModuleWithDependenciesScopes in combined symbol providers\nKT-72389 K2: False positive \"Redundant 'protected' modifier\" for protected property inside protected constructor from private or internal class\nKT-69190 K2: False-positive \"redundant private modifier\"\nKT-64984 Analysis API: Support Wasm target\nKT-70375 K2: NPE at org.jetbrains.kotlin.analysis.api.fir.symbols.KaFirNamedClassSymbolBase.createPointer\nKT-71259 K2 evaluator: Invalid smart cast info collecting for Code Fragments\nKT-69360 Lack of implicit receiver for the last statement under lambda in scripts\nKT-70890 Analysis API: Experiment with weak references to LL FIR/analysis sessions in session caches\nKT-70657 Analysis API: Inner types from classes with generics are incorrectly represented by the compiled jars\nKT-71055 Suspend calls inside 'analyze()' break the block guarantees\nKT-70815 Analysis API: Implement stop-the-world session invalidation\nKT-69819 K2 IDE: LHS type in callable references is unresolved when it has type arguments and is qualified\nKT-68761 Analysis API: Experiment with limited-size cache in KaFirSessionProvider\nKT-70384 Analysis API Standalone: The same class in the same two renamed jars is unresolved\nKT-71067 Exceptions from references cancel Find Usages\nKT-69535 Redesign 'containingSymbol'\nKT-71025 K2 IDE: Scopes in \"importingScopeContext\" have reversed ordering and \"indexInTower\" values\nKT-67483 K2 IDE: Serializable plugin causes",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733165940,
+    "labels": [
+      "dependencies",
+      "java",
+      "open",
+      "pull_request"
+    ],
+    "number": 3339,
+    "objectID": 2713046660,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "chore(deps): bump the minor group in /backend with 2 updates",
+    "type": "pull_request",
+    "updated_at": 1733169497,
+    "url": "https://github.com/loculus-project/loculus/pull/3339",
+    "user": "dependabot[bot]"
+  },
+  {
+    "body": "Bumps the patch group in /backend with 2 updates: org.jsoup:jsoup and org.jlleitschuh.gradle.ktlint.\nUpdates org.jsoup:jsoup from 1.18.1 to 1.18.3\n\nRelease notes\nSourced from org.jsoup:jsoup's releases.\n\njsoup-1.18.3\n1.18.3 is a quick release to fix #2235 in 1.18.2.\nPlease see also the full release notes for jsoup 1.18.2 if you are coming from an earlier release.\nBug Fixes\n\nWhen serializing to XML, attribute names containing -, ., or digits were incorrectly considered invalid and removed. #2235\n\njsoup 1.18.2\nImprovements\n\nOptimized the throughput and memory use throughout the input read and parse flows, with heap allocations and GC  down between -6% and -89%, and throughput improved up to +143% for small inputs. Most inputs sizes will see  throughput increases of ~ 20%. These performance improvements come through recycling the backing byte[] and char[]  arrays used to read and parse the input. 2186\nSpeed optimized html() and Entities.escape() when the input contains UTF characters in a supplementary plane, by around 49%. 2183\nThe form associated elements returned by FormElement.elements() now reflect changes made to the DOM, subsequently to the original parse. 2140\nIn the TreeBuilder, the onNodeInserted() and onNodeClosed() events are now also fired for the outermost / root Document node. This enables source position tracking on the Document node (which was previously unset). And it also enables the node traversor to see the outer Document node. 2182\nSelected Elements can now be position swapped inline using Elements#set(). 2212\n\nBug Fixes\n\nElement.cssSelector() would fail if the element's class contained a *  character. 2169\nWhen tracking source ranges, a text node following an invalid self-closing element may be left untracked. 2175\nWhen a document has no doctype, or a doctype not named html, it should be parsed in Quirks Mode. 2197\nWith a selector like div:has(span + a), the has() component was not working correctly, as the inner combining query caused the evalua",
+    "closed_at": 1733169214,
+    "comments": 1,
+    "created_at": 1733165947,
+    "labels": [
+      "closed",
+      "dependencies",
+      "java",
+      "pull_request"
+    ],
+    "number": 3340,
+    "objectID": 2713047154,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "closed",
+    "title": "chore(deps): bump the patch group in /backend with 2 updates",
+    "type": "pull_request",
+    "updated_at": 1733169216,
+    "url": "https://github.com/loculus-project/loculus/pull/3340",
+    "user": "dependabot[bot]"
   },
   {
     "body": "resolves #334",
@@ -71937,6 +72069,27 @@
     "updated_at": 1732158128,
     "url": "https://github.com/pathoplexus/pathoplexus/issues/305",
     "user": "corneliusroemer"
+  },
+  {
+    "body": "After our discussion today I decided to look into the details of how our Nextclade stuff would work with new datasets. My understanding is that: currently we just point at the \"live\" Nextclade version. In any of the proposed approaches to lineage search this would be very pretty problematic if a new dataset was released. Generally our current model is that each pipeline versions will be tied to a specific version of Nextclade (that's one of the main purposes of pipeline versions - allowing newly submitted data to still be processed by the old pipeline until the new one has processed everything).\nSo we should hardcode a specific version of Nextclade for each pipelineVersion. Ways I can see of doing this:\n\nhost our own Nextclade server and create v1 v2 datasets\nsome other way involving commit hashes or something\n\n@corneliusroemer do you have insights?\nI'm not saying this has to be top priority given we may be able to coordinate with Nextclade atm.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733169100,
+    "labels": [
+      "enhancement",
+      "issue",
+      "open"
+    ],
+    "number": 309,
+    "objectID": 2713196800,
+    "reactions": 0,
+    "repo": "pathoplexus",
+    "state": "open",
+    "title": "[FEAT] Specify version of Nextclade datasets (and therefore host multiple versions)",
+    "type": "issue",
+    "updated_at": 1733169116,
+    "url": "https://github.com/pathoplexus/pathoplexus/issues/309",
+    "user": "theosanderson"
   },
   {
     "body": "Add links to our new Discussion forum on main website, likely:\n\nfront page\ndocs\nFAQ",
