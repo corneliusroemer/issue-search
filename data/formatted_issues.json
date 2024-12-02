@@ -5256,23 +5256,24 @@
   },
   {
     "body": "I just noticed that the /get-sequences endpoint is slow when there are many sequences in the database:\n\nSubmit 100,000 dummy sequences.\nGo to the review page\nWhat I observe (locally and on the current main deployment): The sequences take very long to load, and https://backend-main.loculus.org/dummy-organism/get-sequences?groupIdsFilter=2&initialStatusesFilter=RECEIVED,IN_PROCESSING,HAS_ERRORS,AWAITING_APPROVAL&statusesFilter=RECEIVED,IN_PROCESSING,HAS_ERRORS,AWAITING_APPROVAL&page=0&size=50 take around 8 seconds to finish.\n\nI added some log statements locally. The method SubmissionDatabaseService::getSequences takes the full time. Something in that query must be quite slow.",
-    "closed_at": null,
+    "closed_at": 1733139085,
     "comments": 1,
     "created_at": 1713265472,
     "labels": [
       "backend",
+      "closed",
+      "completed",
       "issue",
-      "open",
       "performance"
     ],
     "number": 1612,
     "objectID": 2245761682,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "Review page (and `/get-sequences` endpoint) is slow",
     "type": "issue",
-    "updated_at": 1732209514,
+    "updated_at": 1733139085,
     "url": "https://github.com/loculus-project/loculus/issues/1612",
     "user": "fengelniederhammer"
   },
@@ -12806,12 +12807,12 @@
     ],
     "number": 2558,
     "objectID": 2485441890,
-    "reactions": 0,
+    "reactions": 1,
     "repo": "loculus",
     "state": "open",
     "title": "Submission Errors Give fields not GUI Names",
     "type": "issue",
-    "updated_at": 1732882878,
+    "updated_at": 1733139869,
     "url": "https://github.com/loculus-project/loculus/issues/2558",
     "user": "emmahodcroft"
   },
@@ -15706,12 +15707,13 @@
   },
   {
     "body": "As a curator when I log in to submit I am first logged in in the INSDC ingest user group, the page freezes before it loads, probably because there are so many sequences:",
-    "closed_at": null,
+    "closed_at": 1733139086,
     "comments": 1,
     "created_at": 1727360818,
     "labels": [
+      "closed",
+      "completed",
       "issue",
-      "open",
       "performance",
       "website"
     ],
@@ -15719,10 +15721,10 @@
     "objectID": 2550766374,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "submission page freezes when too many sequences waiting for approval",
     "type": "issue",
-    "updated_at": 1727365357,
+    "updated_at": 1733139086,
     "url": "https://github.com/loculus-project/loculus/issues/2880",
     "user": "anna-parker"
   },
@@ -16364,7 +16366,7 @@
     "state": "open",
     "title": "Allow groups to add their papers in which they first published/describe their sequences",
     "type": "issue",
-    "updated_at": 1728040001,
+    "updated_at": 1733136846,
     "url": "https://github.com/loculus-project/loculus/issues/2948",
     "user": "corneliusroemer"
   },
@@ -17342,7 +17344,7 @@
   {
     "body": "In LAPIS v0.3.7, the sub-lineage filter was generalized, making it possible to include sub-lineages of a lineage by appending the query with a *. In Loculus, we should incorporate this feature.\nSub-tasks include (probably not complete):\n\nWebsite: add UI to send corresponding queries and allow users to decide whether to include sublineages\nDeployment and config: pass the lineage tree definition file to SILO (and LAPIS?) and the backend\nBackend: If a field has the new lineage type, SILO expects that only values appear that are also present in the lineage tree definition file. The backend, therefore, should validate the lineages that the preprocessing pipeline generate.",
     "closed_at": null,
-    "comments": 12,
+    "comments": 13,
     "created_at": 1729836321,
     "labels": [
       "discussion",
@@ -17357,7 +17359,7 @@
     "state": "open",
     "title": "Lineage search field with sub-lineage queries",
     "type": "issue",
-    "updated_at": 1733094508,
+    "updated_at": 1733141379,
     "url": "https://github.com/loculus-project/loculus/issues/3074",
     "user": "chaoran-chen"
   },
@@ -17690,24 +17692,25 @@
   },
   {
     "body": "I uploaded 50,000 sequences and observed a strange behavior of the total number of sequences:\nThe total is often higher than 50000. The sum of yet to be processed and processed is equal to a too high total often.\n\n  \n    \n    \n\n    Screen.Recording.2024-10-28.at.19.00.35.mov\n    \n  \n\n  \n\n  \n\n\nI believe to have seen this before: is there already a ticket?\n(I guess it's a website bug but it could also be a backend bug.)",
-    "closed_at": null,
+    "closed_at": 1733139084,
     "comments": 9,
     "created_at": 1730138775,
     "labels": [
       "backend",
       "bug",
+      "closed",
+      "completed",
       "issue",
-      "open",
       "website"
     ],
     "number": 3095,
     "objectID": 2619148992,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "Review page: total number of sequences fluctuates and can be too high",
     "type": "issue",
-    "updated_at": 1732332659,
+    "updated_at": 1733139084,
     "url": "https://github.com/loculus-project/loculus/issues/3095",
     "user": "chaoran-chen"
   },
@@ -17946,7 +17949,7 @@
   {
     "body": "It should be possible to disable data use terms entirely.\nAcceptance criteria\n\nThere is a config setting to disable data use terms\nif data use terms are disabled:\n\nThe selection from the submit page is removed\nThe Pathoplexus-specific acknowledgment section on the submit page is removed\nThe search field and table column from the browse page is removed\nThe section from the sequence details page is removed\nThe fields from LAPIS / SILO is removed\n\"By using our API you agree to our Data Use Terms .\" from the API documentation page is removed",
     "closed_at": null,
-    "comments": 1,
+    "comments": 7,
     "created_at": 1730324261,
     "labels": [
       "backend",
@@ -17965,7 +17968,7 @@
     "state": "open",
     "title": "Disable data use terms",
     "type": "issue",
-    "updated_at": 1732786866,
+    "updated_at": 1733142737,
     "url": "https://github.com/loculus-project/loculus/issues/3127",
     "user": "chaoran-chen"
   },
@@ -19212,13 +19215,14 @@
   },
   {
     "body": "We no longer have OOM (at least for 10k sequences) as mentioned here: #2881 (comment) but load times are still unacceptably long if there are thousands of sequences to review/approve (e.g. curators).\nWest Nile shows blank screen to superusers for 10+ seconds.\nThis wasn't fixed in #3031\nThe issue isn't that there are many request made. It's that the website server seems to block, waiting for stuff.\nMaybe mitigating the stall is as simple as disabling SSR of this page?\nIt's particularly the /[organism]/submission/[groupid] page that's slow. It's blocking on getSequences on the server side.\nThere are a number of options here for speed up:\n\nWe could refactor it to get the count of sequences on the client side\nSpeed up getSequences\n...\n\n\nRelevant code is here:\n\n  \n    \n      loculus/website/src/pages/[organism]/submission/[groupId]/index.astro\n    \n    \n        Lines 19 to 44\n      in\n      531c2bc\n    \n  \n  \n    \n\n        \n          \n            \n        \n\n        \n          \n           async function getSequenceCounts(organism: string, groupId: number) { \n        \n\n        \n          \n               const backendClient = BackendClient.create(); \n        \n\n        \n          \n               try { \n        \n\n        \n          \n                   const response = await backendClient.call('getSequences', { \n        \n\n        \n          \n                       params: { organism }, \n        \n\n        \n          \n                       headers: createAuthorizationHeader(accessToken), \n        \n\n        \n          \n                       queries: { \n        \n\n        \n          \n                           groupIdsFilter: groupId.toString(), \n        \n\n        \n          \n                       }, \n        \n\n        \n          \n                   }); \n        \n\n        \n          \n            \n        \n\n        \n          \n                   if (response.isErr()) { \n        \n\n        \n          \n                       throw new Error('Failed to fetch sequences'); \n        \n\n ",
-    "closed_at": null,
+    "closed_at": 1733139085,
     "comments": 3,
     "created_at": 1732162372,
     "labels": [
       "bug",
+      "closed",
+      "completed",
       "issue",
-      "open",
       "performance",
       "website"
     ],
@@ -19226,10 +19230,10 @@
     "objectID": 2677902759,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "Submission portal takes multiple seconds to load if there are 10k sequences to review ",
     "type": "issue",
-    "updated_at": 1732340740,
+    "updated_at": 1733139085,
     "url": "https://github.com/loculus-project/loculus/issues/3269",
     "user": "corneliusroemer"
   },
@@ -19395,7 +19399,7 @@
   {
     "body": "We will soon no longer have a single date field: there will be two dates for each sample instead: lower range and upper range of what the date string we got means. For complete dates, the 2 are the same. But for incomplete they aren't.\nThis makes search non-intuitive to users. Most users will initially not care about the concept of date ranges, they just want something that works for filtering dates somehow.\nWhat we get instead after #3263 is two dates to filter by, and this causes cognitive strain (even to me having thought about this feature for weeks).\n\nThere's a simple way of having intuitive search: show just one date search bar with two modes (selectable through radio button):\n\nstrict (sample date range must be entirely contained inside the query range)\nlax (sample date range must at least overlap the query range)\n\nPeople probably want strict to be the default, but we can change this once we know what's more intuitive. The idea to have strict and lax search is something that I haven't seen much on other websites so even this way will take some getting used to (the good thing is that people won't need to know about strict vs lax, it'll just intuitively work ok).\nImplementation:\n\nCreate a new custom search field type date_range (exact names tbd, just for scoping I choose some)\nIt takes as config two config values: date_lower and upper, to refer to the metadata fields that should be used\nIt displays a normal date search but with added radio buttons for \"strict\" and \"lax\" modes, defaults to strict. For what follows I call the fields range_min and range_max\nThe LAPIS query is constructed based on mode as follows in pseudocde\n\nif strict:\n    filter((date_lower >= range_min) and (date_upper <= range_max))\nif lax:\n    filter((date_lower <= range_min) and (date_upper >= range_max))\n\nThat's it, I hope that's clear and should be doable. Let me know if you have questions.",
     "closed_at": null,
-    "comments": 12,
+    "comments": 14,
     "created_at": 1732549602,
     "labels": [
       "feature",
@@ -19410,7 +19414,7 @@
     "state": "open",
     "title": "Implement date search that works intuitively with new date range fields",
     "type": "issue",
-    "updated_at": 1732816316,
+    "updated_at": 1733140253,
     "url": "https://github.com/loculus-project/loculus/issues/3285",
     "user": "corneliusroemer"
   },
@@ -19460,7 +19464,7 @@
   {
     "body": "Now that we're well on the way to supporting date ranges within Loculus, we should enable users to explicitly upload date ranges.\nFor example at the moment a date of 1980 will be converted to 1980-01-01 to 1980-12-31 and the date 2014-07 will be converted to 2014-07-01 to 2014-07-31.\nHowever, in some cases people may know more specific date ranges, for example 1982-04 to 1982-07 or 2022-11-10 to 2022-11-15 and we should enable this too!\nThere are a couple of ways we could support this, but there's an existing ISO standard to use / for dates to indicate ranges, which is also supported by Genbank - so supporting this would kill two birds with one stone.\nWe could also consider supporting users in uploading two columsn (minDate maxDate) but this would mean more changes to our suggested files & probably more edits on the backend to convert them into our own date format.",
     "closed_at": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": 1732628487,
     "labels": [
       "discussion",
@@ -19472,12 +19476,12 @@
     ],
     "number": 3300,
     "objectID": 2694732023,
-    "reactions": 0,
+    "reactions": 2,
     "repo": "loculus",
     "state": "open",
     "title": "Support submissions with date ranges",
     "type": "issue",
-    "updated_at": 1732628488,
+    "updated_at": 1733133327,
     "url": "https://github.com/loculus-project/loculus/issues/3300",
     "user": "emmahodcroft"
   },
@@ -19564,6 +19568,48 @@
     "updated_at": 1732902768,
     "url": "https://github.com/loculus-project/loculus/issues/3311",
     "user": "fhennig"
+  },
+  {
+    "body": "As INSDC does not allow non-ASCII characters we need to then convert non-ASCII to ASCII characters, there are some python libraries for this, we can choose one e.g. unidecode works well for Latin-based languages.",
+    "closed_at": 1733135717,
+    "comments": 1,
+    "created_at": 1733135003,
+    "labels": [
+      "closed",
+      "issue",
+      "not_planned"
+    ],
+    "number": 3320,
+    "objectID": 2711371253,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "closed",
+    "title": "Allow submission of non-ASCII characters",
+    "type": "issue",
+    "updated_at": 1733136915,
+    "url": "https://github.com/loculus-project/loculus/issues/3320",
+    "user": "anna-parker"
+  },
+  {
+    "body": "We currently use the same characters in author format that INSDC accepts: ascii-only\nIt would be nice to accept full unicode, however this poses challenges for submission to INSDC: For Latin characters, it's usually straight forward to project non-ASCII characters to the closest ASCII. However, for non-Latin characters, like Chinese it's not at all clear how to transliterate, different regions use different conventions (e.g. Pinyin in mainland China vs Wade-Giles often used in Taiwan)",
+    "closed_at": null,
+    "comments": 4,
+    "created_at": 1733135387,
+    "labels": [
+      "discussion",
+      "issue",
+      "open"
+    ],
+    "number": 3321,
+    "objectID": 2711387361,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Shall we accept full Unicode in author names and if so, how should we asciify for submission to INSDC",
+    "type": "issue",
+    "updated_at": 1733137766,
+    "url": "https://github.com/loculus-project/loculus/issues/3321",
+    "user": "corneliusroemer"
   },
   {
     "body": "Currently, the backend contains the config.json: https://github.com/pathoplexus/pathoplexus/blob/4e961317d684f0046e236728da6e59fb275e8cd5/backend/src/main/resources/config.json\nThe compiled code (especially the Docker image) should not contain the config, it should rather be passed by the maintainer.",
@@ -60790,22 +60836,23 @@
   },
   {
     "body": "Discussed on Slack: https://loculus.slack.com/archives/C05G172HL6L/p1732110859357449\npreview URL: https://date-ranges.loculus.org\nSummary\n\nReplace Ebola Zaire with Ebola Sudan to have a small, fast loading, real organism (Zaire is 3k sequences, Sudan 150, we already have large ones with WNV and CCHF). This speeds up time to useful preview.\nChange processing of dates to make sampleCollectionDate be of type string and of form YYYY or YYYY-MM or YYYY-MM-DD (instead of type date with YYYY-MM-DD and MM and DD forced to 01 if missing)\nIntroduce new processed data fields of type date sampleCollectionDateRangeLower and sampleCollectionDateRangeUpper\nUpper bound of date range is constrained by submission date (sequences cannot be from samples collected after they were submitted)\nCurrently no lower bound is chosen, though doing so might be useful for ranged searches - we might decide to introduce an artificial min date for search purposes only, otherwise this might require a LAPIS/SILO feature, see GenSpectrum/LAPIS#1012 for thoughts\n\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
-    "closed_at": null,
-    "comments": 0,
+    "closed_at": 1733140051,
+    "comments": 2,
     "created_at": 1732122181,
     "labels": [
-      "open",
+      "closed",
       "preview",
-      "pull_request"
+      "pull_request",
+      "review please"
     ],
     "number": 3263,
     "objectID": 2676574710,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "feat(preprocessing): parse dates into date ranges to correctly represent incomplete dates",
     "type": "pull_request",
-    "updated_at": 1733131229,
+    "updated_at": 1733140054,
     "url": "https://github.com/loculus-project/loculus/pull/3263",
     "user": "corneliusroemer"
   },
@@ -61017,23 +61064,23 @@
   },
   {
     "body": "resolves #3095, resolves #1612, resolves #3269, resolves #2880\nhelps with #3267\npreview URL: https://profile-get-seqs.loculus.org\nSummary\n@fhennig correctly identified that the way we calculated status counts in getSequences was the culprit behind the inconsistent total counts.\nWe issued 4 independent db queries one after the other. In between statuses changed. What made it worse was that each of the calls was hugely inefficient, using a join on data use terms, ordering by accession column and much more that is totally unnecessary for the counts calculation.\nThe fluctuation could be fixed by higher transaction isolation but this is much much faster and efficient so should be enough (I've profiled with simple logs and tested).\nAlso fixes fact that log message misses mention of some filters.\nFuture work\nThere's still lots to be done but this goes some way and fixes the inconsistency bug.\nWe should not have this single endpoint that calculates much more than necessary. It's behind the review page slowness #3269: we really just want total numbers of sequences to review but the backend needs to send loads of unnecessary information to the website simply because we have no simpler endpoint.\nInstead, we should spin up a few simple endpoints that do what the website needs - let's mark them as \"non-public\" in the backend API docs so that we don't need stability guarantees, they should be used solely by the website.\nScreenshot\nReload the page and look at both screencasts together to see speedup.\nThis PR:\n\nBefore (main):\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
-    "closed_at": null,
+    "closed_at": 1733139083,
     "comments": 4,
     "created_at": 1732331328,
     "labels": [
-      "open",
+      "closed",
       "preview",
       "pull_request",
       "review please"
     ],
     "number": 3279,
     "objectID": 2685209666,
-    "reactions": 0,
+    "reactions": 1,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "fix(backend,website): calculate status counts efficiently & request only aggregates for submission portal",
     "type": "pull_request",
-    "updated_at": 1733130711,
+    "updated_at": 1733139084,
     "url": "https://github.com/loculus-project/loculus/pull/3279",
     "user": "corneliusroemer"
   },
@@ -61470,10 +61517,9 @@
   {
     "body": "resolves #3285\n\npreview URL: https://date-ranges-ui.loculus.org\nSummary\n\nAdd config bit to allow configuring the rangeOverlapSearch on a property (or rather two properties belonging together). Add a new DateRangeField search field type for these kinds of date ranges.\nThis is the first time we don't have a 1:1 mapping of search fields and API parameters anymore, so some bits in the code are a bit ... complicated maybe? But so far this way of doing it still seems fine. A \"proper\" solution would (IMO) involve decoupling the metadata field definition and the search field definitions, but seems kind of heavy handed at the moment.\nScreenshot\nI wanted to maybe use a toggle, but ran into this UI bug (clash with tailwind forms).\n\nwith tooltip\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
-    "comments": 6,
+    "comments": 9,
     "created_at": 1732870759,
     "labels": [
-      "draft",
       "open",
       "preview",
       "pull_request"
@@ -61483,9 +61529,9 @@
     "reactions": 1,
     "repo": "loculus",
     "state": "open",
-    "title": "feat: New date range UI",
+    "title": "feat(website): Adapt collectionDate search to work with date ranges",
     "type": "pull_request",
-    "updated_at": 1733089876,
+    "updated_at": 1733141309,
     "url": "https://github.com/loculus-project/loculus/pull/3308",
     "user": "fhennig"
   },
@@ -61703,21 +61749,21 @@
   },
   {
     "body": "I screwed up the yarn lockfile in #3318: Remove unused deps\nCherry pick all keykloakify updates together: #3314 #3315 #3316 #3317\nUpdate yarn to 4.5.3",
-    "closed_at": null,
+    "closed_at": 1733133501,
     "comments": 0,
     "created_at": 1733130522,
     "labels": [
-      "open",
+      "closed",
       "pull_request"
     ],
     "number": 3319,
     "objectID": 2711143051,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "chore(keycloakify): aggregate major version bumps",
     "type": "pull_request",
-    "updated_at": 1733130634,
+    "updated_at": 1733133503,
     "url": "https://github.com/loculus-project/loculus/pull/3319",
     "user": "corneliusroemer"
   },
@@ -61740,6 +61786,28 @@
     "updated_at": 1697551627,
     "url": "https://github.com/loculus-project/loculus/pull/332",
     "user": "TobiasKampmann"
+  },
+  {
+    "body": "resolves #992\n\npreview URL: http://datausetermsbulkchange.loculus.org\nSummary\n\nWork in progress!\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733138415,
+    "labels": [
+      "draft",
+      "open",
+      "preview",
+      "pull_request"
+    ],
+    "number": 3322,
+    "objectID": 2711558119,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "feat: Change data use terms in bulk",
+    "type": "pull_request",
+    "updated_at": 1733141328,
+    "url": "https://github.com/loculus-project/loculus/pull/3322",
+    "user": "fhennig"
   },
   {
     "body": "resolves #306\n\nimplement proper error handling. Distinguish between technical errors that rollback the transaction and validation errors that should be shown to the submitter to review.\nImprove the descriptions and types in Swagger UI\nextract a separate test",
@@ -70131,7 +70199,7 @@
   {
     "body": "See discussion here: https://loculus.slack.com/archives/C05G172HL6L/p1707326370868269?thread_ts=1707323971.457599&cid=C05G172HL6L",
     "closed_at": null,
-    "comments": 4,
+    "comments": 5,
     "created_at": 1707330741,
     "labels": [
       "discussion",
@@ -70145,7 +70213,7 @@
     "state": "open",
     "title": "preprocessing(specification): Update error schema",
     "type": "pull_request",
-    "updated_at": 1732889936,
+    "updated_at": 1733139885,
     "url": "https://github.com/loculus-project/loculus/pull/932",
     "user": "theosanderson"
   },
@@ -75598,34 +75666,34 @@
   },
   {
     "body": "",
-    "closed_at": null,
+    "closed_at": 1733141061,
     "comments": 0,
     "created_at": 1731342160,
     "labels": [
+      "closed",
       "draft",
-      "open",
       "pull_request"
     ],
     "number": 292,
     "objectID": 2649794635,
     "reactions": 0,
     "repo": "pathoplexus",
-    "state": "open",
+    "state": "closed",
     "title": "Update values.yaml for testing, don't merge",
     "type": "pull_request",
-    "updated_at": 1731342160,
+    "updated_at": 1733141061,
     "url": "https://github.com/pathoplexus/pathoplexus/pull/292",
     "user": "corneliusroemer"
   },
   {
     "body": "@fhennig wants to update the Loculus version from loculus-project/loculus@2849151 to loculus-project/loculus@bae6bde.\nChangelog\n\nMerge branch 'main' into feat/3031-improve-review-page\nfix migration script\nAdd enum migration sql step\nloculus-project/loculus#3193\nloculus-project/loculus#3188\nloculus-project/loculus#3190\nUpdate diagrams\nMerge branch 'main' into feat/3031-improve-review-page\nremove TODO\nsimplify\ncleanup formatting\nUpdate backend/src/main/resources/db/migration/V1.5__update_sequence_entries_view_status_field.sql\nloculus-project/loculus#3186\nMerge branch 'main' into feat/3031-improve-review-page\nfrontend all fixed?\nun-bump\nbump\nUpdate schema documentation based on migration changes\ncleanup\nAdd DB field for processing result\nloculus-project/loculus#3075\nloculus-project/loculus#3183\nloculus-project/loculus#3181\nfix e2e tests\ntest fix\nImprove confirm dialog\nloculus-project/loculus#3156\nShow configuration dialog on any sequence action\nUpdate docs\nUpdate docs\nMerge branch 'main' into feat/3031-improve-review-page\nrefactor query\nloculus-project/loculus#3178\nloculus-project/loculus#3062\nloculus-project/loculus#3083\nloculus-project/loculus#3173\nloculus-project/loculus#3175\nmore fix stuff\nUpdate schema documentation based on migration changes\nmore fix stuff\nMerge remote-tracking branch 'origin/main' into feat/3030-improve-review-page\nloculus-project/loculus#3168\nmore fix stuff\nfix frontend\nMerge branch 'main' into feat/3031-improve-review-page\naddress review\nimprove processing result condition handling\nrename isError and isWarning\nChange wording\nremove outdated TODO\nloculus-project/loculus#3166\nloculus-project/loculus#3165\nloculus-project/loculus#3163\nloculus-project/loculus#3159\nloculus-project/loculus#3157\nloculus-project/loculus#3149\nsome test improvements\nMerge branch 'main' into feat/3031-improve-review-page\nrename perfect -> no_issues\nremove log files\nformat\nremove todo\nimprove error message\nUpdate API docs\nImprove documentation\ndefault null values\nremove de",
-    "closed_at": null,
+    "closed_at": 1733141055,
     "comments": 0,
     "created_at": 1731343639,
     "labels": [
+      "closed",
       "draft",
       "non-main-target",
-      "open",
       "preview",
       "pull_request"
     ],
@@ -75633,10 +75701,10 @@
     "objectID": 2649861323,
     "reactions": 0,
     "repo": "pathoplexus",
-    "state": "open",
+    "state": "closed",
     "title": "Update Loculus version to bae6bd (non-main: HEAD)",
     "type": "pull_request",
-    "updated_at": 1731347159,
+    "updated_at": 1733141055,
     "url": "https://github.com/pathoplexus/pathoplexus/pull/293",
     "user": "corneliusroemer"
   },
@@ -75789,21 +75857,21 @@
   },
   {
     "body": "(cherry picked from commit 07cfa67)",
-    "closed_at": null,
+    "closed_at": 1733141049,
     "comments": 0,
     "created_at": 1731940538,
     "labels": [
-      "open",
+      "closed",
       "pull_request"
     ],
     "number": 302,
     "objectID": 2668747717,
     "reactions": 0,
     "repo": "pathoplexus",
-    "state": "open",
+    "state": "closed",
     "title": "don't merge: Prod + gh pages fix",
     "type": "pull_request",
-    "updated_at": 1732031298,
+    "updated_at": 1733141050,
     "url": "https://github.com/pathoplexus/pathoplexus/pull/302",
     "user": "corneliusroemer"
   },
@@ -75888,6 +75956,27 @@
     "type": "pull_request",
     "updated_at": 1732892424,
     "url": "https://github.com/pathoplexus/pathoplexus/pull/307",
+    "user": "corneliusroemer"
+  },
+  {
+    "body": "@corneliusroemer wants to update the Loculus version from loculus-project/loculus@437d484 to loculus-project/loculus@0fdac51.\nNotable changes (selection)\n\nloculus-project/loculus#3263\nloculus-project/loculus#3279\nloculus-project/loculus#3272\nloculus-project/loculus#3259\nloculus-project/loculus#3232\nloculus-project/loculus#3246\nloculus-project/loculus#3223\n\nChangelog (full)\n\nloculus-project/loculus#3263\nloculus-project/loculus#3279\nloculus-project/loculus#3319\nloculus-project/loculus#3318\nloculus-project/loculus#3312\nloculus-project/loculus#3313\nloculus-project/loculus#3309\nloculus-project/loculus#3310\nloculus-project/loculus#3303\nloculus-project/loculus#3104\nloculus-project/loculus#3302\nloculus-project/loculus#3272\nloculus-project/loculus#3297\nloculus-project/loculus#3289\nloculus-project/loculus#3286\nloculus-project/loculus#3291\nloculus-project/loculus#3292\nloculus-project/loculus#3290\nloculus-project/loculus#3287\nloculus-project/loculus#3277\nloculus-project/loculus#3259\nloculus-project/loculus#3276\nloculus-project/loculus#3232\nloculus-project/loculus#3246\nloculus-project/loculus#3247\nloculus-project/loculus#3257\nloculus-project/loculus#3255\nloculus-project/loculus#3223\nloculus-project/loculus#3234\nloculus-project/loculus#3236\nloculus-project/loculus#3196\nloculus-project/loculus#3230\nloculus-project/loculus#3231\n\nComparison\nloculus-project/loculus@437d484...0fdac51\nPreview\nhttps://preview-update-loculus-0fdac5.pathoplexus.org",
+    "closed_at": null,
+    "comments": 5,
+    "created_at": 1733141198,
+    "labels": [
+      "open",
+      "preview",
+      "pull_request"
+    ],
+    "number": 308,
+    "objectID": 2711712409,
+    "reactions": 0,
+    "repo": "pathoplexus",
+    "state": "open",
+    "title": "Breaking: Update Loculus version to 0fdac5",
+    "type": "pull_request",
+    "updated_at": 1733142043,
+    "url": "https://github.com/pathoplexus/pathoplexus/pull/308",
     "user": "corneliusroemer"
   },
   {
