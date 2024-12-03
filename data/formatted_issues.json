@@ -19801,11 +19801,12 @@
   {
     "body": "On Firefox (Ubuntu) the data use terms history model has rather unfortunate line wraps.",
     "closed_at": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": 1733176262,
     "labels": [
       "issue",
-      "open"
+      "open",
+      "reopened"
     ],
     "number": 3341,
     "objectID": 2713469045,
@@ -19814,12 +19815,12 @@
     "state": "open",
     "title": "Formatting issues in \"data use terms history\" modal ",
     "type": "issue",
-    "updated_at": 1733176262,
+    "updated_at": 1733221316,
     "url": "https://github.com/loculus-project/loculus/issues/3341",
     "user": "rneher"
   },
   {
-    "body": "We should allow the Values yaml to specify widths for each column when displayed in the table.",
+    "body": "We should allow the Values yaml to specify widths for each column when displayed in the table, this should be a property of the metadata item.\nThis would require changing the values.yaml, the templates that parse it, the config.ts and the Table.tsx files.",
     "closed_at": null,
     "comments": 0,
     "created_at": 1733177299,
@@ -19834,14 +19835,14 @@
     "state": "open",
     "title": "Customizable column widths",
     "type": "issue",
-    "updated_at": 1733177299,
+    "updated_at": 1733227030,
     "url": "https://github.com/loculus-project/loculus/issues/3343",
     "user": "theosanderson"
   },
   {
     "body": "I've been talking a lot to @DrYak, @gordonkoehn and @Taepper about how to add raw data sharing capabilities to Loculus. We developed a plan to do this step-by-step and would love to hear everyone's feedback.\nOverall, the idea is to stick very closely to the current architecture where the backend only passes data around and is responsible for general things like persistence and versioning while a configurable, external pipeline is responsible for actually processing the data. In following, I will first outline the final picture and then propose three different implementation stages.\nFinal picture\nUser view: Depending on the instance, it is possible to upload metadata, consensus sequences and/or raw data. The consensus sequences are, as now, stored in a FASTA. The raw data can be a FASTQ, a BAM file or something else \u2013 what exactly one has/can upload depends also on the instance. The pipeline will take the user data and return processed data: this could be only consensus sequences and metadata (i.e., some tabular data), or include some other unaligned raw data (e.g., the raw reads after dehumanizing) or also include aligned raw reads. The user will be able to download all processed data. Aligned reads may be passed into SILO for fast querying.\nTechnical view: If the instance only supports metadata and consensus sequences, everything remains the same. If a user wants to upload raw data as well, their client software (could be the Loculus website or CLI) first submits the metadata (and maybe consensus sequences) with a request to upload raw data. The backend returns S3 URLs and some access token and the client then uploads the raw data to the specified locations.\nWhen the pipeline asks for unprocessed data, the backend will send the S3 URLs of the submitted data in addition to the metadata (and consensus sequences). The backend will also provide S3 locations where the processed raw data should be stored. The pipeline will then download the unprocessed raw data from S3 a",
     "closed_at": null,
-    "comments": 2,
+    "comments": 7,
     "created_at": 1733180918,
     "labels": [
       "discussion",
@@ -19856,7 +19857,7 @@
     "state": "open",
     "title": "Raw data sharing",
     "type": "issue",
-    "updated_at": 1733184759,
+    "updated_at": 1733226944,
     "url": "https://github.com/loculus-project/loculus/issues/3344",
     "user": "chaoran-chen"
   },
@@ -19879,6 +19880,26 @@
     "updated_at": 1733216694,
     "url": "https://github.com/loculus-project/loculus/issues/3346",
     "user": "fhennig"
+  },
+  {
+    "body": "On demo we see - this is the \\ufffd or unicode Replacement Character for invalid input:\n\nLink to slack discussion: https://loculus.slack.com/archives/C05G172HL6L/p1733218865848649\nIn the db for LOC_0009MGX I find: \"\"authorAffiliations\": \"Institut National de Recherche Biom\\ufffddicale\",\" - in both original and processed metadata\nOther correct versions: \"authorAffiliations\": \"Institut National de Recherche Biom\u00e9dicale\", in both processed and original\nThe correct unicode character for \u00e9 is \\u00E9.\nTODO\n\n Ensure that preprocessing prevents the user from uploading invalid unicode.\n Check if INSDC prevents submission of non-ASCII characters in string fields.\n If they restrict submission of non-ASCII characters in strings, restrict submission of non-ASCII characters until #3321 is fixed",
+    "closed_at": null,
+    "comments": 0,
+    "created_at": 1733221707,
+    "labels": [
+      "issue",
+      "open"
+    ],
+    "number": 3347,
+    "objectID": 2714612791,
+    "reactions": 0,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Handle Invalid unicode character",
+    "type": "issue",
+    "updated_at": 1733222189,
+    "url": "https://github.com/loculus-project/loculus/issues/3347",
+    "user": "anna-parker"
   },
   {
     "body": "Currently the endpoint only expects unalignedNucleotideSequences, but it should also accept alignedNucleotideSequences, nucleotideInsertions, alignedAminoAcidSequences, aminoAcidInsertions.\nOpen question: Which type should the insertion fields have?",
@@ -61764,7 +61785,7 @@
   {
     "body": "resolves #3285\n\npreview URL: https://date-ranges-ui.loculus.org\nSummary\n\nAdd config bit to allow configuring the rangeOverlapSearch on a property (or rather two properties belonging together). Add a new DateRangeField search field type for these kinds of date ranges.\nThis is the first time we don't have a 1:1 mapping of search fields and API parameters anymore, so some bits in the code are a bit ... complicated maybe? But so far this way of doing it still seems fine. A \"proper\" solution would (IMO) involve decoupling the metadata field definition and the search field definitions, but seems kind of heavy handed at the moment.\nScreenshot\nI wanted to maybe use a toggle, but ran into this UI bug (clash with tailwind forms).\n\nwith tooltip\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
-    "comments": 14,
+    "comments": 17,
     "created_at": 1732870759,
     "labels": [
       "open",
@@ -61778,7 +61799,7 @@
     "state": "open",
     "title": "feat(website): Adapt collectionDate search to work with date ranges",
     "type": "pull_request",
-    "updated_at": 1733184866,
+    "updated_at": 1733222776,
     "url": "https://github.com/loculus-project/loculus/pull/3308",
     "user": "fhennig"
   },
@@ -62037,7 +62058,7 @@
   {
     "body": "resolves #992\n\npreview URL: http://datausetermsbulkchange.loculus.org\nSummary\n\nWork in progress!\nScreenshot\n\nPR Checklist\n\n\n All necessary documentation has been adapted.\n The implemented feature is covered by an appropriate test.",
     "closed_at": null,
-    "comments": 0,
+    "comments": 2,
     "created_at": 1733138415,
     "labels": [
       "draft",
@@ -62052,7 +62073,7 @@
     "state": "open",
     "title": "feat: Change data use terms in bulk",
     "type": "pull_request",
-    "updated_at": 1733160559,
+    "updated_at": 1733228815,
     "url": "https://github.com/loculus-project/loculus/pull/3322",
     "user": "fhennig"
   },
@@ -62294,12 +62315,12 @@
   },
   {
     "body": "resolves #3341 and various other problems\npreview URL: https://breakword.loculus.org/\nScreenshot\n\nbecomes\n\nWe were using break-all which allows wrapping newlines very arbitrarily.  Now we only use break-words\n.",
-    "closed_at": null,
+    "closed_at": 1733221215,
     "comments": 0,
     "created_at": 1733176759,
     "labels": [
+      "closed",
       "format_me",
-      "open",
       "preview",
       "pull_request"
     ],
@@ -62307,10 +62328,10 @@
     "objectID": 2713485174,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "fix(website): Adjust break all to break word",
     "type": "pull_request",
-    "updated_at": 1733215470,
+    "updated_at": 1733221217,
     "url": "https://github.com/loculus-project/loculus/pull/3342",
     "user": "theosanderson"
   },
