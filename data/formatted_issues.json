@@ -19702,7 +19702,7 @@
     ],
     "number": 3331,
     "objectID": 2712490860,
-    "reactions": 0,
+    "reactions": 1,
     "repo": "loculus",
     "state": "open",
     "title": "Submission template: have a subset of fields in template",
@@ -19756,7 +19756,7 @@
   {
     "body": "A lot of people use Excel to handle and store metadata. Whether rightly or wrongly, it is what it is. We will lower the bar for upload significantly if we can support Excel metadata uploads.\nWe would probably need to force people to set the dates into ISO still, unless Excel encodes whether dates are US format or not (which it well might) to avoid confusion of whether 04/07/2022 is 7 of April or 4 of July.",
     "closed_at": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": 1733162183,
     "labels": [
       "discussion",
@@ -19767,12 +19767,12 @@
     ],
     "number": 3334,
     "objectID": 2712858385,
-    "reactions": 0,
+    "reactions": 1,
     "repo": "loculus",
     "state": "open",
     "title": "Accept Excel files for metadata",
     "type": "issue",
-    "updated_at": 1733162184,
+    "updated_at": 1733216760,
     "url": "https://github.com/loculus-project/loculus/issues/3334",
     "user": "emmahodcroft"
   },
@@ -19809,7 +19809,7 @@
     ],
     "number": 3341,
     "objectID": 2713469045,
-    "reactions": 0,
+    "reactions": 1,
     "repo": "loculus",
     "state": "open",
     "title": "Formatting issues in \"data use terms history\" modal ",
@@ -19859,6 +19859,26 @@
     "updated_at": 1733184759,
     "url": "https://github.com/loculus-project/loculus/issues/3344",
     "user": "chaoran-chen"
+  },
+  {
+    "body": "Just an idea I had!\nHelm supports an optional JSON schema for the values.yaml. We could write one, and then possibly also generate docs for the helm chart from the schema, with a tool like this. Our Helm Chart is quite large and complex, and documentation synced by hand. This could help us keep the docs in sync, and get a validation layer for the values.yaml.\nWe could also use something like Pydantic to define the structure in Python code first, and then generate the schema file from that! Maybe easier than maintaining a JSON schema by hand.",
+    "closed_at": null,
+    "comments": 2,
+    "created_at": 1733215276,
+    "labels": [
+      "issue",
+      "open"
+    ],
+    "number": 3346,
+    "objectID": 2714352231,
+    "reactions": 1,
+    "repo": "loculus",
+    "state": "open",
+    "title": "Use `values.schema.json` in Helm Chart",
+    "type": "issue",
+    "updated_at": 1733216694,
+    "url": "https://github.com/loculus-project/loculus/issues/3346",
+    "user": "fhennig"
   },
   {
     "body": "Currently the endpoint only expects unalignedNucleotideSequences, but it should also accept alignedNucleotideSequences, nucleotideInsertions, alignedAminoAcidSequences, aminoAcidInsertions.\nOpen question: Which type should the insertion fields have?",
@@ -62142,23 +62162,23 @@
   },
   {
     "body": "Bumps the minorandpatch group in /docs with 2 updates: astro and prettier.\nUpdates astro from 4.16.14 to 4.16.16\n\nRelease notes\nSourced from astro's releases.\n\nastro@4.16.16\nPatch Changes\n\n\n#12542 65e50eb Thanks @\u200bkadykov! - Fix JPEG image size determination\n\n\n#12525 cf0d8b0 Thanks @\u200bematipico! - Fixes an issue where with i18n enabled, Astro couldn't render the 404.astro component for non-existent routes.\n\n\nastro@4.16.15\nPatch Changes\n\n#12498 b140a3f Thanks @\u200bematipico! - Fixes a regression where Astro was trying to access Request.headers\n\n\n\n\nChangelog\nSourced from astro's changelog.\n\n4.16.16\nPatch Changes\n\n\n#12542 65e50eb Thanks @\u200bkadykov! - Fix JPEG image size determination\n\n\n#12525 cf0d8b0 Thanks @\u200bematipico! - Fixes an issue where with i18n enabled, Astro couldn't render the 404.astro component for non-existent routes.\n\n\n4.16.15\nPatch Changes\n\n#12498 b140a3f Thanks @\u200bematipico! - Fixes a regression where Astro was trying to access Request.headers\n\n\n\n\nCommits\n\n6eac6ba [ci] release (#12536)\n65e50eb Fix JPEG image size determination (#12542)\n6fc29e3 fix(deps): update all non-major dependencies (#12410)\ncf0d8b0 fix(i18n): render 404.astro when i18n is enabled (#12525)\n36d8d92 [ci] release (#12501)\nb140a3f fix(routing): don't access Request headers (#12498)\nSee full diff in compare view\n\n\n\nUpdates prettier from 3.3.3 to 3.4.1\n\nRelease notes\nSourced from prettier's releases.\n\n3.4.1\n\ud83d\udd17 Changelog\n3.4.0\ndiff\n\ud83d\udd17 Release note\n\n\n\nChangelog\nSourced from prettier's changelog.\n\n3.4.1\ndiff\nRemove unnecessary parentheses around assignment in v-on (#16887 by @\u200bfisker)\n\n<!-- Input -->\n\\<template>\n  <button @click=\"foo += 2\">Click</button>\n</template>\n<!-- Prettier 3.4.0 -->\n&lt;template>\n<button @\u200bclick=\"(foo += 2)\">Click</button>\n</template>\n<!-- Prettier 3.4.1 -->\n&lt;template>\n<button @\u200bclick=\"foo += 2\">Click</button>\n</template>\n3.4.0\ndiff\n\ud83d\udd17 Release Notes\n\n\n\nCommits\n\n37fd177 Release 3.4.1\n1fb6297 Update ts-api-utils to v1.4.2 (#16888)\nf6fccad Remove unnecessary parentheses aroun",
-    "closed_at": null,
+    "closed_at": 1733216876,
     "comments": 0,
     "created_at": 1733165252,
     "labels": [
+      "closed",
       "dependencies",
       "javascript",
-      "open",
       "pull_request"
     ],
     "number": 3335,
     "objectID": 2712967397,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "chore(deps): bump the minorandpatch group in /docs with 2 updates",
     "type": "pull_request",
-    "updated_at": 1733169519,
+    "updated_at": 1733216879,
     "url": "https://github.com/loculus-project/loculus/pull/3335",
     "user": "dependabot[bot]"
   },
@@ -62230,23 +62250,23 @@
   },
   {
     "body": "Bumps the minor group in /backend with 2 updates: org.jetbrains.kotlin.jvm and org.jetbrains.kotlin.plugin.spring.\nUpdates org.jetbrains.kotlin.jvm from 2.0.21 to 2.1.0\n\nRelease notes\nSourced from org.jetbrains.kotlin.jvm's releases.\n\nKotlin 2.1.0\nChangelog\nAnalysis API\nNew Features\n\nKT-68603 KotlinDirectInheritorsProvider: add an option to ignore non-kotlin results\n\nPerformance Improvements\n\nKT-70757 Performance problem in KaFirVisibilityChecker for KaFirPsiJavaClassSymbol\n\nFixes\n\nKT-70437 Class reference is not resolvable\nKT-57733 Analysis API: Use optimized ModuleWithDependenciesScopes in combined symbol providers\nKT-72389 K2: False positive \"Redundant 'protected' modifier\" for protected property inside protected constructor from private or internal class\nKT-69190 K2: False-positive \"redundant private modifier\"\nKT-64984 Analysis API: Support Wasm target\nKT-70375 K2: NPE at org.jetbrains.kotlin.analysis.api.fir.symbols.KaFirNamedClassSymbolBase.createPointer\nKT-71259 K2 evaluator: Invalid smart cast info collecting for Code Fragments\nKT-69360 Lack of implicit receiver for the last statement under lambda in scripts\nKT-70890 Analysis API: Experiment with weak references to LL FIR/analysis sessions in session caches\nKT-70657 Analysis API: Inner types from classes with generics are incorrectly represented by the compiled jars\nKT-71055 Suspend calls inside 'analyze()' break the block guarantees\nKT-70815 Analysis API: Implement stop-the-world session invalidation\nKT-69819 K2 IDE: LHS type in callable references is unresolved when it has type arguments and is qualified\nKT-68761 Analysis API: Experiment with limited-size cache in KaFirSessionProvider\nKT-70384 Analysis API Standalone: The same class in the same two renamed jars is unresolved\nKT-71067 Exceptions from references cancel Find Usages\nKT-69535 Redesign 'containingSymbol'\nKT-71025 K2 IDE: Scopes in \"importingScopeContext\" have reversed ordering and \"indexInTower\" values\nKT-67483 K2 IDE: Serializable plugin causes",
-    "closed_at": null,
+    "closed_at": 1733216831,
     "comments": 0,
     "created_at": 1733165940,
     "labels": [
+      "closed",
       "dependencies",
       "java",
-      "open",
       "pull_request"
     ],
     "number": 3339,
     "objectID": 2713046660,
     "reactions": 0,
     "repo": "loculus",
-    "state": "open",
+    "state": "closed",
     "title": "chore(deps): bump the minor group in /backend with 2 updates",
     "type": "pull_request",
-    "updated_at": 1733169497,
+    "updated_at": 1733216833,
     "url": "https://github.com/loculus-project/loculus/pull/3339",
     "user": "dependabot[bot]"
   },
@@ -62273,7 +62293,7 @@
     "user": "dependabot[bot]"
   },
   {
-    "body": "resolves #3341 and various other problems\npreview URL: https://breakword.loculus.org/\nWe were using break-all which allows wrapping newlines very arbitrarily.  Now we only use break-words\n.",
+    "body": "resolves #3341 and various other problems\npreview URL: https://breakword.loculus.org/\nScreenshot\n\nbecomes\n\nWe were using break-all which allows wrapping newlines very arbitrarily.  Now we only use break-words\n.",
     "closed_at": null,
     "comments": 0,
     "created_at": 1733176759,
@@ -62290,7 +62310,7 @@
     "state": "open",
     "title": "fix(website): Adjust break all to break word",
     "type": "pull_request",
-    "updated_at": 1733182709,
+    "updated_at": 1733215470,
     "url": "https://github.com/loculus-project/loculus/pull/3342",
     "user": "theosanderson"
   },
